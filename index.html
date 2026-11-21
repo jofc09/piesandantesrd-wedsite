@@ -137,10 +137,10 @@
         }
 
         /* =================================
-           4. HERO SECTION
+           4. HERO SECTION (usa foto4.jpg.jpg)
            ================================= */
         header {
-            background: linear-gradient(rgba(27, 59, 111, 0.65), rgba(27, 59, 111, 0.78)), url('foto4.jpg');
+            background: linear-gradient(rgba(27, 59, 111, 0.65), rgba(27, 59, 111, 0.78)), url('foto4.jpg.jpg');
             background-size: cover;
             background-position: center;
             height: var(--altura-hero);
@@ -215,7 +215,7 @@
         }
 
         /* =================================
-           6. TARJETA PRINCIPAL DEL VIAJE
+           6. TARJETA PRINCIPAL DEL VIAJE (usa foto2.jpg.jpg)
            ================================= */
         .trip-showcase {
             display: grid;
@@ -230,7 +230,7 @@
 
         .trip-cover {
             min-height: 330px;
-            background: url('foto2.jpg') center/cover no-repeat;
+            background: url('foto2.jpg.jpg') center/cover no-repeat;
         }
 
         .trip-details {
@@ -723,7 +723,6 @@
             transform: scale(1.08);
         }
 
-        /* Menú flotante para elegir entre los dos números de WhatsApp */
         .whatsapp-menu {
             display: none;
             position: fixed;
@@ -788,12 +787,12 @@
 
     <div id="notification" class="notification"></div>
 
-    <!-- Barra de navegación -->
+    <!-- Barra de navegación (usa logo.jpeg.jpeg) -->
     <nav>
         <div class="nav-container">
             <a href="#viaje" class="logo">
                 <span class="logo-badge-wrap">
-                    <img src="logo.jpeg" alt="PiesandantesRD" class="logo-img">
+                    <img src="logo.jpeg.jpeg" alt="PiesandantesRD" class="logo-img">
                 </span>
                 <span>PiesandantesRD</span>
                 <span class="admin-badge" id="adminBadge" style="display: none;">ADMIN</span>
@@ -949,12 +948,12 @@
         </div>
     </section>
 
-    <!-- Sección sobre nosotros -->
+    <!-- Sección sobre nosotros (usa logo.jpeg.jpeg) -->
     <section id="nosotros">
         <h2 class="section-title">🧭 Sobre PiesandantesRD</h2>
         <div class="about-container">
             <div class="about-logo-box">
-                <img src="logo.jpeg" alt="PiesandantesRD - Paso a paso, descubriendo RD">
+                <img src="logo.jpeg.jpeg" alt="PiesandantesRD - Paso a paso, descubriendo RD">
             </div>
             <div class="about-text">
                 <h3>Paso a paso, descubriendo nuevos horizontes</h3>
@@ -1003,7 +1002,7 @@
         </a>
     </div>
 
-    <!-- Botón flotante de WhatsApp (abre el selector de los 2 números) -->
+    <!-- Botón flotante de WhatsApp -->
     <button type="button"
             class="whatsapp-float"
             onclick="toggleWhatsAppMenu(event)"
@@ -1098,18 +1097,19 @@
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
 
+        // Arreglo ajustado a los nombres con doble extensión subidos en GitHub
         const tripImages = [
-            { src: 'foto1.jpg', caption: 'Centro de Medellín y Metro' },
-            { src: 'foto2.jpg', caption: 'Piedra del Peñol y Guatapé' },
-            { src: 'foto3.jpg', caption: 'Panorámica de Medellín' },
-            { src: 'foto4.jpg', caption: 'Embalse y paisajes de Guatapé' },
-            { src: 'foto5.jpg', caption: 'Arquitectura y cultura local' },
-            { src: 'foto6.jpg', caption: 'Gastronomía típica colombiana' },
-            { src: 'foto7.jpg', caption: 'Medellín de noche' },
-            { src: 'foto8.jpg', caption: 'Vista urbana entre montañas' },
-            { src: 'foto9.jpg', caption: 'Metrocable y Comuna 13' },
-            { src: 'foto10.jpg', caption: 'Escultura y centro histórico' },
-            { src: 'foto11.jpg', caption: 'Recuerdos del viaje' }
+            { src: 'foto1.jpg.jpg', caption: 'Centro de Medellín y Metro' },
+            { src: 'foto2.jpg.jpg', caption: 'Piedra del Peñol y Guatapé' },
+            { src: 'foto3.jpg.jpg', caption: 'Panorámica de Medellín' },
+            { src: 'foto4.jpg.jpg', caption: 'Embalse y paisajes de Guatapé' },
+            { src: 'foto5.jpg.jpg', caption: 'Arquitectura y cultura local' },
+            { src: 'foto6.jpg.jpg', caption: 'Gastronomía típica colombiana' },
+            { src: 'foto7.jpg.jpg', caption: 'Medellín de noche' },
+            { src: 'foto8.jpg.jpg', caption: 'Vista urbana entre montañas' },
+            { src: 'foto9.jpg.jpg', caption: 'Metrocable y Comuna 13' },
+            { src: 'foto10.jpg.jpg', caption: 'Escultura y centro histórico' },
+            { src: 'foto11.jpg.jpg', caption: 'Recuerdos del viaje' }
         ];
 
         let currentCurrency = 'USD';
