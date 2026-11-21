@@ -20,7 +20,7 @@
             --verde-exito: #27AE60;
             --rojo-error: #E74C3C;
             --azul-info: #2563EB;
-            --altura-hero: 75vh;
+            --altura-hero: 72vh;
         }
 
         * {
@@ -78,16 +78,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .logo {
             color: var(--blanco);
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-integrated-frame {
@@ -118,8 +120,9 @@
 
         .nav-links {
             display: flex;
-            gap: 14px;
+            gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -127,12 +130,29 @@
             text-decoration: none;
             font-weight: 500;
             transition: background 0.3s;
-            padding: 8px 14px;
+            padding: 7px 12px;
             border-radius: 6px;
+            font-size: 0.92rem;
         }
 
         .nav-links a:hover {
             background-color: var(--naranja-logo);
+        }
+
+        .nav-account-btn {
+            background-color: var(--amarillo-logo);
+            color: var(--azul-logo);
+            border: none;
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.88rem;
+            cursor: pointer;
+        }
+
+        .nav-account-btn:hover {
+            background-color: var(--naranja-logo);
+            color: var(--blanco);
         }
 
         .admin-badge {
@@ -145,34 +165,111 @@
         }
 
         /* =================================
-           4. HERO SECTION
+           4. HERO GIRATORIO AUTOMÁTICO
            ================================= */
-        header {
-            background: linear-gradient(rgba(27, 59, 111, 0.65), rgba(27, 59, 111, 0.78)), url('foto4.jpg.jpg');
+        .hero-carousel-wrap {
+            position: relative;
+            max-width: 1240px;
+            margin: 16px auto 0 auto;
+            padding: 0 16px;
+        }
+
+        .hero-carousel {
+            position: relative;
+            height: var(--altura-hero);
+            min-height: 430px;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(27, 59, 111, 0.22);
+            border: 2px solid rgba(242, 183, 41, 0.7);
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
             background-size: cover;
             background-position: center;
-            height: var(--altura-hero);
+            opacity: 0;
+            transform: scale(1.04) rotate(0.4deg);
+            transition: opacity 0.85s ease, transform 4.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--blanco);
-            padding: 0 20px;
+            padding: 0 54px;
+            pointer-events: none;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            pointer-events: auto;
         }
 
         .hero-content h1 {
-            font-size: 2.8rem;
+            font-size: 2.7rem;
             margin-bottom: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.65);
         }
 
         .hero-content p {
-            font-size: 1.35rem;
-            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.6rem;
             color: var(--amarillo-logo);
             font-weight: 600;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.65);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(21, 47, 89, 0.72);
+            color: var(--blanco);
+            border: 1px solid rgba(242, 183, 41, 0.7);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--naranja-logo);
+        }
+
+        .carousel-arrow.prev { left: 26px; }
+        .carousel-arrow.next { right: 26px; }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .carousel-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.55);
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background: var(--amarillo-logo);
+            transform: scale(1.2);
         }
 
         .btn-cta {
@@ -199,7 +296,7 @@
            5. SECCIONES Y TÍTULOS CENTRADOS
            ================================= */
         section {
-            padding: 4rem 20px;
+            padding: 3.5rem 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -217,13 +314,13 @@
 
         .section-subtitle {
             text-align: center;
-            margin-bottom: 2.5rem;
-            font-size: 1.08rem;
+            margin-bottom: 2.2rem;
+            font-size: 1.06rem;
             color: #4B5563;
         }
 
         /* =================================
-           6. TARJETA PRINCIPAL DEL VIAJE Y CONFIANZA
+           6. TARJETA PRINCIPAL DEL VIAJE, RECOMPENSAS Y CONFIANZA
            ================================= */
         .trip-showcase {
             display: grid;
@@ -291,6 +388,38 @@
             margin-bottom: 14px;
         }
 
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .reward-card {
+            background: var(--blanco);
+            border: 1px solid #E5E7EB;
+            border-left: 5px solid var(--naranja-logo);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 4px 14px rgba(27, 59, 111, 0.07);
+        }
+
+        .reward-card.premium {
+            border-left-color: var(--azul-logo);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
+        }
+
+        .reward-badge {
+            display: inline-block;
+            background: var(--azul-logo);
+            color: var(--amarillo-logo);
+            font-size: 0.78rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
         .trust-fiscal-strip {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -338,7 +467,7 @@
             font-weight: bold;
             text-align: center;
             margin-bottom: 16px;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
 
         .btn-card {
@@ -656,7 +785,7 @@
         }
 
         /* =================================
-           9. NOSOTROS, SOPORTE Y CONTACTO
+           9. NOSOTROS, SOPORTE, CONTACTO Y LOGOS DE BANCOS
            ================================= */
         .about-container {
             display: flex;
@@ -747,9 +876,9 @@
         }
 
         /* =================================
-           10. ETAPAS, FACTURACIÓN DGII, TÉRMINOS, COMPROBANTE Y PASE
+           10. MODALES DE CUENTA, RESERVA Y PASE
            ================================= */
-        .payment-modal, .ticket-modal {
+        .payment-modal, .ticket-modal, .account-modal {
             display: none;
             position: fixed;
             inset: 0;
@@ -760,7 +889,7 @@
             padding: 15px;
         }
 
-        .payment-form, .ticket {
+        .payment-form, .ticket, .account-box {
             background: var(--blanco);
             padding: 2rem;
             border-radius: 16px;
@@ -769,6 +898,28 @@
             max-height: 92vh;
             overflow-y: auto;
             position: relative;
+        }
+
+        .account-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .account-tab-btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--azul-logo);
+            background: #EFF6FF;
+            color: var(--azul-logo);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .account-tab-btn.active {
+            background: var(--azul-logo);
+            color: var(--blanco);
         }
 
         .close-modal {
@@ -985,64 +1136,64 @@
             margin-top: 10px;
         }
 
+        /* =================================
+           11. FOOTER CON LOGOS DE BANCOS Y BOTONES FLOTANTES
+           ================================= */
         footer {
             background-color: #111827;
             color: var(--blanco);
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 2.2rem 1rem 5.5rem 1rem;
         }
 
-        /* =================================
-           11. BOTONES FLOTANTES Y MENÚ WHATSAPP
-           ================================= */
-        .instagram-float {
+        .footer-banks-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 14px auto;
+            max-width: 780px;
+        }
+
+        .float-stack {
             position: fixed;
-            width: 56px;
-            height: 56px;
-            bottom: 102px;
-            right: 32px;
-            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
-            color: var(--blanco);
-            border-radius: 50%;
-            font-size: 28px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             z-index: 10000;
+        }
+
+        .float-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            color: var(--blanco);
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: transform 0.25s;
-        }
-
-        .instagram-float:hover { transform: scale(1.08); }
-
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: var(--blanco);
-            border-radius: 50%;
-            font-size: 34px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: none;
             cursor: pointer;
             transition: transform 0.25s;
         }
 
-        .whatsapp-float:hover { transform: scale(1.08); }
+        .float-btn:hover { transform: scale(1.08); }
+
+        .yt-float { background-color: #FF0000; }
+        .tt-float { background-color: #000000; border: 1px solid #25F4EE; }
+        .ig-float { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); }
+        .wa-float { background-color: #25D366; }
 
         .whatsapp-menu {
             display: none;
             position: fixed;
-            bottom: 100px;
-            right: 98px;
+            bottom: 24px;
+            right: 88px;
             background: var(--blanco);
             border: 2px solid var(--azul-logo);
             border-radius: 14px;
@@ -1082,10 +1233,10 @@
         .whatsapp-option:hover { background-color: #25D366; color: var(--blanco); }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2rem; }
+            .hero-content h1 { font-size: 1.95rem; }
             .nav-links { display: none; }
             .section-title { font-size: 1.8rem; }
-            .whatsapp-menu { right: 20px; bottom: 170px; }
+            .whatsapp-menu { right: 82px; bottom: 24px; }
         }
     </style>
 </head>
@@ -1093,7 +1244,7 @@
 
     <div id="notification" class="notification"></div>
 
-    <!-- Barra de navegación con logo integrado -->
+    <!-- Barra de navegación con logo integrado y acceso a cuenta -->
     <nav>
         <div class="nav-container">
             <a href="#viaje" class="logo">
@@ -1110,22 +1261,25 @@
             </a>
             <div class="nav-links">
                 <a href="#viaje">Viaje Medellín y Guatapé</a>
+                <a href="#recompensas">Recompensas</a>
                 <a href="#galeria">Galería</a>
                 <a href="#noticias">Noticias</a>
                 <a href="#soporte">Soporte</a>
                 <a href="#contacto">Contacto</a>
             </div>
+            <button type="button" class="nav-account-btn" id="accountNavBtn" onclick="openAccountModal()">
+                <i class="fas fa-user-circle"></i> <span id="accountNavLabel">Mi Cuenta</span>
+            </button>
         </div>
     </nav>
 
-    <!-- Encabezado principal -->
-    <header>
-        <div class="hero-content">
-            <h1 id="heroTitleDisplay">Medellín y Guatapé</h1>
-            <p id="heroSubtitleDisplay">Del 3 al 7 de marzo • Total US$ 700 (Aparta con US$ 100)</p>
-            <a href="#viaje" class="btn-cta">Ver Detalles y Reservar</a>
-        </div>
-    </header>
+    <!-- Giratorio automático de portada -->
+    <div class="hero-carousel-wrap" id="heroCarouselWrap">
+        <div class="hero-carousel" id="heroCarousel"></div>
+        <button type="button" class="carousel-arrow prev" onclick="prevCarouselSlide()" aria-label="Slide anterior">&lsaquo;</button>
+        <button type="button" class="carousel-arrow next" onclick="nextCarouselSlide()" aria-label="Slide siguiente">&rsaquo;</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+    </div>
 
     <!-- Tarjeta principal del viaje y pilares de confianza / DGII -->
     <section id="viaje">
@@ -1162,8 +1316,8 @@
 
         <div class="trust-fiscal-strip">
             <div class="trust-fiscal-card">
-                <h4><i class="fas fa-shield-alt"></i> Transparencia y Seguridad</h4>
-                <p>Cada registro genera un código único de verificación y guarda el comprobante adjunto con términos visibles antes de confirmar.</p>
+                <h4><i class="fas fa-user-lock"></i> Cuenta Personal con Contraseña</h4>
+                <p>Guarda tus datos personales y fiscales para agilizar futuras reservas sin almacenar datos bancarios confidenciales.</p>
             </div>
             <div class="trust-fiscal-card">
                 <h4><i class="fas fa-file-invoice"></i> Estructura Fiscal DGII (RD)</h4>
@@ -1172,6 +1326,29 @@
             <div class="trust-fiscal-card">
                 <h4><i class="fas fa-headset"></i> Soporte Directo del Desarrollador</h4>
                 <p>¿Algún fallo o duda técnica en la página? Escribe o llama al <a href="tel:8098614497" style="color: var(--azul-logo); font-weight: bold;">809-861-4497</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Sistema de Recompensas -->
+    <section id="recompensas">
+        <h2 class="section-title">🎁 Sistema de Recompensas</h2>
+        <p class="section-subtitle">Premiamos tu primera aventura y tu fidelidad en cada viaje con PiesandantesRD</p>
+        <div class="rewards-grid">
+            <div class="reward-card">
+                <span class="reward-badge">1.er Viaje (Primera Vez)</span>
+                <h3 style="color: var(--azul-logo); margin-bottom: 6px;">Merch de Bienvenida</h3>
+                <p style="font-size: 0.92rem; color: #374151;">Quienes viajan por primera vez se ganan una merch oficial (t-shirt o abrigo de PiesandantesRD).</p>
+            </div>
+            <div class="reward-card premium">
+                <span class="reward-badge">10 Viajes</span>
+                <h3 style="color: var(--azul-logo); margin-bottom: 6px;">Termo Térmico con Logo</h3>
+                <p style="font-size: 0.92rem; color: #374151;">Al completar 10 viajes te ganas un termo térmico con el logo de PiesandantesRD.</p>
+            </div>
+            <div class="reward-card premium">
+                <span class="reward-badge">Más de 20 Viajes</span>
+                <h3 style="color: var(--azul-logo); margin-bottom: 6px;">Rebaja en Próximos Viajes</h3>
+                <p style="font-size: 0.92rem; color: #374151;" id="over20RewardDesc">Con más de 20 viajes obtienes promoción con rebaja de precio en tus próximos viajes.</p>
             </div>
         </div>
     </section>
@@ -1402,23 +1579,33 @@
         <p style="color: var(--amarillo-logo); font-weight: bold;">@piesandantesrd</p>
     </section>
 
-    <!-- Pie de página -->
+    <!-- Pie de página con logos de bancos y copyright -->
     <footer>
         <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo • Normativa Fiscal DGII (RD)</p>
+        <div class="footer-banks-strip" id="footerBanksStrip" aria-label="Bancos habilitados para transferencias">
+            <svg class="bank-logo-svg" viewBox="0 0 120 30" aria-hidden="true">
+                <rect x="2" y="3" width="116" height="24" rx="6" fill="#00529B"/>
+                <text x="60" y="19" fill="#FDB913" font-size="11.5" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">BANRESERVAS</text>
+            </svg>
+            <svg class="bank-logo-svg" viewBox="0 0 120 30" aria-hidden="true">
+                <rect x="2" y="3" width="116" height="24" rx="6" fill="#003876"/>
+                <circle cx="20" cy="15" r="6" fill="#00AEEF"/>
+                <text x="68" y="19" fill="#FFFFFF" font-size="11" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">POPULAR</text>
+            </svg>
+            <svg class="bank-logo-svg" viewBox="0 0 120 30" aria-hidden="true">
+                <rect x="2" y="3" width="116" height="24" rx="6" fill="#006847"/>
+                <text x="60" y="19" fill="#FFFFFF" font-size="12" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">BANCO BHD</text>
+            </svg>
+            <svg class="bank-logo-svg" viewBox="0 0 120 30" aria-hidden="true">
+                <rect x="2" y="3" width="116" height="24" rx="6" fill="#111827"/>
+                <text x="60" y="19" fill="#38BDF8" font-size="12" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">QIK BANCO</text>
+            </svg>
+        </div>
         <p>Teléfonos: 809-403-0141 | 809-996-8875 • Soporte Técnico: <a href="tel:8098614497" style="color: #F2B729;">809-861-4497</a></p>
         <p id="codeVersionFooter" style="font-size: 0.78rem; color: #9CA3AF; margin-top: 6px;"></p>
     </footer>
 
-    <!-- Botón flotante de Instagram -->
-    <a href="https://www.instagram.com/piesandantesrd?utm_source=ig_web_button_share_sheet&jplx=ZDNlZDc0MzIxNw=="
-       class="instagram-float"
-       target="_blank"
-       rel="noopener noreferrer"
-       title="Instagram @piesandantesrd">
-        <i class="fab fa-instagram"></i>
-    </a>
-
-    <!-- Menú flotante de selección de WhatsApp -->
+    <!-- Botones flotantes: YouTube, TikTok, Instagram y WhatsApp -->
     <div id="whatsappMenu" class="whatsapp-menu" onclick="event.stopPropagation()">
         <div class="whatsapp-menu-title">Elige un número de WhatsApp:</div>
         <a id="waLink1" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-option">
@@ -1431,13 +1618,123 @@
         </a>
     </div>
 
-    <!-- Botón flotante de WhatsApp -->
-    <button type="button"
-            class="whatsapp-float"
-            onclick="toggleWhatsAppMenu(event)"
-            title="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </button>
+    <div class="float-stack">
+        <a href="https://www.youtube.com/@piesandantesrd"
+           class="float-btn yt-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="YouTube @piesandantesrd">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.tiktok.com/@piesandantesrd"
+           class="float-btn tt-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="TikTok @piesandantesrd">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/piesandantesrd?utm_source=ig_web_button_share_sheet&jplx=ZDNlZDc0MzIxNw=="
+           class="float-btn ig-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="Instagram @piesandantesrd">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <button type="button"
+                class="float-btn wa-float"
+                onclick="toggleWhatsAppMenu(event)"
+                title="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <!-- Modal de Cuenta del Viajero (sin datos bancarios) -->
+    <div id="accountModal" class="account-modal">
+        <div class="account-box">
+            <button class="close-modal" onclick="closeAccountModal()">&times;</button>
+            <h3 style="color: var(--azul-logo); margin-bottom: 10px;">👤 Espacio Personal del Viajero</h3>
+            <p style="font-size: 0.85rem; color: #4B5563; margin-bottom: 12px;">
+                Protección de privacidad: aquí solo se guardan tus datos de perfil y facturación (nunca números de cuenta ni tarjetas).
+            </p>
+
+            <div class="account-tabs">
+                <button type="button" class="account-tab-btn active" id="tabLoginBtn" onclick="switchAccountTab('login')">Iniciar Sesión</button>
+                <button type="button" class="account-tab-btn" id="tabRegisterBtn" onclick="switchAccountTab('register')">Crear Cuenta</button>
+                <button type="button" class="account-tab-btn" id="tabProfileBtn" onclick="switchAccountTab('profile')">Mi Perfil y Recompensas</button>
+            </div>
+
+            <form id="loginAccountForm" onsubmit="handleAccountLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Correo Electrónico *</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña *</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-cta">Entrar a mi Cuenta</button>
+            </form>
+
+            <form id="registerAccountForm" style="display: none;" onsubmit="handleAccountRegister(event)">
+                <div class="form-group">
+                    <label for="regName">Nombre Completo *</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="regEmail">Correo Electrónico *</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Crear Contraseña *</label>
+                        <input type="password" id="regPassword" minlength="6" required>
+                    </div>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="regAge">Edad *</label>
+                        <input type="number" id="regAge" min="1" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Teléfono *</label>
+                        <input type="tel" id="regPhone" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regResidence">Residencia *</label>
+                    <input type="text" id="regResidence" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmergency">Contacto de Emergencia *</label>
+                    <input type="text" id="regEmergency" required>
+                </div>
+                <div class="form-group">
+                    <label for="regHealth">Condición de Salud / Alergias *</label>
+                    <input type="text" id="regHealth" placeholder="Ej. Ninguna" required>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="regRncId">RNC o Cédula (DGII) *</label>
+                        <input type="text" id="regRncId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEcfType">Tipo e-CF *</label>
+                        <select id="regEcfType">
+                            <option value="E32" selected>E32 - Consumo</option>
+                            <option value="E31">E31 - Crédito Fiscal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regBillingName">Nombre o Razón Social Factura *</label>
+                    <input type="text" id="regBillingName" required>
+                </div>
+                <button type="submit" class="btn-cta">Crear Cuenta y Guardar Datos</button>
+            </form>
+
+            <div id="profileAccountView" style="display: none;"></div>
+        </div>
+    </div>
 
     <!-- Modal de reserva, apartado con tiempo limitado, pago restante con ventana activa/cierre y facturación DGII -->
     <div id="paymentModal" class="payment-modal">
@@ -1621,7 +1918,7 @@
         </div>
     </div>
 
-    <!-- Modal de pase solo con código (sin QR del pase) -->
+    <!-- Modal de pase solo con código -->
     <div id="ticketModal" class="ticket-modal">
         <div class="ticket">
             <button class="close-modal" onclick="closeTicketModal()">&times;</button>
@@ -1641,12 +1938,16 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-cf-v11';
+        const APP_CODE_VERSION = '2026-11-21-cf-v12';
         const BRAND_SLUG = 'piesandantesrd';
-        // Dominio profesional base para el enlace y QR (ej. 'workers.dev' o 'pages.dev').
         const PROFESSIONAL_DEPLOY_DOMAIN = 'workers.dev';
         const DEV_SUPPORT_PHONE_DISPLAY = '809-861-4497';
         const DEV_SUPPORT_PHONE_RAW = '18098614497';
+        const YOUTUBE_URL = 'https://www.youtube.com/@piesandantesrd';
+        const TIKTOK_URL = 'https://www.tiktok.com/@piesandantesrd';
+        const SHOW_FOOTER_BANK_LOGOS = true;
+        const REWARD_DISCOUNT_OVER_20_PCT = 15;
+        const CAROUSEL_AUTO_MS = 4000;
         const ITBIS_RATE = 0.18;
         const SHOW_ITBIS_BREAKDOWN = true;
         const ADMIN_PASS = 'admin123';
@@ -1659,6 +1960,24 @@
         const GALLERY_ROTATION_MS = 3200;
         const MAX_RECEIPT_BYTES = 1.5 * 1024 * 1024;
         const BACKUP_FILE_PREFIX = 'respaldo_piesandantesrd';
+
+        const CAROUSEL_SLIDES = [
+            {
+                image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1400&q=80',
+                title: 'Medellín y Guatapé',
+                subtitle: 'Mirando hacia nuevos pueblos y aventuras • Total US$ 700 (Aparta con US$ 100)'
+            },
+            {
+                image: 'foto4.jpg.jpg',
+                title: 'Embalse y Guatapé',
+                subtitle: 'Del 3 al 7 de marzo • Vuelo, alojamiento, desayuno y excursiones'
+            },
+            {
+                image: 'foto2.jpg.jpg',
+                title: 'Piedra del Peñol',
+                subtitle: 'Vive la experiencia con PiesandantesRD • @piesandantesrd'
+            }
+        ];
 
         const BANK_HINTS = {
             'Banreservas': 'Transferencia Banreservas • Adjunta el comprobante con fecha, monto y referencia.',
@@ -1692,6 +2011,9 @@
             { src: 'foto11.jpg.jpg', caption: 'Recuerdos del viaje' }
         ];
 
+        let carouselIndex = 0;
+        let carouselTimerId = null;
+
         let currentStage = 'deposit';
         let currentCurrency = 'USD';
         let currentConvertedPrice = DEPOSIT_AMOUNT_USD;
@@ -1720,6 +2042,250 @@
             if (footerVersionEl) {
                 footerVersionEl.textContent = `Versión de código: ${APP_CODE_VERSION}`;
             }
+            const banksStripEl = document.getElementById('footerBanksStrip');
+            if (banksStripEl) {
+                banksStripEl.style.display = SHOW_FOOTER_BANK_LOGOS ? 'flex' : 'none';
+            }
+            const over20Desc = document.getElementById('over20RewardDesc');
+            if (over20Desc) {
+                over20Desc.textContent = `Con más de 20 viajes obtienes promoción con ${REWARD_DISCOUNT_OVER_20_PCT}% de rebaja en tus próximos viajes.`;
+            }
+        }
+
+        function renderHeroCarousel() {
+            const carouselEl = document.getElementById('heroCarousel');
+            const dotsEl = document.getElementById('carouselDots');
+            if (!carouselEl || !dotsEl) return;
+
+            carouselEl.innerHTML = CAROUSEL_SLIDES.map((slide, idx) => `
+                <div class="hero-slide ${idx === carouselIndex ? 'active' : ''}"
+                     style="background-image: linear-gradient(rgba(27, 59, 111, 0.42), rgba(27, 59, 111, 0.58)), url('${slide.image}');">
+                    <div class="hero-content">
+                        <h1>${slide.title || tripData.title}</h1>
+                        <p>${slide.subtitle || `Del ${tripData.date} • Total US$ ${tripData.priceUSD}`}</p>
+                        <a href="#viaje" class="btn-cta">Ver Detalles y Reservar</a>
+                    </div>
+                </div>
+            `).join('');
+
+            dotsEl.innerHTML = CAROUSEL_SLIDES.map((_, idx) => `
+                <button type="button" class="carousel-dot ${idx === carouselIndex ? 'active' : ''}" onclick="goToCarouselSlide(${idx})" aria-label="Slide ${idx + 1}"></button>
+            `).join('');
+        }
+
+        function goToCarouselSlide(idx) {
+            carouselIndex = (idx + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length;
+            renderHeroCarousel();
+        }
+
+        function nextCarouselSlide() {
+            goToCarouselSlide(carouselIndex + 1);
+        }
+
+        function prevCarouselSlide() {
+            goToCarouselSlide(carouselIndex - 1);
+        }
+
+        function startHeroCarouselRotation() {
+            if (carouselTimerId) clearInterval(carouselTimerId);
+            carouselTimerId = setInterval(nextCarouselSlide, CAROUSEL_AUTO_MS);
+        }
+
+        function simplePassHash(plainText) {
+            let h = 5381;
+            const s = String(plainText || '');
+            for (let i = 0; i < s.length; i++) {
+                h = ((h << 5) + h) + s.charCodeAt(i);
+            }
+            return String(h >>> 0);
+        }
+
+        function getAccounts() {
+            return JSON.parse(localStorage.getItem('piesandantesAccounts') || '[]');
+        }
+
+        function saveAccounts(list) {
+            localStorage.setItem('piesandantesAccounts', JSON.stringify(list));
+        }
+
+        function getActiveAccountEmail() {
+            return localStorage.getItem('piesandantesActiveAccount') || '';
+        }
+
+        function getActiveAccount() {
+            const email = getActiveAccountEmail().toLowerCase();
+            if (!email) return null;
+            return getAccounts().find(acc => String(acc.email || '').toLowerCase() === email) || null;
+        }
+
+        function getRewardForTrips(tripsCount) {
+            const count = Number(tripsCount) || 0;
+            if (count > 20) {
+                return {
+                    tier: 'Nivel Oro (> 20 Viajes)',
+                    benefit: `Promoción activa: ${REWARD_DISCOUNT_OVER_20_PCT}% de rebaja en tus próximos viajes`,
+                    discountPct: REWARD_DISCOUNT_OVER_20_PCT
+                };
+            }
+            if (count >= 10) {
+                return {
+                    tier: 'Nivel Plata (10 Viajes)',
+                    benefit: 'Recompensa ganada: termo térmico con el logo de PiesandantesRD',
+                    discountPct: 0
+                };
+            }
+            if (count === 1) {
+                return {
+                    tier: 'Primer Viaje (Primera Vez)',
+                    benefit: 'Recompensa de bienvenida: merch oficial (t-shirt o abrigo)',
+                    discountPct: 0
+                };
+            }
+            return {
+                tier: 'Viajero Activo',
+                benefit: 'Suma 1 viaje para merch de bienvenida, 10 para termo con logo, o +20 para rebaja en próximos viajes',
+                discountPct: 0
+            };
+        }
+
+        function updateAccountNavButton() {
+            const acc = getActiveAccount();
+            const labelEl = document.getElementById('accountNavLabel');
+            if (!labelEl) return;
+            if (acc) {
+                labelEl.textContent = `${acc.name.split(' ')[0]} (${acc.tripsCount || 0}v)`;
+            } else {
+                labelEl.textContent = 'Mi Cuenta';
+            }
+        }
+
+        function openAccountModal() {
+            const acc = getActiveAccount();
+            document.getElementById('accountModal').style.display = 'flex';
+            if (acc) {
+                switchAccountTab('profile');
+            } else {
+                switchAccountTab('login');
+            }
+        }
+
+        function closeAccountModal() {
+            document.getElementById('accountModal').style.display = 'none';
+        }
+
+        function switchAccountTab(tabName) {
+            document.getElementById('loginAccountForm').style.display = tabName === 'login' ? 'block' : 'none';
+            document.getElementById('registerAccountForm').style.display = tabName === 'register' ? 'block' : 'none';
+            document.getElementById('profileAccountView').style.display = tabName === 'profile' ? 'block' : 'none';
+
+            document.getElementById('tabLoginBtn').classList.toggle('active', tabName === 'login');
+            document.getElementById('tabRegisterBtn').classList.toggle('active', tabName === 'register');
+            document.getElementById('tabProfileBtn').classList.toggle('active', tabName === 'profile');
+
+            if (tabName === 'profile') renderAccountProfileView();
+        }
+
+        function handleAccountRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            const password = document.getElementById('regPassword').value;
+            const accounts = getAccounts();
+
+            if (accounts.some(a => String(a.email || '').toLowerCase() === email)) {
+                return showNotification('Ese correo ya tiene una cuenta registrada', 'error');
+            }
+
+            const newAccount = {
+                id: Date.now(),
+                name: document.getElementById('regName').value.trim(),
+                email,
+                passHash: simplePassHash(password),
+                age: document.getElementById('regAge').value.trim(),
+                phone: document.getElementById('regPhone').value.trim(),
+                residence: document.getElementById('regResidence').value.trim(),
+                emergency: document.getElementById('regEmergency').value.trim(),
+                healthConditions: document.getElementById('regHealth').value.trim(),
+                rncOrId: document.getElementById('regRncId').value.trim(),
+                ecfType: document.getElementById('regEcfType').value,
+                billingName: document.getElementById('regBillingName').value.trim(),
+                tripsCount: 0
+            };
+
+            accounts.push(newAccount);
+            saveAccounts(accounts);
+            localStorage.setItem('piesandantesActiveAccount', email);
+            updateAccountNavButton();
+            switchAccountTab('profile');
+            showNotification('Cuenta creada. Tus datos personales y fiscales se guardaron sin datos bancarios.', 'success');
+        }
+
+        function handleAccountLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const acc = getAccounts().find(a => String(a.email || '').toLowerCase() === email);
+
+            if (!acc || acc.passHash !== simplePassHash(password)) {
+                return showNotification('Correo o contraseña incorrectos', 'error');
+            }
+
+            localStorage.setItem('piesandantesActiveAccount', acc.email);
+            updateAccountNavButton();
+            switchAccountTab('profile');
+            showNotification(`Bienvenido de nuevo, ${acc.name}`, 'success');
+        }
+
+        function logoutAccount() {
+            localStorage.removeItem('piesandantesActiveAccount');
+            updateAccountNavButton();
+            switchAccountTab('login');
+            showNotification('Sesión cerrada', 'info');
+        }
+
+        function renderAccountProfileView() {
+            const viewEl = document.getElementById('profileAccountView');
+            const acc = getActiveAccount();
+            if (!viewEl) return;
+
+            if (!acc) {
+                viewEl.innerHTML = `
+                    <p style="margin-bottom: 12px;">Inicia sesión o crea tu cuenta para ver tu historial de viajes, recompensas y autocompletar tus datos.</p>
+                    <button type="button" class="btn-cta" onclick="switchAccountTab('login')">Ir a Iniciar Sesión</button>
+                `;
+                return;
+            }
+
+            const reward = getRewardForTrips(acc.tripsCount || 0);
+            viewEl.innerHTML = `
+                <div style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:12px;padding:14px;">
+                    <p><strong>Nombre:</strong> ${acc.name}</p>
+                    <p><strong>Correo:</strong> ${acc.email}</p>
+                    <p><strong>Edad / Residencia:</strong> ${acc.age} años • ${acc.residence}</p>
+                    <p><strong>DGII (${acc.ecfType}):</strong> ${acc.billingName} • RNC/Cédula: ${acc.rncOrId}</p>
+                    <p style="margin-top:8px;"><strong>Viajes acumulados:</strong> ${acc.tripsCount || 0}</p>
+                    <p><strong>Recompensa actual:</strong> ${reward.tier} — ${reward.benefit}</p>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+                    <button type="button" class="btn-cta" onclick="closeAccountModal(); openPaymentModal();">Reservar con Mis Datos</button>
+                    <button type="button" class="btn-small btn-delete" onclick="logoutAccount()">Cerrar Sesión</button>
+                </div>
+            `;
+        }
+
+        function autofillFormFromActiveAccount() {
+            const acc = getActiveAccount();
+            if (!acc) return;
+            document.getElementById('participantName').value = acc.name || '';
+            document.getElementById('participantAge').value = acc.age || '';
+            document.getElementById('participantResidence').value = acc.residence || '';
+            document.getElementById('participantPhone').value = acc.phone || '';
+            document.getElementById('participantEmail').value = acc.email || '';
+            document.getElementById('emergencyContact').value = acc.emergency || '';
+            document.getElementById('healthConditions').value = acc.healthConditions || '';
+            document.getElementById('rncOrId').value = acc.rncOrId || '';
+            document.getElementById('ecfType').value = acc.ecfType || 'E32';
+            document.getElementById('billingName').value = acc.billingName || acc.name || '';
+            document.getElementById('billingEmail').value = acc.email || '';
         }
 
         function getProfessionalBrandUrl() {
@@ -1792,7 +2358,13 @@
         }
 
         function getStageAmountUSD(stage) {
-            return stage === 'balance' ? getBalanceAmountUSD() : DEPOSIT_AMOUNT_USD;
+            const baseUSD = stage === 'balance' ? getBalanceAmountUSD() : DEPOSIT_AMOUNT_USD;
+            const acc = getActiveAccount();
+            const reward = getRewardForTrips(acc ? acc.tripsCount : 0);
+            if (reward.discountPct > 0) {
+                return Number((baseUSD * (1 - reward.discountPct / 100)).toFixed(2));
+            }
+            return baseUSD;
         }
 
         function getStageLabel(stage) {
@@ -1963,8 +2535,6 @@
             const balanceStartStr = new Date(getBalanceActivationTimestamp()).toLocaleString('es-DO');
             const balanceCloseStr = new Date(getBalanceClosingTimestamp()).toLocaleString('es-DO');
 
-            document.getElementById('heroTitleDisplay').textContent = tripData.title;
-            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • Total US$ ${tripData.priceUSD} (Aparta con US$ ${DEPOSIT_AMOUNT_USD})`;
             document.getElementById('tripDateDisplay').innerHTML = `<i class="far fa-calendar-alt"></i> ${tripData.date}`;
             document.getElementById('tripTitleDisplay').textContent = tripData.title;
 
@@ -2315,6 +2885,7 @@
             currentCurrency = 'USD';
             currentReceiptDataUrl = '';
             document.getElementById('paymentForm').reset();
+            autofillFormFromActiveAccount();
             syncStageOptionsText();
             currentStage = document.getElementById('paymentStage').value || 'deposit';
             document.getElementById('paymentCurrency').value = 'USD';
@@ -2335,7 +2906,7 @@
             const stageUSD = getStageAmountUSD(currentStage);
 
             currentCurrency = currency;
-            currentConvertedPrice = currency === 'USD' ? stageUSD : Math.round(stageUSD * rate);
+            currentConvertedPrice = currency === 'USD' ? stageUSD : Number((stageUSD * rate).toFixed(2));
 
             const taxInfo = computeTaxBreakdown(currentConvertedPrice);
             const taxPreviewEl = document.getElementById('taxBreakdownPreview');
@@ -2345,9 +2916,13 @@
                     : `Total a registrar: ${formatMoney(taxInfo.total, currentCurrency)}`;
             }
 
+            const acc = getActiveAccount();
+            const reward = getRewardForTrips(acc ? acc.tripsCount : 0);
+            const rewardLine = reward.discountPct > 0 ? `<br><span style="color:#065F46;font-size:0.85rem;">Recompensa activa: ${reward.discountPct}% rebaja (>20 viajes)</span>` : '';
+
             document.getElementById('paymentModalTitle').innerHTML = `
                 ${getStageLabel(currentStage)} • ${tripData.title}<br>
-                <small style="color: var(--naranja-logo);">Monto a registrar: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
+                <small style="color: var(--naranja-logo);">Monto a registrar: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>${rewardLine}
             `;
         }
 
@@ -2427,6 +3002,7 @@
             const participantName = document.getElementById('participantName').value.trim();
             const participantAge = document.getElementById('participantAge').value.trim();
             const participantResidence = document.getElementById('participantResidence').value.trim();
+            const participantEmail = document.getElementById('participantEmail').value.trim().toLowerCase();
             const healthConditions = document.getElementById('healthConditions').value.trim();
             const emergencyContact = document.getElementById('emergencyContact').value.trim();
             const ecfType = document.getElementById('ecfType').value;
@@ -2436,6 +3012,17 @@
             const taxInfo = computeTaxBreakdown(currentConvertedPrice);
             const stageLabel = getStageLabel(currentStage);
             const depositDeadlineAt = new Date(getDepositDeadlineTimestamp()).toISOString();
+
+            const accounts = getAccounts();
+            const accIdx = accounts.findIndex(a => String(a.email || '').toLowerCase() === participantEmail);
+            let tripsAfter = 1;
+            if (accIdx >= 0) {
+                accounts[accIdx].tripsCount = (Number(accounts[accIdx].tripsCount) || 0) + 1;
+                tripsAfter = accounts[accIdx].tripsCount;
+                saveAccounts(accounts);
+                updateAccountNavButton();
+            }
+            const rewardInfo = getRewardForTrips(tripsAfter);
 
             const reserva = {
                 id: Date.now(),
@@ -2450,7 +3037,7 @@
                 age: participantAge,
                 residence: participantResidence,
                 phone: document.getElementById('participantPhone').value.trim(),
-                email: document.getElementById('participantEmail').value.trim(),
+                email: participantEmail,
                 emergency: emergencyContact,
                 healthConditions,
                 dgiiJurisdiction: 'RD',
@@ -2461,6 +3048,7 @@
                 itbisRate: ITBIS_RATE,
                 subtotalAmount: taxInfo.subtotal,
                 itbisAmount: taxInfo.itbis,
+                rewardBenefit: rewardInfo.benefit,
                 acceptedTerms: true,
                 acceptedTermsAt: new Date().toISOString(),
                 currency: currentCurrency,
@@ -2492,9 +3080,9 @@
                 <p><strong>Salud / Alergias:</strong> ${reserva.healthConditions}</p>
                 <p><strong>Comprobante DGII (${reserva.ecfType}):</strong> ${reserva.billingName} • RNC/Cédula: ${reserva.rncOrId} • ${reserva.billingEmail}</p>
                 <p><strong>Desglose Fiscal:</strong> Subtotal ${formatMoney(reserva.subtotalAmount, reserva.currency)} • ITBIS ${formatMoney(reserva.itbisAmount, reserva.currency)} • Total ${formatMoney(reserva.price, reserva.currency)}</p>
+                <p><strong>Recompensa:</strong> ${reserva.rewardBenefit}</p>
                 <p><strong>Términos:</strong> Aceptados (apartado no reembolsable si no van)</p>
                 <p><strong>Método:</strong> ${reserva.paymentMethod} (Ref: ${reserva.transferRef})</p>
-                <p><strong>Verificación en 2 pasos:</strong> Se confirma por código (1) Apartado y (2) Pago restante</p>
                 <p><strong>Soporte Técnico Desarrollador:</strong> ${DEV_SUPPORT_PHONE_DISPLAY}</p>
             `;
 
@@ -2676,7 +3264,7 @@
                             <small><strong>${p.stageLabel || 'Apartado'}</strong> • Residencia: ${p.residence || '-'} • Tel: ${p.phone}</small><br>
                             <small>Emergencia: ${p.emergency || '-'} • Salud/Alergias: ${p.healthConditions || '-'}</small><br>
                             <small>DGII (${p.ecfType || 'E32'}): ${p.billingName || '-'} • RNC/Cédula: ${p.rncOrId || '-'} • ${p.billingEmail || '-'}</small><br>
-                            <small>Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${p.paymentMethod} (Ref: ${p.transferRef || '-'}) • ${formatMoney(p.price, p.currency || 'USD')}</small>
+                            <small>Recompensa: ${p.rewardBenefit || '-'} • Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${p.paymentMethod} (Ref: ${p.transferRef || '-'}) • ${formatMoney(p.price, p.currency || 'USD')}</small>
                             ${p.receiptImage ? `<div style="margin-top:6px;"><img src="${p.receiptImage}" alt="Comprobante ${p.ticketNumber}" style="max-height:70px;border-radius:6px;border:1px solid #D1D5DB;"></div>` : ''}
                         </div>
                         <span class="ticket-number-small">${p.ticketNumber}</span>
@@ -2714,14 +3302,14 @@
 
         function exportSingle(id) {
             const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
-            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
+            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Recompensa', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.rewardBenefit || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
         }
 
         function exportAll() {
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             if (!lista.length) return showNotification('Sin datos para exportar', 'info');
-            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
-            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
+            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Recompensa', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
+            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.rewardBenefit || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
             downloadCSV(rows, 'reservas_medellin_guatape.csv');
         }
 
@@ -2763,7 +3351,10 @@
             const savedNotes = localStorage.getItem('bankNotes');
             if (savedNotes) document.getElementById('bankNotesInput').value = savedNotes;
 
+            renderHeroCarousel();
+            startHeroCarouselRotation();
             renderTrip();
+            updateAccountNavButton();
             applyWhatsAppNumbers(savedWa1, savedWa2);
             renderGallery();
             loadNews();
