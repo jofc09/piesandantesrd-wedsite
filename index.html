@@ -8,6 +8,7 @@
     <style>
         /* =================================
            1. VARIABLES DE COLOR (PALETA LOGO)
+           Ajusta aquí los colores principales
            ================================= */
         :root {
             --azul-logo: #1B3B6F;
@@ -22,6 +23,7 @@
             --altura-hero: 75vh;
         }
 
+        /* Reinicio básico de márgenes y cajas */
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +38,7 @@
         }
 
         /* =================================
-           2. NOTIFICACIONES
+           2. NOTIFICACIONES FLOTANTES
            ================================= */
         .notification {
             position: fixed;
@@ -44,7 +46,7 @@
             right: 20px;
             padding: 15px 25px;
             border-radius: 8px;
-            color: white;
+            color: var(--blanco);
             font-weight: bold;
             z-index: 10001;
             transform: translateX(130%);
@@ -89,6 +91,7 @@
             gap: 12px;
         }
 
+        /* Marco suave para integrar el logo sobre fondo azul */
         .logo-badge-wrap {
             background: radial-gradient(circle, #FFFFFF 65%, #F0EFEA 100%);
             padding: 4px 10px;
@@ -307,7 +310,7 @@
         .btn-secondary:hover { background-color: #dba116; }
 
         /* =================================
-           7. GALERÍA DE 10 IMÁGENES
+           7. GALERÍA DE IMÁGENES
            ================================= */
         .gallery-grid {
             display: grid;
@@ -415,17 +418,18 @@
             top: 12px;
             right: 12px;
             background-color: var(--naranja-logo);
-            color: white;
+            color: var(--blanco);
             padding: 3px 8px;
             border-radius: 10px;
             font-size: 0.75rem;
             font-weight: bold;
         }
 
+        /* Permanece oculto hasta activar el atajo Ctrl + Shift + A */
         .admin-panel {
             display: none;
             background-color: var(--azul-logo);
-            color: white;
+            color: var(--blanco);
             padding: 2.5rem;
             margin: 2rem auto;
             border-radius: 18px;
@@ -450,7 +454,7 @@
 
         .admin-tab {
             background: rgba(255,255,255,0.18);
-            color: white;
+            color: var(--blanco);
             border: none;
             padding: 10px 18px;
             border-radius: 8px;
@@ -464,7 +468,7 @@
         }
 
         .admin-content {
-            background: white;
+            background: var(--blanco);
             color: var(--texto-oscuro);
             padding: 1.8rem;
             border-radius: 12px;
@@ -484,7 +488,7 @@
 
         .ticket-number-small {
             background: var(--naranja-logo);
-            color: white;
+            color: var(--blanco);
             padding: 5px 10px;
             border-radius: 6px;
             font-weight: bold;
@@ -497,7 +501,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            color: white;
+            color: var(--blanco);
         }
 
         .btn-export { background: var(--verde-exito); }
@@ -580,7 +584,7 @@
         }
 
         .payment-form, .ticket {
-            background: white;
+            background: var(--blanco);
             padding: 2rem;
             border-radius: 15px;
             max-width: 500px;
@@ -638,7 +642,7 @@
         .payment-method.selected {
             border-color: var(--azul-logo);
             background-color: var(--azul-logo);
-            color: white;
+            color: var(--blanco);
         }
 
         .ticket-canvas {
@@ -681,7 +685,7 @@
             bottom: 30px;
             right: 30px;
             background-color: #25D366;
-            color: #FFF;
+            color: var(--blanco);
             border-radius: 50%;
             font-size: 34px;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
@@ -704,7 +708,7 @@
 
     <div id="notification" class="notification"></div>
 
-    <!-- Navegación -->
+    <!-- Barra de navegación con logo integrado -->
     <nav>
         <div class="nav-container">
             <a href="#viaje" class="logo">
@@ -724,7 +728,7 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Encabezado principal -->
     <header>
         <div class="hero-content">
             <h1 id="heroTitleDisplay">Medellín y Guatapé</h1>
@@ -733,7 +737,7 @@
         </div>
     </header>
 
-    <!-- Único Viaje: Medellín y Guatapé -->
+    <!-- Tarjeta principal del viaje -->
     <section id="viaje">
         <h2 class="section-title">✈️ Próxima Aventura</h2>
         <p class="section-subtitle">Cupos limitados en habitaciones compartidas • ¡Asegura tu espacio!</p>
@@ -765,14 +769,14 @@
         </div>
     </section>
 
-    <!-- Galería con las 10 Imágenes -->
+    <!-- Galería de imágenes del viaje -->
     <section id="galeria">
         <h2 class="section-title">📸 Galería del Destino</h2>
         <p class="section-subtitle">Haz clic en cualquier imagen para verla en tamaño grande</p>
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- Modal para ampliar foto -->
+    <!-- Modal para ver una imagen ampliada -->
     <div id="galleryModal" class="gallery-modal" onclick="closeGalleryModal()">
         <div class="gallery-modal-box" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeGalleryModal()">&times;</button>
@@ -781,14 +785,14 @@
         </div>
     </div>
 
-    <!-- Noticias -->
+    <!-- Sección de noticias -->
     <section id="noticias" class="news-section">
         <h2 class="section-title">📰 Noticias y Novedades</h2>
         <p class="section-subtitle">Información importante sobre el viaje a Medellín y Guatapé</p>
         <div class="news-grid" id="newsGrid"></div>
     </section>
 
-    <!-- Panel Administrativo Privado (se abre con Ctrl + Shift + A) -->
+    <!-- Panel administrativo privado (se abre con Ctrl + Shift + A) -->
     <section id="adminPanel" class="admin-panel">
         <div class="admin-header">
             <h2>🛠️ Panel de Administración (Privado)</h2>
@@ -861,7 +865,7 @@
         </div>
     </section>
 
-    <!-- Nosotros -->
+    <!-- Sección sobre nosotros -->
     <section id="nosotros">
         <h2 class="section-title">🧭 Sobre PiesandantesRD</h2>
         <div class="about-container">
@@ -877,7 +881,7 @@
         </div>
     </section>
 
-    <!-- Contacto -->
+    <!-- Sección de contacto -->
     <section id="contacto" class="contact-section">
         <h2 class="section-title">Contacto y Reservas</h2>
         <p>Escríbenos o llámanos para resolver tus dudas sobre el viaje a Medellín y Guatapé.</p>
@@ -887,6 +891,7 @@
         <p style="color: var(--amarillo-logo); font-weight: bold;">@piesandantesrd</p>
     </section>
 
+    <!-- Pie de página -->
     <footer>
         <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo</p>
         <p>Teléfonos: 809-403-0141 | 809-996-8875</p>
@@ -900,7 +905,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Modal de Pago con soporte USD y DOP -->
+    <!-- Modal de reserva y pago -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
@@ -959,7 +964,7 @@
         </div>
     </div>
 
-    <!-- Modal de Ticket -->
+    <!-- Modal de ticket generado -->
     <div id="ticketModal" class="ticket-modal">
         <div class="ticket">
             <button class="close-modal" onclick="closeTicketModal()">&times;</button>
@@ -974,9 +979,9 @@
 
     <script>
         // =================================
-        // 1. VARIABLES AJUSTABLES
+        // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const ADMIN_PASS = 'admin123'; // Cambia aquí tu clave si deseas
+        const ADMIN_PASS = 'admin123'; // Clave para abrir el Panel Admin con Ctrl + Shift + A
 
         let tripData = {
             title: 'Medellín y Guatapé',
@@ -985,6 +990,7 @@
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
 
+        // Arreglo de las 11 fotos del viaje (foto1.jpg a foto11.jpg)
         const tripImages = [
             { src: 'foto1.jpg', caption: 'Centro de Medellín y Metro' },
             { src: 'foto2.jpg', caption: 'Piedra del Peñol y Guatapé' },
@@ -995,7 +1001,8 @@
             { src: 'foto7.jpg', caption: 'Medellín de noche' },
             { src: 'foto8.jpg', caption: 'Vista urbana entre montañas' },
             { src: 'foto9.jpg', caption: 'Metrocable y Comuna 13' },
-            { src: 'foto10.jpg', caption: 'Escultura y centro histórico' }
+            { src: 'foto10.jpg', caption: 'Escultura y centro histórico' },
+            { src: 'foto11.jpg', caption: 'Recuerdos del viaje' }
         ];
 
         let currentCurrency = 'USD';
@@ -1003,6 +1010,7 @@
         let ticketCounter = 1;
         let isAdmin = false;
 
+        // Formatea montos en US$ o RD$
         function formatMoney(amount, currency) {
             const formatted = Number(amount).toLocaleString('en-US', {
                 minimumFractionDigits: currency === 'USD' && !Number.isInteger(Number(amount)) ? 2 : 0,
@@ -1011,6 +1019,7 @@
             return currency === 'USD' ? `US$ ${formatted}` : `RD$ ${formatted}`;
         }
 
+        // Muestra mensajes temporales en pantalla
         function showNotification(message, type = 'success') {
             const el = document.getElementById('notification');
             el.textContent = message;
@@ -1123,7 +1132,7 @@
         }
 
         // =================================
-        // 4. NOTICIAS
+        // 4. GESTIÓN DE NOTICIAS
         // =================================
         function loadNews() {
             let news = JSON.parse(localStorage.getItem('news') || '[]');
@@ -1194,7 +1203,7 @@
         }
 
         // =================================
-        // 5. RESERVAS, MONEDA Y PARTICIPANTES
+        // 5. RESERVAS, MONEDA Y REPORTES
         // =================================
         function openPaymentModal() {
             currentCurrency = 'USD';
@@ -1233,4 +1242,148 @@
         document.getElementById('paymentForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const method = document.getElementById('paymentMethod').value;
-            if (!method) return
+            if (!method) return showNotification('Selecciona un método de pago', 'error');
+
+            const reserva = {
+                id: Date.now(),
+                ticketNumber: `PRD-${String(ticketCounter).padStart(5, '0')}`,
+                adventure: `${tripData.title} (${tripData.date})`,
+                name: document.getElementById('participantName').value,
+                phone: document.getElementById('participantPhone').value,
+                email: document.getElementById('participantEmail').value,
+                currency: currentCurrency,
+                price: currentConvertedPrice,
+                paymentMethod: method,
+                emergency: document.getElementById('emergencyContact').value,
+                requests: document.getElementById('specialRequests').value
+            };
+
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            lista.push(reserva);
+            localStorage.setItem('participants', JSON.stringify(lista));
+
+            ticketCounter++;
+            localStorage.setItem('ticketCounter', String(ticketCounter));
+
+            document.getElementById('ticketNumber').textContent = `#${reserva.ticketNumber}`;
+            document.getElementById('ticketDetails').innerHTML = `
+                <p><strong>Viaje:</strong> ${reserva.adventure}</p>
+                <p><strong>Participante:</strong> ${reserva.name}</p>
+                <p><strong>Teléfono:</strong> ${reserva.phone}</p>
+                <p><strong>Monto:</strong> ${formatMoney(reserva.price, reserva.currency)}</p>
+                <p><strong>Método:</strong> ${reserva.paymentMethod}</p>
+                <p><strong>Emergencia:</strong> ${reserva.emergency}</p>
+                <p><strong>Contacto PiesandantesRD:</strong> 809-403-0141 / 809-996-8875</p>
+            `;
+
+            closePaymentModal();
+            document.getElementById('ticketModal').style.display = 'flex';
+            if (isAdmin) updateAdminPanel();
+            showNotification('¡Reserva registrada con éxito!', 'success');
+        });
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').style.display = 'none';
+        }
+
+        function shareTicket() {
+            const num = document.getElementById('ticketNumber').textContent;
+            const texto = `Reserva ${num} - ${tripData.title} (${formatMoney(currentConvertedPrice, currentCurrency)}) - PiesandantesRD`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(texto).then(() => showNotification('Ticket copiado al portapapeles', 'info'));
+            }
+        }
+
+        function showParticipants() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            if (!lista.length) return showNotification('Aún no hay participantes registrados', 'info');
+            alert(lista.map(p => `• ${p.name} (${p.ticketNumber})`).join('\n'));
+        }
+
+        function updateAdminPanel() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            document.getElementById('participantsList').innerHTML = lista.length
+                ? lista.map(p => `
+                    <div class="participant-item">
+                        <div>
+                            <strong>${p.name}</strong> • ${p.phone} • ${p.email}<br>
+                            <small>Monto: ${formatMoney(p.price, p.currency || 'USD')} (${p.paymentMethod}) | Emergencia: ${p.emergency}</small>
+                        </div>
+                        <span class="ticket-number-small">${p.ticketNumber}</span>
+                        <div>
+                            <button class="btn-small btn-export" onclick="exportSingle('${p.id}')">CSV</button>
+                            <button class="btn-small btn-delete" onclick="deleteParticipant('${p.id}')">X</button>
+                        </div>
+                    </div>
+                `).join('')
+                : '<p>No hay reservas aún.</p>';
+
+            const totalUSD = lista.filter(p => (p.currency || 'USD') === 'USD').reduce((s, p) => s + Number(p.price), 0);
+            const totalDOP = lista.filter(p => p.currency === 'DOP').reduce((s, p) => s + Number(p.price), 0);
+
+            document.getElementById('salesReports').innerHTML = `
+                <p><strong>Total reservas:</strong> ${lista.length}</p>
+                <p><strong>Total en US$:</strong> ${formatMoney(totalUSD, 'USD')}</p>
+                <p><strong>Total en RD$:</strong> ${formatMoney(totalDOP, 'DOP')}</p>
+                <button class="btn-cta" style="margin-top: 12px;" onclick="exportAll()">Exportar Todo a CSV</button>
+            `;
+        }
+
+        function deleteParticipant(id) {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]').filter(p => String(p.id) !== String(id));
+            localStorage.setItem('participants', JSON.stringify(lista));
+            updateAdminPanel();
+            showNotification('Reserva eliminada', 'info');
+        }
+
+        function exportSingle(id) {
+            const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
+            if (p) downloadCSV([['Ticket', 'Nombre', 'Teléfono', 'Moneda', 'Monto', 'Método'], [p.ticketNumber, p.name, p.phone, p.currency || 'USD', p.price, p.paymentMethod]], `reserva_${p.ticketNumber}.csv`);
+        }
+
+        function exportAll() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            if (!lista.length) return showNotification('Sin datos para exportar', 'info');
+            const rows = [['Ticket', 'Viaje', 'Nombre', 'Teléfono', 'Correo', 'Moneda', 'Monto', 'Método', 'Emergencia']];
+            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.name, p.phone, p.email, p.currency || 'USD', p.price, p.paymentMethod, p.emergency]));
+            downloadCSV(rows, 'reservas_medellin_guatape.csv');
+        }
+
+        function downloadCSV(rows, filename) {
+            const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function saveSettings() {
+            const num = document.getElementById('whatsappNumber').value.trim();
+            if (num) {
+                localStorage.setItem('whatsappNumber', num);
+                document.querySelector('.whatsapp-float').href = `https://wa.me/${num}?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9`;
+                showNotification('WhatsApp actualizado', 'success');
+            }
+        }
+
+        // =================================
+        // 6. INICIALIZACIÓN AL CARGAR
+        // =================================
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedCounter = localStorage.getItem('ticketCounter');
+            if (savedCounter) ticketCounter = parseInt(savedCounter, 10) || 1;
+            const savedWa = localStorage.getItem('whatsappNumber');
+            if (savedWa) {
+                document.getElementById('whatsappNumber').value = savedWa;
+                document.querySelector('.whatsapp-float').href = `https://wa.me/${savedWa}?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9`;
+            }
+            renderTrip();
+            renderGallery();
+            loadNews();
+        });
+    </script>
+</body>
+</html>
