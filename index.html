@@ -1355,7 +1355,6 @@
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
             <h3 id="paymentModalTitle" style="color: var(--azul-logo); margin-bottom: 1rem;">Reservar Viaje</h3>
             <form id="paymentForm">
-                <!-- Etapa de pago controlada por límite de apartado y ventana activa/cierre del pago restante -->
                 <div class="form-group">
                     <label for="paymentStage">Modalidad de Pago *</label>
                     <select id="paymentStage" onchange="handleCurrencyChange()">
@@ -1402,7 +1401,6 @@
                     <textarea id="healthConditions" rows="2" placeholder="Indica alergias, medicamentos, condiciones médicas o escribe 'Ninguna'" required></textarea>
                 </div>
 
-                <!-- Campos estructurados para comprobante / factura electrónica (e-CF) -->
                 <div class="billing-box" id="billingSection">
                     <h4>🧾 Datos para Factura Electrónica (e-CF)</h4>
                     <div class="form-row-2">
@@ -1444,7 +1442,6 @@
                     </div>
                 </div>
 
-                <!-- Métodos de pago con logos de cada banco / plataforma -->
                 <div class="form-group">
                     <label>Selecciona tu Banco o Método de Transferencia *</label>
                     <div class="bank-methods-grid" id="bankMethodsGrid">
@@ -1495,7 +1492,6 @@
                     </div>
                 </div>
 
-                <!-- Subida segura de foto/comprobante de transferencia -->
                 <div class="form-group">
                     <label for="transferReceiptInput">Foto / Captura de Transferencia o Token (JPG, PNG, WEBP · máx. 1.5 MB) *</label>
                     <input type="file" id="transferReceiptInput" accept="image/jpeg,image/png,image/webp" required onchange="handleReceiptUpload(event)">
@@ -1512,7 +1508,6 @@
                     <textarea id="specialRequests" rows="2" placeholder="Preferencias de habitación compartida, etc."></textarea>
                 </div>
 
-                <!-- Formulario de Términos y Condiciones -->
                 <div class="terms-box" id="termsSection">
                     <h4>📋 Términos y Condiciones del Viaje</h4>
                     <div class="terms-clauses">
@@ -1555,15 +1550,15 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-v5'; // Incrementa este valor al publicar cambios para refrescar datos base en localStorage
-        const ADMIN_PASS = 'admin123'; // Clave actual del Panel Admin (Ctrl + Shift + A)
+        const APP_CODE_VERSION = '2026-11-21-pages-v7';
+        const ADMIN_PASS = 'admin123';
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
-        const DEPOSIT_AMOUNT_USD = 100; // Monto de apartado en US$ (no reembolsable si no van)
-        const DEPOSIT_MONTHS_BEFORE_FLIGHT = 1; // Apartado vence 1 mes antes del vuelo
-        const BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT = 1; // Fecha de activación/cierre de referencia (1 mes antes del vuelo)
-        const NEWS_ROTATION_MS = 4500; // Velocidad de rotación automática de noticias (ms)
-        const GALLERY_ROTATION_MS = 3200; // Velocidad de rotación automática de galería (ms)
+        const DEPOSIT_AMOUNT_USD = 100;
+        const DEPOSIT_MONTHS_BEFORE_FLIGHT = 1;
+        const BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT = 1;
+        const NEWS_ROTATION_MS = 4500;
+        const GALLERY_ROTATION_MS = 3200;
         const MAX_RECEIPT_BYTES = 1.5 * 1024 * 1024;
         const BACKUP_FILE_PREFIX = 'respaldo_piesandantesrd';
 
@@ -1578,9 +1573,9 @@
         let tripData = {
             title: 'Medellín y Guatapé',
             date: '3 al 7 de marzo',
-            flightDate: '2027-03-03T08:00:00', // Fecha/hora del vuelo
-            balanceStartDate: '', // Opcional: fecha de activación del pago restante (si está vacío, usa 1 mes antes del vuelo)
-            balanceCloseDate: '', // Opcional: fecha de cierre del pago restante (si está vacío, usa 1 mes antes del vuelo)
+            flightDate: '2027-03-03T08:00:00',
+            balanceStartDate: '',
+            balanceCloseDate: '',
             priceUSD: 700,
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
@@ -1606,7 +1601,6 @@
         let ticketCounter = 1;
         let isAdmin = false;
 
-        // Estado de rotación automática inteligente para Noticias y Galería
         let newsAutoEnabled = true;
         let newsHoverPaused = false;
         let newsOrderOffset = 0;
@@ -1634,7 +1628,6 @@
             return Math.max(0, Number(tripData.priceUSD) - DEPOSIT_AMOUNT_USD);
         }
 
-        // Límite del apartado: 1 mes antes de la fecha del vuelo
         function getDepositDeadlineTimestamp() {
             const flightMs = Date.parse(tripData.flightDate);
             if (Number.isNaN(flightMs)) return Date.now();
@@ -1643,7 +1636,6 @@
             return d.getTime();
         }
 
-        // Ventana de activación y cierre del pago restante (por defecto vinculada a 1 mes antes del vuelo)
         function getBalanceActivationTimestamp() {
             if (tripData.balanceStartDate) {
                 const parsed = Date.parse(tripData.balanceStartDate);
@@ -1708,9 +1700,6 @@
             setTimeout(() => el.classList.remove('show'), 3800);
         }
 
-        // =================================
-        // 2. GENERADOR QR PARA ENTRAR RÁPIDO A LA PÁGINA (PÁGINA Y PANEL ADMIN)
-        // =================================
         function hashString(str) {
             let h = 2166136261;
             for (let i = 0; i < str.length; i++) {
@@ -1782,7 +1771,7 @@
         }
 
         function renderPageAccessQr() {
-            const pageUrl = window.location.href || 'https://piesandantesrd.netlify.app';
+            const pageUrl = window.location.href || 'https://piesandantesrd.pages.dev';
             renderQrOnCanvas('pageAccessQrCanvas', pageUrl);
             renderQrOnCanvas('adminPageQrCanvas', pageUrl);
 
@@ -1803,9 +1792,6 @@
             showNotification('QR de acceso rápido descargado en PNG', 'success');
         }
 
-        // =================================
-        // 3. WHATSAPP (2 NÚMEROS)
-        // =================================
         function formatDisplayPhone(rawNumber) {
             const digits = String(rawNumber || '').replace(/\D/g, '');
             if (digits.length === 11 && digits.startsWith('1')) {
@@ -1839,9 +1825,6 @@
             if (menu) menu.classList.remove('open');
         });
 
-        // =================================
-        // 4. RENDERIZADO DEL VIAJE, APARTADO Y VENTANA DE PAGO RESTANTE
-        // =================================
         function renderTrip() {
             const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
             if (savedTrip) tripData = { ...tripData, ...savedTrip };
@@ -1906,9 +1889,6 @@
             `;
         }
 
-        // =================================
-        // 5. GALERÍA DINÁMICA CON ROTACIÓN INTELIGENTE
-        // =================================
         function updateGalleryStatusLabel() {
             const statusEl = document.getElementById('gallerySmartStatus');
             if (!statusEl) return;
@@ -1970,9 +1950,6 @@
             updateGalleryStatusLabel();
         }
 
-        // =================================
-        // 6. PANEL ADMIN (Ctrl + Shift + A)
-        // =================================
         document.addEventListener('keydown', function (e) {
             if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
                 e.preventDefault();
@@ -2050,9 +2027,6 @@
             showNotification('Información del viaje, apartado y fechas del pago restante actualizadas', 'success');
         }
 
-        // =================================
-        // 7. NOTICIAS CON ROTACIÓN AUTOMÁTICA INTELIGENTE
-        // =================================
         function updateNewsStatusLabel() {
             const statusEl = document.getElementById('newsSmartStatus');
             if (!statusEl) return;
@@ -2175,9 +2149,6 @@
             showNotification('Noticia eliminada', 'info');
         }
 
-        // =================================
-        // 8. RESERVAS, APARTADO LIMITADO, VENTANA DE PAGO RESTANTE, FACTURA ELECTRÓNICA Y CÓDIGO
-        // =================================
         function syncStageOptionsText() {
             const selectEl = document.getElementById('paymentStage');
             const hintEl = document.getElementById('stageTimerHint');
@@ -2417,9 +2388,6 @@
             }).join('\n'));
         }
 
-        // =================================
-        // 9. VERIFICACIÓN POR CÓDIGO EN 2 PASOS Y RESPALDO JSON
-        // =================================
         function confirmarCodigoEtapa(stepType) {
             const limpio = String(document.getElementById('codeCheckInput').value || '')
                 .trim()
@@ -2643,9 +2611,6 @@
             showNotification('Configuración guardada', 'success');
         }
 
-        // =================================
-        // 10. INICIALIZACIÓN AL CARGAR
-        // =================================
         document.addEventListener('DOMContentLoaded', function () {
             syncCodeVersionStorage();
 
