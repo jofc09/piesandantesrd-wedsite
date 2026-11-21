@@ -7,14 +7,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* =================================
-           VARIABLES DE COLOR (ACORDE AL LOGO)
-           Azul marino, naranja coral y dorado
+           1. VARIABLES DE COLOR (PALETA LOGO)
            ================================= */
         :root {
-            --azul-logo: #1B3B6F;        /* Azul profundo de las letras y huella */
-            --naranja-logo: #E86A33;     /* Naranja coral del mapa */
-            --amarillo-logo: #F2B729;    /* Amarillo dorado del contorno */
-            --fondo-claro: #F7F6F2;      /* Fondo suave neutro */
+            --azul-logo: #1B3B6F;
+            --naranja-logo: #E86A33;
+            --amarillo-logo: #F2B729;
+            --fondo-claro: #F7F6F2;
             --blanco: #FFFFFF;
             --texto-oscuro: #1F2937;
             --verde-exito: #27AE60;
@@ -23,9 +22,6 @@
             --altura-hero: 75vh;
         }
 
-        /* =================================
-           CONFIGURACIÓN GENERAL
-           ================================= */
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +36,7 @@
         }
 
         /* =================================
-           SISTEMA DE NOTIFICACIONES
+           2. NOTIFICACIONES
            ================================= */
         .notification {
             position: fixed;
@@ -51,49 +47,23 @@
             color: white;
             font-weight: bold;
             z-index: 10001;
-            transform: translateX(120%);
+            transform: translateX(130%);
             transition: transform 0.3s ease;
             max-width: 320px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
-        .notification.show {
-            transform: translateX(0);
-        }
-
+        .notification.show { transform: translateX(0); }
         .notification.success { background-color: var(--verde-exito); }
         .notification.error { background-color: var(--rojo-error); }
         .notification.info { background-color: var(--azul-info); }
 
         /* =================================
-           MODO PANTALLA COMPLETA
-           ================================= */
-        .fullscreen-toggle {
-            position: fixed;
-            bottom: 105px;
-            right: 30px;
-            background: var(--azul-logo);
-            color: white;
-            border: 2px solid var(--amarillo-logo);
-            padding: 10px 15px;
-            border-radius: 25px;
-            cursor: pointer;
-            z-index: 10000;
-            font-size: 13px;
-            transition: all 0.3s;
-        }
-
-        .fullscreen-toggle:hover {
-            background: var(--naranja-logo);
-            transform: scale(1.05);
-        }
-
-        /* =================================
-           NAVEGACIÓN CON LOGO
+           3. NAVEGACIÓN E INTEGRACIÓN DEL LOGO
            ================================= */
         nav {
             background-color: var(--azul-logo);
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -116,15 +86,25 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .logo-badge-wrap {
+            background: radial-gradient(circle, #FFFFFF 65%, #F0EFEA 100%);
+            padding: 4px 10px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--amarillo-logo);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
         }
 
         .logo-img {
-            height: 44px;
+            height: 38px;
             width: auto;
-            border-radius: 8px;
-            background-color: var(--blanco);
-            padding: 2px;
+            display: block;
+            mix-blend-mode: multiply;
         }
 
         .nav-links {
@@ -137,14 +117,13 @@
             color: var(--blanco);
             text-decoration: none;
             font-weight: 500;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s;
             padding: 8px 14px;
             border-radius: 6px;
         }
 
         .nav-links a:hover {
             background-color: var(--naranja-logo);
-            color: var(--blanco);
         }
 
         .admin-badge {
@@ -157,10 +136,10 @@
         }
 
         /* =================================
-           HERO SECTION
+           4. HERO SECTION
            ================================= */
         header {
-            background: linear-gradient(rgba(27, 59, 111, 0.65), rgba(27, 59, 111, 0.75)), url('istockphoto-881736772-612x612.jpg');
+            background: linear-gradient(rgba(27, 59, 111, 0.65), rgba(27, 59, 111, 0.78)), url('foto4.jpg');
             background-size: cover;
             background-position: center;
             height: var(--altura-hero);
@@ -194,7 +173,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             transition: transform 0.3s, background 0.3s, color 0.3s;
             border: 2px solid var(--amarillo-logo);
             display: inline-block;
@@ -208,7 +187,7 @@
         }
 
         /* =================================
-           SECCIONES GENERALES
+           5. SECCIONES GENERALES
            ================================= */
         section {
             padding: 4rem 20px;
@@ -219,8 +198,8 @@
         .section-title {
             color: var(--azul-logo);
             text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
             border-bottom: 3px solid var(--naranja-logo);
             display: inline-block;
             padding-bottom: 8px;
@@ -232,12 +211,12 @@
         .section-subtitle {
             text-align: center;
             margin-bottom: 2.5rem;
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             color: #4B5563;
         }
 
         /* =================================
-           TARJETA PRINCIPAL DEL VIAJE
+           6. TARJETA PRINCIPAL DEL VIAJE
            ================================= */
         .trip-showcase {
             display: grid;
@@ -251,9 +230,8 @@
         }
 
         .trip-cover {
-            min-height: 320px;
-            background: url('istockphoto-1417644289-612x612.jpg') center/cover no-repeat;
-            position: relative;
+            min-height: 330px;
+            background: url('foto2.jpg') center/cover no-repeat;
         }
 
         .trip-details {
@@ -286,7 +264,7 @@
         }
 
         .trip-list li {
-            margin-bottom: 8px;
+            margin-bottom: 9px;
             color: var(--texto-oscuro);
             font-size: 0.98rem;
         }
@@ -324,21 +302,12 @@
             font-size: 1rem;
         }
 
-        .btn-card:hover {
-            background-color: var(--naranja-logo);
-        }
-
-        .btn-secondary {
-            background-color: var(--amarillo-logo);
-            color: var(--azul-logo);
-        }
-
-        .btn-secondary:hover {
-            background-color: #dba116;
-        }
+        .btn-card:hover { background-color: var(--naranja-logo); }
+        .btn-secondary { background-color: var(--amarillo-logo); color: var(--azul-logo); }
+        .btn-secondary:hover { background-color: #dba116; }
 
         /* =================================
-           GALERÍA DE 10 IMÁGENES
+           7. GALERÍA DE 10 IMÁGENES
            ================================= */
         .gallery-grid {
             display: grid;
@@ -376,7 +345,6 @@
             text-align: center;
         }
 
-        /* Modal para ampliar imagen de la galería */
         .gallery-modal {
             display: none;
             position: fixed;
@@ -406,7 +374,7 @@
         }
 
         /* =================================
-           NOTICIAS Y PANEL ADMIN
+           8. NOTICIAS Y PANEL ADMIN PRIVADO
            ================================= */
         .news-section {
             background-color: #EEF2FF;
@@ -461,6 +429,16 @@
             padding: 2.5rem;
             margin: 2rem auto;
             border-radius: 18px;
+            border: 3px solid var(--amarillo-logo);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .admin-tabs {
@@ -526,7 +504,7 @@
         .btn-delete { background: var(--rojo-error); }
 
         /* =================================
-           NOSOTROS, CONTACTO Y MODALES
+           9. NOSOTROS Y CONTACTO
            ================================= */
         .about-container {
             display: flex;
@@ -534,7 +512,7 @@
             gap: 35px;
             align-items: center;
             background: var(--blanco);
-            padding: 30px;
+            padding: 35px;
             border-radius: 18px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.06);
         }
@@ -543,13 +521,18 @@
             flex: 1;
             min-width: 260px;
             text-align: center;
+            background: var(--fondo-claro);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid var(--amarillo-logo);
         }
 
         .about-logo-box img {
-            max-width: 280px;
+            max-width: 260px;
             width: 100%;
-            border-radius: 14px;
-            box-shadow: 8px 8px 0px var(--amarillo-logo);
+            mix-blend-mode: multiply;
+            display: block;
+            margin: 0 auto;
         }
 
         .about-text {
@@ -582,6 +565,9 @@
             font-weight: bold;
         }
 
+        /* =================================
+           10. MODALES DE PAGO Y TICKET
+           ================================= */
         .payment-modal, .ticket-modal {
             display: none;
             position: fixed;
@@ -716,17 +702,15 @@
 </head>
 <body>
 
-    <button class="fullscreen-toggle" onclick="toggleFullscreen()" title="Pantalla completa">
-        <i class="fas fa-expand"></i> Pantalla Completa
-    </button>
-
     <div id="notification" class="notification"></div>
 
     <!-- Navegación -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="d70ad37e-1ec5-4df6-aa69-193810000f64.jpeg" alt="Logo PiesandantesRD" class="logo-img">
+            <a href="#viaje" class="logo">
+                <span class="logo-badge-wrap">
+                    <img src="logo.jpeg" alt="PiesandantesRD" class="logo-img">
+                </span>
                 <span>PiesandantesRD</span>
                 <span class="admin-badge" id="adminBadge" style="display: none;">ADMIN</span>
             </a>
@@ -736,7 +720,6 @@
                 <a href="#noticias">Noticias</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#contacto">Contacto</a>
-                <a href="#" onclick="showAdminPanel()" id="adminLink" style="display: none;">Panel Admin</a>
             </div>
         </div>
     </nav>
@@ -744,8 +727,8 @@
     <!-- Hero -->
     <header>
         <div class="hero-content">
-            <h1>Medellín y Guatapé</h1>
-            <p>Del 3 al 7 de marzo • US$ 700 por persona</p>
+            <h1 id="heroTitleDisplay">Medellín y Guatapé</h1>
+            <p id="heroSubtitleDisplay">Del 3 al 7 de marzo • US$ 700 por persona</p>
             <a href="#viaje" class="btn-cta">Ver Detalles y Reservar</a>
         </div>
     </header>
@@ -759,9 +742,9 @@
             <div class="trip-cover"></div>
             <div class="trip-details">
                 <div>
-                    <span class="date-badge"><i class="far fa-calendar-alt"></i> 3 al 7 de marzo</span>
-                    <h3 class="trip-title">Medellín y Guatapé</h3>
-                    <ul class="trip-list">
+                    <span class="date-badge" id="tripDateDisplay"><i class="far fa-calendar-alt"></i> 3 al 7 de marzo</span>
+                    <h3 class="trip-title" id="tripTitleDisplay">Medellín y Guatapé</h3>
+                    <ul class="trip-list" id="tripIncludesDisplay">
                         <li><i class="fas fa-plane"></i><strong>Vuelo incluido</strong></li>
                         <li><i class="fas fa-bed"></i><strong>Alojamiento</strong> en habitaciones compartidas</li>
                         <li><i class="fas fa-coffee"></i><strong>Desayuno incluido</strong></li>
@@ -770,11 +753,11 @@
                 </div>
 
                 <div>
-                    <div class="price-display">US$ 700 / persona</div>
-                    <button class="btn-card" onclick="openPaymentModal('Medellín y Guatapé (3 al 7 de marzo)', 700, 'USD')">
+                    <div class="price-display" id="tripPriceDisplay">US$ 700 / persona</div>
+                    <button class="btn-card" id="reserveTripBtn" onclick="openPaymentModal()">
                         Reservar y Pagar (US$ 700)
                     </button>
-                    <button class="btn-card btn-secondary" onclick="showParticipants('Medellín y Guatapé (3 al 7 de marzo)')">
+                    <button class="btn-card btn-secondary" onclick="showParticipants()">
                         Ver Participantes Inscritos
                     </button>
                 </div>
@@ -786,14 +769,11 @@
     <section id="galeria">
         <h2 class="section-title">📸 Galería del Destino</h2>
         <p class="section-subtitle">Haz clic en cualquier imagen para verla en tamaño grande</p>
-
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- Se genera desde JavaScript con las 10 imágenes proporcionadas -->
-        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- Modal para ampliar foto de la galería -->
-    <div id="galleryModal" class="gallery-modal" onclick="closeGalleryModal(event)">
+    <!-- Modal para ampliar foto -->
+    <div id="galleryModal" class="gallery-modal" onclick="closeGalleryModal()">
         <div class="gallery-modal-box" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeGalleryModal()">&times;</button>
             <img id="galleryModalImg" src="" alt="">
@@ -806,35 +786,77 @@
         <h2 class="section-title">📰 Noticias y Novedades</h2>
         <p class="section-subtitle">Información importante sobre el viaje a Medellín y Guatapé</p>
         <div class="news-grid" id="newsGrid"></div>
-        <div style="text-align: center; margin-top: 25px;">
-            <button class="btn-cta" onclick="addNewsModal()">Agregar Noticia (Admin)</button>
-        </div>
     </section>
 
-    <!-- Panel Administrativo -->
+    <!-- Panel Administrativo Privado (se abre con Ctrl + Shift + A) -->
     <section id="adminPanel" class="admin-panel">
-        <h2 style="text-align: center; margin-bottom: 1.5rem;">Panel Administrativo</h2>
-        <div class="admin-tabs">
-            <button class="admin-tab active" onclick="switchAdminTab('participants', event)">Participantes</button>
-            <button class="admin-tab" onclick="switchAdminTab('reports', event)">Reportes</button>
-            <button class="admin-tab" onclick="switchAdminTab('settings', event)">Configuración</button>
+        <div class="admin-header">
+            <h2>🛠️ Panel de Administración (Privado)</h2>
+            <button class="btn-small btn-delete" onclick="logoutAdmin()">Cerrar Panel Admin</button>
         </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('editTrip', event)">Editar Viaje</button>
+            <button class="admin-tab" onclick="switchAdminTab('manageNews', event)">Editar Noticias</button>
+            <button class="admin-tab" onclick="switchAdminTab('participants', event)">Participantes</button>
+            <button class="admin-tab" onclick="switchAdminTab('reports', event)">Reportes</button>
+            <button class="admin-tab" onclick="switchAdminTab('settings', event)">Contacto</button>
+        </div>
+
         <div class="admin-content">
-            <div id="adminParticipants" class="admin-tab-content">
+            <div id="adminEditTrip" class="admin-tab-content">
+                <h3>Editar Información del Viaje</h3>
+                <div class="form-group">
+                    <label>Nombre del Destino:</label>
+                    <input type="text" id="editTripTitle">
+                </div>
+                <div class="form-group">
+                    <label>Fechas del Viaje:</label>
+                    <input type="text" id="editTripDate">
+                </div>
+                <div class="form-group">
+                    <label>Precio por Persona (en US$):</label>
+                    <input type="number" id="editTripPrice" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Excursiones y Lugares Incluidos:</label>
+                    <textarea id="editTripPlaces" rows="3"></textarea>
+                </div>
+                <button class="btn-cta" onclick="saveTripEdits()">Guardar Cambios del Viaje</button>
+            </div>
+
+            <div id="adminManageNews" class="admin-tab-content" style="display: none;">
+                <h3>Publicar o Eliminar Noticias</h3>
+                <div class="form-group">
+                    <label>Título de Nueva Noticia:</label>
+                    <input type="text" id="newNewsTitle" placeholder="Ej. Últimos cupos disponibles">
+                </div>
+                <div class="form-group">
+                    <label>Contenido:</label>
+                    <textarea id="newNewsContent" rows="2" placeholder="Escribe el aviso para los viajeros..."></textarea>
+                </div>
+                <button class="btn-cta" onclick="createNewsFromAdmin()">Publicar Noticia</button>
+                <hr style="margin: 20px 0;">
+                <div id="adminNewsList"></div>
+            </div>
+
+            <div id="adminParticipants" class="admin-tab-content" style="display: none;">
                 <h3>Participantes Inscritos</h3>
                 <div id="participantsList"></div>
             </div>
+
             <div id="adminReports" class="admin-tab-content" style="display: none;">
                 <h3>Resumen de Reservas</h3>
                 <div id="salesReports"></div>
             </div>
+
             <div id="adminSettings" class="admin-tab-content" style="display: none;">
-                <h3>Configuración de Contacto</h3>
+                <h3>Configuración de WhatsApp</h3>
                 <div class="form-group">
-                    <label>WhatsApp Principal (sin guiones):</label>
-                    <input type="text" id="whatsappNumber" value="18094030141" onchange="updateWhatsApp()">
+                    <label>Número de WhatsApp Principal (sin guiones):</label>
+                    <input type="text" id="whatsappNumber" value="18094030141">
                 </div>
-                <button class="btn-cta" onclick="saveSettings()">Guardar Configuración</button>
+                <button class="btn-cta" onclick="saveSettings()">Guardar WhatsApp</button>
             </div>
         </div>
     </section>
@@ -844,7 +866,7 @@
         <h2 class="section-title">🧭 Sobre PiesandantesRD</h2>
         <div class="about-container">
             <div class="about-logo-box">
-                <img src="d70ad37e-1ec5-4df6-aa69-193810000f64.jpeg" alt="PiesandantesRD - Paso a paso, descubriendo RD">
+                <img src="logo.jpeg" alt="PiesandantesRD - Paso a paso, descubriendo RD">
             </div>
             <div class="about-text">
                 <h3>Paso a paso, descubriendo nuevos horizontes</h3>
@@ -878,7 +900,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Modal de Pago con soporte de moneda (USD / DOP) -->
+    <!-- Modal de Pago con soporte USD y DOP -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
@@ -904,7 +926,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exchangeRateInput">Tasa de referencia (RD$ por US$ 1, solo si eliges RD$):</label>
+                    <label for="exchangeRateInput">Tasa de referencia (RD$ por US$ 1, si eliges RD$):</label>
                     <input type="number" id="exchangeRateInput" value="60" min="1" step="0.5" onchange="handleCurrencyChange()">
                 </div>
                 <div class="form-group">
@@ -946,32 +968,36 @@
                 <div class="ticket-number" id="ticketNumber">#PRD-00001</div>
                 <div class="ticket-details" id="ticketDetails"></div>
             </div>
-            <button class="btn-cta" onclick="shareTicket()">Copiar / Compartir Ticket</button>
+            <button class="btn-cta" onclick="shareTicket()">Copiar Ticket</button>
         </div>
     </div>
 
     <script>
         // =================================
-        // 1. DATOS DE LAS 10 IMÁGENES
+        // 1. VARIABLES AJUSTABLES
         // =================================
+        const ADMIN_PASS = 'admin123'; // Cambia aquí tu clave si deseas
+
+        let tripData = {
+            title: 'Medellín y Guatapé',
+            date: '3 al 7 de marzo',
+            priceUSD: 700,
+            places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
+        };
+
         const tripImages = [
-            { src: 'istockphoto-2163365745-612x612.jpg', caption: 'Centro de Medellín y Metro' },
-            { src: 'istockphoto-1417644289-612x612.jpg', caption: 'Piedra del Peñol y Guatapé' },
-            { src: 'istockphoto-1318666464-612x612.jpg', caption: 'Panorámica de Medellín' },
-            { src: 'istockphoto-881736772-612x612.jpg', caption: 'Embalse y paisajes de Guatapé' },
-            { src: 'istockphoto-2214761642-612x612.jpg', caption: 'Arquitectura y cultura local' },
-            { src: 'istockphoto-2163087168-612x612.jpg', caption: 'Gastronomía típica colombiana' },
-            { src: 'pexels-clive-kim-2523249-4150118.jpg', caption: 'Medellín de noche' },
-            { src: 'pexels-cesar-gaviria-232160-16637438.jpg', caption: 'Vista urbana entre montañas' },
-            { src: 'pexels-mateo-arbelaez-2158273871-38194714.jpg', caption: 'Metrocable y Comuna 13' },
-            { src: 'IMG_20230808_152850.jpg', caption: 'Escultura y centro histórico' }
+            { src: 'foto1.jpg', caption: 'Centro de Medellín y Metro' },
+            { src: 'foto2.jpg', caption: 'Piedra del Peñol y Guatapé' },
+            { src: 'foto3.jpg', caption: 'Panorámica de Medellín' },
+            { src: 'foto4.jpg', caption: 'Embalse y paisajes de Guatapé' },
+            { src: 'foto5.jpg', caption: 'Arquitectura y cultura local' },
+            { src: 'foto6.jpg', caption: 'Gastronomía típica colombiana' },
+            { src: 'foto7.jpg', caption: 'Medellín de noche' },
+            { src: 'foto8.jpg', caption: 'Vista urbana entre montañas' },
+            { src: 'foto9.jpg', caption: 'Metrocable y Comuna 13' },
+            { src: 'foto10.jpg', caption: 'Escultura y centro histórico' }
         ];
 
-        // =================================
-        // 2. ESTADO DE RESERVAS Y MONEDA
-        // =================================
-        let currentAdventure = '';
-        let basePriceUSD = 700;
         let currentCurrency = 'USD';
         let currentConvertedPrice = 700;
         let ticketCounter = 1;
@@ -992,17 +1018,27 @@
             setTimeout(() => el.classList.remove('show'), 3800);
         }
 
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(() => {});
-            } else {
-                document.exitFullscreen().catch(() => {});
-            }
+        // =================================
+        // 2. RENDERIZADO DEL VIAJE Y GALERÍA
+        // =================================
+        function renderTrip() {
+            const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
+            if (savedTrip) tripData = savedTrip;
+
+            document.getElementById('heroTitleDisplay').textContent = tripData.title;
+            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • US$ ${tripData.priceUSD} por persona`;
+            document.getElementById('tripDateDisplay').innerHTML = `<i class="far fa-calendar-alt"></i> ${tripData.date}`;
+            document.getElementById('tripTitleDisplay').textContent = tripData.title;
+            document.getElementById('tripPriceDisplay').textContent = `US$ ${tripData.priceUSD} / persona`;
+            document.getElementById('reserveTripBtn').textContent = `Reservar y Pagar (US$ ${tripData.priceUSD})`;
+            document.getElementById('tripIncludesDisplay').innerHTML = `
+                <li><i class="fas fa-plane"></i><strong>Vuelo incluido</strong></li>
+                <li><i class="fas fa-bed"></i><strong>Alojamiento</strong> en habitaciones compartidas</li>
+                <li><i class="fas fa-coffee"></i><strong>Desayuno incluido</strong></li>
+                <li><i class="fas fa-route"></i><strong>Excursiones y traslados:</strong> ${tripData.places}</li>
+            `;
         }
 
-        // =================================
-        // 3. GALERÍA INTERACTIVA
-        // =================================
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             grid.innerHTML = tripImages.map((item, idx) => `
@@ -1016,7 +1052,6 @@
         function openGalleryModal(index) {
             const item = tripImages[index];
             document.getElementById('galleryModalImg').src = item.src;
-            document.getElementById('galleryModalImg').alt = item.caption;
             document.getElementById('galleryModalCaption').textContent = item.caption;
             document.getElementById('galleryModal').style.display = 'flex';
         }
@@ -1026,115 +1061,69 @@
         }
 
         // =================================
-        // 4. RESERVAS, MONEDA Y TICKETS
+        // 3. ATAJO DE TECLADO (Ctrl + Shift + A)
         // =================================
-        function openPaymentModal(adventure, priceUSD, defaultCurrency = 'USD') {
-            currentAdventure = adventure;
-            basePriceUSD = priceUSD;
-            currentCurrency = defaultCurrency;
-            document.getElementById('paymentForm').reset();
-            document.getElementById('paymentCurrency').value = defaultCurrency;
-            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
-            document.getElementById('paymentMethod').value = '';
-            handleCurrencyChange();
-            document.getElementById('paymentModal').style.display = 'flex';
-        }
-
-        function handleCurrencyChange() {
-            const currency = document.getElementById('paymentCurrency').value;
-            const rate = parseFloat(document.getElementById('exchangeRateInput').value) || 60;
-            currentCurrency = currency;
-            currentConvertedPrice = currency === 'USD' ? basePriceUSD : Math.round(basePriceUSD * rate);
-
-            document.getElementById('paymentModalTitle').innerHTML = `
-                Reservar: ${currentAdventure}<br>
-                <small style="color: var(--naranja-logo);">Total: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
-            `;
-        }
-
-        function closePaymentModal() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function () {
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
-                this.classList.add('selected');
-                document.getElementById('paymentMethod').value = this.dataset.method;
-            });
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+                e.preventDefault();
+                promptAdminAccess();
+            }
         });
 
-        document.getElementById('paymentForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const method = document.getElementById('paymentMethod').value;
-            if (!method) {
-                showNotification('Selecciona un método de pago', 'error');
+        function promptAdminAccess() {
+            if (isAdmin) {
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
                 return;
             }
+            const pass = prompt('Acceso Privado - Ingresa tu contraseña de Administrador:');
+            if (pass === ADMIN_PASS) {
+                isAdmin = true;
+                document.getElementById('adminBadge').style.display = 'inline';
+                document.getElementById('adminPanel').style.display = 'block';
+                fillAdminTripForm();
+                updateAdminPanel();
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+                showNotification('Panel de administración desbloqueado', 'success');
+            } else if (pass !== null) {
+                showNotification('Contraseña incorrecta', 'error');
+            }
+        }
 
-            const reserva = {
-                id: Date.now(),
-                ticketNumber: `PRD-${String(ticketCounter).padStart(5, '0')}`,
-                adventure: currentAdventure,
-                name: document.getElementById('participantName').value,
-                phone: document.getElementById('participantPhone').value,
-                email: document.getElementById('participantEmail').value,
-                currency: currentCurrency,
-                price: currentConvertedPrice,
-                paymentMethod: method,
-                emergency: document.getElementById('emergencyContact').value,
-                requests: document.getElementById('specialRequests').value,
-                date: new Date().toLocaleDateString('es-DO')
+        function logoutAdmin() {
+            isAdmin = false;
+            document.getElementById('adminBadge').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            showNotification('Panel cerrado', 'info');
+        }
+
+        function switchAdminTab(tab, event) {
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('admin' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
+            if (event) event.target.classList.add('active');
+        }
+
+        function fillAdminTripForm() {
+            document.getElementById('editTripTitle').value = tripData.title;
+            document.getElementById('editTripDate').value = tripData.date;
+            document.getElementById('editTripPrice').value = tripData.priceUSD;
+            document.getElementById('editTripPlaces').value = tripData.places;
+        }
+
+        function saveTripEdits() {
+            tripData = {
+                title: document.getElementById('editTripTitle').value.trim() || tripData.title,
+                date: document.getElementById('editTripDate').value.trim() || tripData.date,
+                priceUSD: parseFloat(document.getElementById('editTripPrice').value) || tripData.priceUSD,
+                places: document.getElementById('editTripPlaces').value.trim() || tripData.places
             };
-
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
-            lista.push(reserva);
-            localStorage.setItem('participants', JSON.stringify(lista));
-
-            ticketCounter++;
-            localStorage.setItem('ticketCounter', String(ticketCounter));
-
-            document.getElementById('ticketNumber').textContent = `#${reserva.ticketNumber}`;
-            document.getElementById('ticketDetails').innerHTML = `
-                <p><strong>Viaje:</strong> ${reserva.adventure}</p>
-                <p><strong>Participante:</strong> ${reserva.name}</p>
-                <p><strong>Teléfono:</strong> ${reserva.phone}</p>
-                <p><strong>Monto:</strong> ${formatMoney(reserva.price, reserva.currency)}</p>
-                <p><strong>Método:</strong> ${reserva.paymentMethod}</p>
-                <p><strong>Emergencia:</strong> ${reserva.emergency}</p>
-                <p><strong>Contacto PiesandantesRD:</strong> 809-403-0141 / 809-996-8875</p>
-            `;
-
-            closePaymentModal();
-            document.getElementById('ticketModal').style.display = 'flex';
-            if (isAdmin) updateAdminPanel();
-            showNotification('¡Reserva registrada con éxito!', 'success');
-        });
-
-        function closeTicketModal() {
-            document.getElementById('ticketModal').style.display = 'none';
-        }
-
-        function shareTicket() {
-            const num = document.getElementById('ticketNumber').textContent;
-            const texto = `Reserva ${num} - ${currentAdventure} (${formatMoney(currentConvertedPrice, currentCurrency)}) - PiesandantesRD`;
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(texto).then(() => showNotification('Ticket copiado al portapapeles', 'info'));
-            }
-        }
-
-        function showParticipants(adventure) {
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]')
-                .filter(p => p.adventure === adventure);
-            if (!lista.length) {
-                showNotification('Aún no hay participantes registrados en este viaje', 'info');
-                return;
-            }
-            alert(lista.map(p => `• ${p.name} (${p.ticketNumber}) - ${formatMoney(p.price, p.currency || 'USD')}`).join('\n'));
+            localStorage.setItem('piesandantesTrip', JSON.stringify(tripData));
+            renderTrip();
+            showNotification('Información del viaje actualizada', 'success');
         }
 
         // =================================
-        // 5. NOTICIAS Y PANEL ADMIN
+        // 4. NOTICIAS
         // =================================
         function loadNews() {
             let news = JSON.parse(localStorage.getItem('news') || '[]');
@@ -1165,139 +1154,83 @@
                     <p>${n.content}</p>
                 </div>
             `).join('');
-        }
 
-        function addNewsModal() {
-            if (!isAdmin) {
-                showNotification('Activa el Panel Admin primero', 'error');
-                return;
-            }
-            const title = prompt('Título de la noticia:');
-            const content = title ? prompt('Contenido:') : null;
-            if (title && content) {
-                const news = JSON.parse(localStorage.getItem('news') || '[]');
-                news.unshift({
-                    id: Date.now(),
-                    title,
-                    content,
-                    date: new Date().toISOString().split('T')[0],
-                    priority: 'media'
-                });
-                localStorage.setItem('news', JSON.stringify(news));
-                loadNews();
-                showNotification('Noticia publicada', 'success');
-            }
-        }
-
-        function showAdminPanel() {
-            if (!isAdmin) {
-                const pass = prompt('Contraseña de administrador:');
-                if (pass !== 'admin123') {
-                    showNotification('Contraseña incorrecta', 'error');
-                    return;
-                }
-                isAdmin = true;
-                document.getElementById('adminBadge').style.display = 'inline';
-                document.getElementById('adminLink').style.display = 'inline';
-            }
-            document.getElementById('adminPanel').style.display = 'block';
-            updateAdminPanel();
-        }
-
-        function switchAdminTab(tab, event) {
-            document.querySelectorAll('.admin-tab-content').forEach(c => c.style.display = 'none');
-            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById('admin' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
-            if (event) event.target.classList.add('active');
-        }
-
-        function updateAdminPanel() {
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
-            document.getElementById('participantsList').innerHTML = lista.length
-                ? lista.map(p => `
+            const adminList = document.getElementById('adminNewsList');
+            if (adminList) {
+                adminList.innerHTML = news.map(n => `
                     <div class="participant-item">
-                        <div>
-                            <strong>${p.name}</strong> • ${p.phone} • ${p.email}<br>
-                            <small>Monto: ${formatMoney(p.price, p.currency || 'USD')} (${p.paymentMethod}) | Emergencia: ${p.emergency}</small>
-                        </div>
-                        <span class="ticket-number-small">${p.ticketNumber}</span>
-                        <div>
-                            <button class="btn-small btn-export" onclick="exportSingle('${p.id}')">CSV</button>
-                            <button class="btn-small btn-delete" onclick="deleteParticipant('${p.id}')">X</button>
-                        </div>
+                        <div><strong>${n.title}</strong><br><small>${n.content}</small></div>
+                        <button class="btn-small btn-delete" onclick="deleteNewsItem(${n.id})">Eliminar</button>
                     </div>
-                `).join('')
-                : '<p>No hay reservas aún.</p>';
+                `).join('');
+            }
+        }
 
-            const totalUSD = lista.filter(p => (p.currency || 'USD') === 'USD').reduce((s, p) => s + Number(p.price), 0);
-            const totalDOP = lista.filter(p => p.currency === 'DOP').reduce((s, p) => s + Number(p.price), 0);
+        function createNewsFromAdmin() {
+            const title = document.getElementById('newNewsTitle').value.trim();
+            const content = document.getElementById('newNewsContent').value.trim();
+            if (!title || !content) return showNotification('Completa título y contenido', 'error');
 
-            document.getElementById('salesReports').innerHTML = `
-                <p><strong>Total reservas:</strong> ${lista.length}</p>
-                <p><strong>Total en US$:</strong> ${formatMoney(totalUSD, 'USD')}</p>
-                <p><strong>Total en RD$:</strong> ${formatMoney(totalDOP, 'DOP')}</p>
-                <button class="btn-cta" style="margin-top: 12px;" onclick="exportAll()">Exportar Todo a CSV</button>
+            const news = JSON.parse(localStorage.getItem('news') || '[]');
+            news.unshift({
+                id: Date.now(),
+                title,
+                content,
+                date: new Date().toISOString().split('T')[0],
+                priority: 'alta'
+            });
+            localStorage.setItem('news', JSON.stringify(news));
+            document.getElementById('newNewsTitle').value = '';
+            document.getElementById('newNewsContent').value = '';
+            loadNews();
+            showNotification('Noticia publicada', 'success');
+        }
+
+        function deleteNewsItem(id) {
+            const news = JSON.parse(localStorage.getItem('news') || '[]').filter(n => n.id !== id);
+            localStorage.setItem('news', JSON.stringify(news));
+            loadNews();
+            showNotification('Noticia eliminada', 'info');
+        }
+
+        // =================================
+        // 5. RESERVAS, MONEDA Y PARTICIPANTES
+        // =================================
+        function openPaymentModal() {
+            currentCurrency = 'USD';
+            document.getElementById('paymentForm').reset();
+            document.getElementById('paymentCurrency').value = 'USD';
+            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+            document.getElementById('paymentMethod').value = '';
+            handleCurrencyChange();
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function handleCurrencyChange() {
+            const currency = document.getElementById('paymentCurrency').value;
+            const rate = parseFloat(document.getElementById('exchangeRateInput').value) || 60;
+            currentCurrency = currency;
+            currentConvertedPrice = currency === 'USD' ? tripData.priceUSD : Math.round(tripData.priceUSD * rate);
+
+            document.getElementById('paymentModalTitle').innerHTML = `
+                Reservar: ${tripData.title} (${tripData.date})<br>
+                <small style="color: var(--naranja-logo);">Total: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
             `;
         }
 
-        function deleteParticipant(id) {
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]').filter(p => String(p.id) !== String(id));
-            localStorage.setItem('participants', JSON.stringify(lista));
-            updateAdminPanel();
-            showNotification('Reserva eliminada', 'info');
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
         }
 
-        function exportSingle(id) {
-            const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
-            if (p) downloadCSV([['Ticket', 'Nombre', 'Teléfono', 'Moneda', 'Monto', 'Método'], [p.ticketNumber, p.name, p.phone, p.currency || 'USD', p.price, p.paymentMethod]], `reserva_${p.ticketNumber}.csv`);
-        }
-
-        function exportAll() {
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
-            if (!lista.length) return showNotification('Sin datos para exportar', 'info');
-            const rows = [['Ticket', 'Viaje', 'Nombre', 'Teléfono', 'Correo', 'Moneda', 'Monto', 'Método', 'Emergencia']];
-            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.name, p.phone, p.email, p.currency || 'USD', p.price, p.paymentMethod, p.emergency]));
-            downloadCSV(rows, 'reservas_medellin_guatape.csv');
-        }
-
-        function downloadCSV(rows, filename) {
-            const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        function updateWhatsApp() {
-            const num = document.getElementById('whatsappNumber').value.trim();
-            if (num) {
-                localStorage.setItem('whatsappNumber', num);
-                document.querySelector('.whatsapp-float').href = `https://wa.me/${num}?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9`;
-            }
-        }
-
-        function saveSettings() {
-            updateWhatsApp();
-            showNotification('Configuración guardada', 'success');
-        }
-
-        // =================================
-        // 6. INICIALIZACIÓN
-        // =================================
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedCounter = localStorage.getItem('ticketCounter');
-            if (savedCounter) ticketCounter = parseInt(savedCounter, 10) || 1;
-            const savedWa = localStorage.getItem('whatsappNumber');
-            if (savedWa) {
-                document.getElementById('whatsappNumber').value = savedWa;
-                updateWhatsApp();
-            }
-            renderGallery();
-            loadNews();
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function () {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                document.getElementById('paymentMethod').value = this.dataset.method;
+            });
         });
-    </script>
-</body>
-</html>
+
+        document.getElementById('paymentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const method = document.getElementById('paymentMethod').value;
+            if (!method) return
