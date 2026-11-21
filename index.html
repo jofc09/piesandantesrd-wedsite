@@ -91,21 +91,29 @@
         }
 
         .logo-integrated-frame {
-            background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(247,246,242,0.92));
-            padding: 3px 12px;
+            background: linear-gradient(135deg, #FFFDF7 0%, #F7F6F2 100%);
+            padding: 3px 10px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(242, 183, 41, 0.75);
-            box-shadow: inset 0 0 0 1px rgba(27, 59, 111, 0.12), 0 2px 6px rgba(0,0,0,0.2);
+            gap: 8px;
+            border: 1.5px solid var(--amarillo-logo);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+        }
+
+        .logo-svg-mark {
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0;
         }
 
         .logo-img {
-            height: 36px;
+            height: 34px;
             width: auto;
             display: block;
             mix-blend-mode: multiply;
+            border-radius: 6px;
         }
 
         .nav-links {
@@ -215,7 +223,7 @@
         }
 
         /* =================================
-           6. TARJETA PRINCIPAL DEL VIAJE
+           6. TARJETA PRINCIPAL DEL VIAJE Y CONFIANZA
            ================================= */
         .trip-showcase {
             display: grid;
@@ -281,6 +289,33 @@
             font-size: 0.88rem;
             color: var(--texto-oscuro);
             margin-bottom: 14px;
+        }
+
+        .trust-fiscal-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .trust-fiscal-card {
+            background: var(--blanco);
+            border: 1px solid #D1D5DB;
+            border-top: 4px solid var(--azul-logo);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(27, 59, 111, 0.06);
+        }
+
+        .trust-fiscal-card h4 {
+            color: var(--azul-logo);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .trust-fiscal-card p {
+            font-size: 0.9rem;
+            color: #374151;
         }
 
         .booking-closed-banner {
@@ -621,7 +656,7 @@
         }
 
         /* =================================
-           9. NOSOTROS Y CONTACTO
+           9. NOSOTROS, SOPORTE Y CONTACTO
            ================================= */
         .about-container {
             display: flex;
@@ -639,23 +674,51 @@
             flex: 1;
             min-width: 260px;
             text-align: center;
-            padding: 18px;
+            padding: 22px;
             border-radius: 16px;
-            background: radial-gradient(circle at center, rgba(242,183,41,0.12) 0%, rgba(27,59,111,0.04) 100%);
+            background: linear-gradient(145deg, rgba(27,59,111,0.06) 0%, rgba(242,183,41,0.16) 100%);
+            border: 1px solid rgba(27, 59, 111, 0.14);
         }
 
         .about-logo-blended img {
-            max-width: 250px;
+            max-width: 220px;
             width: 100%;
             mix-blend-mode: multiply;
             display: block;
-            margin: 0 auto;
-            filter: contrast(1.04);
+            margin: 12px auto 0 auto;
+            border-radius: 12px;
+            filter: contrast(1.05);
         }
 
         .about-text {
             flex: 1.5;
             min-width: 280px;
+        }
+
+        .support-section {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 2.8rem 2rem;
+            border: 2px solid var(--azul-logo);
+            box-shadow: 0 8px 24px rgba(27, 59, 111, 0.1);
+            text-align: center;
+        }
+
+        .support-box {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #F8FAFC;
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid #CBD5E1;
+        }
+
+        .support-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
         }
 
         .contact-section {
@@ -684,7 +747,7 @@
         }
 
         /* =================================
-           10. ETAPAS, FACTURACIÓN, TÉRMINOS, COMPROBANTE Y PASE
+           10. ETAPAS, FACTURACIÓN DGII, TÉRMINOS, COMPROBANTE Y PASE
            ================================= */
         .payment-modal, .ticket-modal {
             display: none;
@@ -765,6 +828,16 @@
             color: var(--azul-logo);
             margin-bottom: 8px;
             font-size: 0.98rem;
+        }
+
+        .tax-summary-line {
+            background: #FFFFFF;
+            border: 1px dashed #60A5FA;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.86rem;
+            color: #1E3A8A;
+            margin-top: 6px;
         }
 
         .terms-box {
@@ -1025,6 +1098,11 @@
         <div class="nav-container">
             <a href="#viaje" class="logo">
                 <span class="logo-integrated-frame">
+                    <svg class="logo-svg-mark" viewBox="0 0 32 32" aria-hidden="true">
+                        <circle cx="16" cy="16" r="15" fill="#1B3B6F"/>
+                        <path d="M8 22 L15 10 L22 22 Z" fill="#F2B729"/>
+                        <circle cx="22" cy="10" r="3.5" fill="#E86A33"/>
+                    </svg>
                     <img src="logo.jpeg.jpeg" alt="PiesandantesRD" class="logo-img">
                 </span>
                 <span>PiesandantesRD</span>
@@ -1034,6 +1112,7 @@
                 <a href="#viaje">Viaje Medellín y Guatapé</a>
                 <a href="#galeria">Galería</a>
                 <a href="#noticias">Noticias</a>
+                <a href="#soporte">Soporte</a>
                 <a href="#contacto">Contacto</a>
             </div>
         </div>
@@ -1048,7 +1127,7 @@
         </div>
     </header>
 
-    <!-- Tarjeta principal del viaje -->
+    <!-- Tarjeta principal del viaje y pilares de confianza / DGII -->
     <section id="viaje">
         <h2 class="section-title">✈️ Próxima Aventura</h2>
         <p class="section-subtitle" id="tripRuleSubtitle">Apartado con tiempo limitado hasta 1 mes antes del vuelo • Pago restante con fecha activa y cierre 1 mes antes</p>
@@ -1078,6 +1157,21 @@
                         Ver Participantes Inscritos
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <div class="trust-fiscal-strip">
+            <div class="trust-fiscal-card">
+                <h4><i class="fas fa-shield-alt"></i> Transparencia y Seguridad</h4>
+                <p>Cada registro genera un código único de verificación y guarda el comprobante adjunto con términos visibles antes de confirmar.</p>
+            </div>
+            <div class="trust-fiscal-card">
+                <h4><i class="fas fa-file-invoice"></i> Estructura Fiscal DGII (RD)</h4>
+                <p>Formulario preparado para comprobantes electrónicos (E32 / E31), RNC o Cédula del comprador y desglose de ITBIS configurable.</p>
+            </div>
+            <div class="trust-fiscal-card">
+                <h4><i class="fas fa-headset"></i> Soporte Directo del Desarrollador</h4>
+                <p>¿Algún fallo o duda técnica en la página? Escribe o llama al <a href="tel:8098614497" style="color: var(--azul-logo); font-weight: bold;">809-861-4497</a>.</p>
             </div>
         </div>
     </section>
@@ -1209,7 +1303,7 @@
                 <hr style="margin: 18px 0;">
                 <h4>Mover Reservas y Comprobantes entre Dispositivos (JSON)</h4>
                 <p style="font-size: 0.9rem; color: #4B5563; margin-top: 4px;">
-                    Exporta un archivo JSON con reservas, fechas de apartado/vuelo, campos de facturación electrónica, términos y fotos de comprobantes.
+                    Exporta un archivo JSON con reservas, fechas de apartado/vuelo, campos de facturación DGII, términos y fotos de comprobantes.
                 </p>
                 <div class="backup-actions">
                     <button type="button" class="btn-cta" onclick="exportBackupJSON()">
@@ -1242,7 +1336,7 @@
             <!-- Código QR dentro del Panel de Administración -->
             <div class="admin-qr-box" id="adminQrSection">
                 <h4 style="color: var(--azul-logo); margin-bottom: 4px;">📲 Código QR de Acceso Rápido (Panel Admin)</h4>
-                <p style="font-size: 0.85rem; color: #4B5563;">Enlace limpio con piesandantesrd + dominio de despliegue</p>
+                <p style="font-size: 0.85rem; color: #4B5563;">Enlace profesional con el nombre de la página y el dominio</p>
                 <canvas id="adminPageQrCanvas" width="160" height="160"></canvas>
                 <p id="adminPageQrUrl" style="font-size: 0.85rem; font-weight: bold; color: var(--azul-logo); word-break: break-all; margin-bottom: 10px;"></p>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
@@ -1262,6 +1356,11 @@
         <h2 class="section-title">🧭 Sobre PiesandantesRD</h2>
         <div class="about-container">
             <div class="about-logo-blended">
+                <svg class="logo-svg-mark" style="width: 48px; height: 48px; margin: 0 auto;" viewBox="0 0 32 32" aria-hidden="true">
+                    <circle cx="16" cy="16" r="15" fill="#1B3B6F"/>
+                    <path d="M8 22 L15 10 L22 22 Z" fill="#F2B729"/>
+                    <circle cx="22" cy="10" r="3.5" fill="#E86A33"/>
+                </svg>
                 <img src="logo.jpeg.jpeg" alt="PiesandantesRD - Paso a paso, descubriendo RD">
             </div>
             <div class="about-text">
@@ -1269,6 +1368,26 @@
                 <p style="margin-top: 10px;">
                     En <strong>PiesandantesRD</strong> conectamos viajeros con experiencias auténticas, cultura local y aventuras bien organizadas. Para este viaje del <strong>3 al 7 de marzo</strong> a <strong>Medellín y Guatapé</strong>, contamos con vuelo, alojamiento en habitaciones compartidas, desayuno, traslados y excursiones.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección específica de Soporte Técnico con el desarrollador -->
+    <section id="soporte">
+        <h2 class="section-title">🛠️ Soporte</h2>
+        <p class="section-subtitle">Área dedicada para reportar cualquier problema de la página y hablar directamente con el desarrollador</p>
+        <div class="support-box">
+            <h3 style="color: var(--azul-logo); margin-bottom: 8px;">Atención Técnica Directa • Desarrollador</h3>
+            <p style="font-size: 0.95rem; color: #374151;">
+                Si ocurre algún error al cargar, subir comprobantes, revisar tu código o usar la plataforma, comunícate directamente al <strong>809-861-4497</strong>.
+            </p>
+            <div class="support-actions">
+                <a href="tel:8098614497" class="btn-cta">
+                    <i class="fas fa-phone-alt"></i> Llamar a Soporte (809-861-4497)
+                </a>
+                <a id="devSupportWaLink" href="https://wa.me/18098614497?text=Hola%2C%20reporto%20un%20problema%20t%C3%A9cnico%20en%20la%20p%C3%A1gina%20de%20PiesandantesRD." target="_blank" rel="noopener noreferrer" class="btn-cta" style="background-color: #15803D;">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Desarrollador (809-861-4497)
+                </a>
             </div>
         </div>
     </section>
@@ -1285,8 +1404,8 @@
 
     <!-- Pie de página -->
     <footer>
-        <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo</p>
-        <p>Teléfonos: 809-403-0141 | 809-996-8875</p>
+        <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo • Normativa Fiscal DGII (RD)</p>
+        <p>Teléfonos: 809-403-0141 | 809-996-8875 • Soporte Técnico: <a href="tel:8098614497" style="color: #F2B729;">809-861-4497</a></p>
         <p id="codeVersionFooter" style="font-size: 0.78rem; color: #9CA3AF; margin-top: 6px;"></p>
     </footer>
 
@@ -1320,7 +1439,7 @@
         <i class="fab fa-whatsapp"></i>
     </button>
 
-    <!-- Modal de reserva, apartado con tiempo limitado, pago restante con ventana activa/cierre y facturación electrónica -->
+    <!-- Modal de reserva, apartado con tiempo limitado, pago restante con ventana activa/cierre y facturación DGII -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
@@ -1373,17 +1492,17 @@
                 </div>
 
                 <div class="billing-box" id="billingSection">
-                    <h4>🧾 Datos para Factura Electrónica (e-CF)</h4>
+                    <h4>🧾 Datos Fiscales DGII — Factura Electrónica (e-CF)</h4>
                     <div class="form-row-2">
                         <div class="form-group" style="margin-bottom: 8px;">
-                            <label for="ecfType">Tipo de Comprobante Electrónico *</label>
+                            <label for="ecfType">Tipo de Comprobante Fiscal (e-CF) *</label>
                             <select id="ecfType" required>
                                 <option value="E32" selected>E32 - Factura de Consumo Electrónica</option>
                                 <option value="E31">E31 - Factura de Crédito Fiscal Electrónica</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-bottom: 8px;">
-                            <label for="rncOrId">RNC o Cédula Comprador *</label>
+                            <label for="rncOrId">RNC o Cédula Comprador (DGII) *</label>
                             <input type="text" id="rncOrId" placeholder="RNC o Cédula" required>
                         </div>
                     </div>
@@ -1397,6 +1516,7 @@
                             <input type="email" id="billingEmail" placeholder="correo@ejemplo.com" required>
                         </div>
                     </div>
+                    <div class="tax-summary-line" id="taxBreakdownPreview"></div>
                 </div>
 
                 <div class="form-row-2">
@@ -1486,7 +1606,7 @@
                         <p><strong>2. Ventana de activación y cierre del pago restante:</strong> El pago restante se activa según el calendario configurado y cierra al cumplirse el plazo de 1 mes antes del vuelo (o cierre general de reservas).</p>
                         <p><strong>3. Pérdida de objetos:</strong> PiesandantesRD no se hace responsable por la pérdida, extravío, daño o sustracción de ningún objeto personal, equipaje, dinero, documentos o dispositivos durante el trayecto o las excursiones.</p>
                         <p><strong>4. Conducta y protocolo:</strong> Cualquier comportamiento fuera de nuestro protocolo, normas de convivencia, horarios o indicaciones del equipo organizador está bajo la exclusiva responsabilidad y consecuencia del participante.</p>
-                        <p><strong>5. Datos de facturación y salud:</strong> Declaro que los datos para factura electrónica, edad, residencia, contacto de emergencia y condiciones de salud, alergias o padecimientos son verídicos.</p>
+                        <p><strong>5. Datos fiscales DGII y salud:</strong> Declaro que el RNC o Cédula, tipo de e-CF, edad, residencia, contacto de emergencia y condiciones de salud, alergias o padecimientos son verídicos.</p>
                     </div>
                     <label class="terms-check-label" for="acceptTermsCheckbox">
                         <input type="checkbox" id="acceptTermsCheckbox" required>
@@ -1521,11 +1641,14 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-cf-v9';
+        const APP_CODE_VERSION = '2026-11-21-cf-v11';
         const BRAND_SLUG = 'piesandantesrd';
-        // Deja CUSTOM_DEPLOY_DOMAIN vacío ('') para usar el dominio base del despliegue actual,
-        // o escribe un dominio específico (ej. 'pages.dev' o 'tudominio.com') para forzar piesandantesrd.<dominio>.
-        const CUSTOM_DEPLOY_DOMAIN = '';
+        // Dominio profesional base para el enlace y QR (ej. 'workers.dev' o 'pages.dev').
+        const PROFESSIONAL_DEPLOY_DOMAIN = 'workers.dev';
+        const DEV_SUPPORT_PHONE_DISPLAY = '809-861-4497';
+        const DEV_SUPPORT_PHONE_RAW = '18098614497';
+        const ITBIS_RATE = 0.18;
+        const SHOW_ITBIS_BREAKDOWN = true;
         const ADMIN_PASS = 'admin123';
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
@@ -1599,22 +1722,22 @@
             }
         }
 
-        function getCleanBrandUrl() {
-            let baseDomain = String(CUSTOM_DEPLOY_DOMAIN || '').trim().replace(/^https?:\/\//i, '').replace(/\/+$/, '');
-            if (!baseDomain) {
-                const host = (window.location && window.location.hostname) ? window.location.hostname.toLowerCase() : '';
-                if (!host || host === 'localhost' || host === '127.0.0.1') {
-                    baseDomain = 'pages.dev';
-                } else {
-                    const parts = host.split('.');
-                    if (parts.length >= 2) {
-                        baseDomain = parts.slice(1).join('.');
-                    } else {
-                        baseDomain = host;
-                    }
-                }
+        function getProfessionalBrandUrl() {
+            const cleanDomain = String(PROFESSIONAL_DEPLOY_DOMAIN || 'workers.dev')
+                .trim()
+                .replace(/^https?:\/\//i, '')
+                .replace(/\/+$/, '');
+            return `https://${BRAND_SLUG}.${cleanDomain}`;
+        }
+
+        function computeTaxBreakdown(totalAmount) {
+            const safeTotal = Number(totalAmount) || 0;
+            if (!SHOW_ITBIS_BREAKDOWN || ITBIS_RATE <= 0) {
+                return { subtotal: safeTotal, itbis: 0, total: safeTotal };
             }
-            return `https://${BRAND_SLUG}.${baseDomain}`;
+            const subtotal = Number((safeTotal / (1 + ITBIS_RATE)).toFixed(2));
+            const itbis = Number((safeTotal - subtotal).toFixed(2));
+            return { subtotal, itbis, total: safeTotal };
         }
 
         function getBalanceAmountUSD() {
@@ -1764,17 +1887,17 @@
         }
 
         function renderPageAccessQr() {
-            const cleanUrl = getCleanBrandUrl();
-            renderQrOnCanvas('adminPageQrCanvas', cleanUrl);
+            const professionalUrl = getProfessionalBrandUrl();
+            renderQrOnCanvas('adminPageQrCanvas', professionalUrl);
 
             const adminUrlEl = document.getElementById('adminPageQrUrl');
-            if (adminUrlEl) adminUrlEl.textContent = cleanUrl;
+            if (adminUrlEl) adminUrlEl.textContent = professionalUrl;
         }
 
         function copyCleanBrandLink() {
-            const cleanUrl = getCleanBrandUrl();
+            const professionalUrl = getProfessionalBrandUrl();
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(cleanUrl).then(() => showNotification(`Enlace copiado: ${cleanUrl}`, 'info'));
+                navigator.clipboard.writeText(professionalUrl).then(() => showNotification(`Enlace copiado: ${professionalUrl}`, 'info'));
             }
         }
 
@@ -1809,6 +1932,12 @@
 
             document.getElementById('waLink2').href = `https://wa.me/${clean2}?text=${msg}`;
             document.getElementById('waLabel2').textContent = formatDisplayPhone(clean2);
+
+            const devLink = document.getElementById('devSupportWaLink');
+            if (devLink) {
+                const devMsg = encodeURIComponent(`Hola, reporto un problema técnico en la página de PiesandantesRD (${tripData.title}).`);
+                devLink.href = `https://wa.me/${DEV_SUPPORT_PHONE_RAW}?text=${devMsg}`;
+            }
         }
 
         function toggleWhatsAppMenu(event) {
@@ -2208,6 +2337,14 @@
             currentCurrency = currency;
             currentConvertedPrice = currency === 'USD' ? stageUSD : Math.round(stageUSD * rate);
 
+            const taxInfo = computeTaxBreakdown(currentConvertedPrice);
+            const taxPreviewEl = document.getElementById('taxBreakdownPreview');
+            if (taxPreviewEl) {
+                taxPreviewEl.textContent = SHOW_ITBIS_BREAKDOWN
+                    ? `Desglose DGII (${Math.round(ITBIS_RATE * 100)}% ITBIS): Subtotal ${formatMoney(taxInfo.subtotal, currentCurrency)} + ITBIS ${formatMoney(taxInfo.itbis, currentCurrency)} = Total ${formatMoney(taxInfo.total, currentCurrency)}`
+                    : `Total a registrar: ${formatMoney(taxInfo.total, currentCurrency)}`;
+            }
+
             document.getElementById('paymentModalTitle').innerHTML = `
                 ${getStageLabel(currentStage)} • ${tripData.title}<br>
                 <small style="color: var(--naranja-logo);">Monto a registrar: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
@@ -2296,6 +2433,7 @@
             const rncOrId = document.getElementById('rncOrId').value.trim();
             const billingName = document.getElementById('billingName').value.trim();
             const billingEmail = document.getElementById('billingEmail').value.trim();
+            const taxInfo = computeTaxBreakdown(currentConvertedPrice);
             const stageLabel = getStageLabel(currentStage);
             const depositDeadlineAt = new Date(getDepositDeadlineTimestamp()).toISOString();
 
@@ -2315,10 +2453,14 @@
                 email: document.getElementById('participantEmail').value.trim(),
                 emergency: emergencyContact,
                 healthConditions,
+                dgiiJurisdiction: 'RD',
                 ecfType,
                 rncOrId,
                 billingName,
                 billingEmail,
+                itbisRate: ITBIS_RATE,
+                subtotalAmount: taxInfo.subtotal,
+                itbisAmount: taxInfo.itbis,
                 acceptedTerms: true,
                 acceptedTermsAt: new Date().toISOString(),
                 currency: currentCurrency,
@@ -2348,12 +2490,12 @@
                 <p><strong>Residencia:</strong> ${reserva.residence}</p>
                 <p><strong>Emergencia:</strong> ${reserva.emergency}</p>
                 <p><strong>Salud / Alergias:</strong> ${reserva.healthConditions}</p>
-                <p><strong>Factura Electrónica (${reserva.ecfType}):</strong> ${reserva.billingName} • RNC/Cédula: ${reserva.rncOrId} • ${reserva.billingEmail}</p>
+                <p><strong>Comprobante DGII (${reserva.ecfType}):</strong> ${reserva.billingName} • RNC/Cédula: ${reserva.rncOrId} • ${reserva.billingEmail}</p>
+                <p><strong>Desglose Fiscal:</strong> Subtotal ${formatMoney(reserva.subtotalAmount, reserva.currency)} • ITBIS ${formatMoney(reserva.itbisAmount, reserva.currency)} • Total ${formatMoney(reserva.price, reserva.currency)}</p>
                 <p><strong>Términos:</strong> Aceptados (apartado no reembolsable si no van)</p>
                 <p><strong>Método:</strong> ${reserva.paymentMethod} (Ref: ${reserva.transferRef})</p>
-                <p><strong>Monto:</strong> ${formatMoney(reserva.price, reserva.currency)}</p>
                 <p><strong>Verificación en 2 pasos:</strong> Se confirma por código (1) Apartado y (2) Pago restante</p>
-                <p><strong>Contacto PiesandantesRD:</strong> 809-403-0141 / 809-996-8875</p>
+                <p><strong>Soporte Técnico Desarrollador:</strong> ${DEV_SUPPORT_PHONE_DISPLAY}</p>
             `;
 
             closePaymentModal();
@@ -2533,7 +2675,7 @@
                             </span><br>
                             <small><strong>${p.stageLabel || 'Apartado'}</strong> • Residencia: ${p.residence || '-'} • Tel: ${p.phone}</small><br>
                             <small>Emergencia: ${p.emergency || '-'} • Salud/Alergias: ${p.healthConditions || '-'}</small><br>
-                            <small>Factura (${p.ecfType || 'E32'}): ${p.billingName || '-'} • RNC/Cédula: ${p.rncOrId || '-'} • ${p.billingEmail || '-'}</small><br>
+                            <small>DGII (${p.ecfType || 'E32'}): ${p.billingName || '-'} • RNC/Cédula: ${p.rncOrId || '-'} • ${p.billingEmail || '-'}</small><br>
                             <small>Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${p.paymentMethod} (Ref: ${p.transferRef || '-'}) • ${formatMoney(p.price, p.currency || 'USD')}</small>
                             ${p.receiptImage ? `<div style="margin-top:6px;"><img src="${p.receiptImage}" alt="Comprobante ${p.ticketNumber}" style="max-height:70px;border-radius:6px;border:1px solid #D1D5DB;"></div>` : ''}
                         </div>
@@ -2572,14 +2714,14 @@
 
         function exportSingle(id) {
             const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
-            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
+            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
         }
 
         function exportAll() {
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             if (!lista.length) return showNotification('Sin datos para exportar', 'info');
-            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
-            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
+            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
+            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
             downloadCSV(rows, 'reservas_medellin_guatape.csv');
         }
 
