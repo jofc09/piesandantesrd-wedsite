@@ -23,7 +23,6 @@
             --altura-hero: 75vh;
         }
 
-        /* Reinicio básico de márgenes y cajas */
         * {
             margin: 0;
             padding: 0;
@@ -91,7 +90,6 @@
             gap: 12px;
         }
 
-        /* Marco suave para integrar el logo sobre fondo azul */
         .logo-badge-wrap {
             background: radial-gradient(circle, #FFFFFF 65%, #F0EFEA 100%);
             padding: 4px 10px;
@@ -190,7 +188,7 @@
         }
 
         /* =================================
-           5. SECCIONES GENERALES
+           5. SECCIONES Y TÍTULOS CENTRADOS
            ================================= */
         section {
             padding: 4rem 20px;
@@ -202,13 +200,11 @@
             color: var(--azul-logo);
             text-align: center;
             font-size: 2.2rem;
-            margin-bottom: 1.2rem;
+            margin: 0 auto 1.2rem auto;
             border-bottom: 3px solid var(--naranja-logo);
-            display: inline-block;
+            display: block;
+            width: fit-content;
             padding-bottom: 8px;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .section-subtitle {
@@ -425,7 +421,6 @@
             font-weight: bold;
         }
 
-        /* Permanece oculto hasta activar el atajo Ctrl + Shift + A */
         .admin-panel {
             display: none;
             background-color: var(--azul-logo);
@@ -678,6 +673,32 @@
             padding: 2rem 1rem;
         }
 
+        /* =================================
+           11. BOTONES FLOTANTES Y MENÚ WHATSAPP
+           ================================= */
+        .instagram-float {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            bottom: 102px;
+            right: 32px;
+            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+            color: var(--blanco);
+            border-radius: 50%;
+            font-size: 28px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.25s;
+        }
+
+        .instagram-float:hover {
+            transform: scale(1.08);
+        }
+
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -693,7 +714,65 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.25s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        /* Menú flotante para elegir entre los dos números de WhatsApp */
+        .whatsapp-menu {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 98px;
+            background: var(--blanco);
+            border: 2px solid var(--azul-logo);
+            border-radius: 14px;
+            padding: 14px;
+            width: 245px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+            z-index: 10005;
+        }
+
+        .whatsapp-menu.open {
+            display: block;
+        }
+
+        .whatsapp-menu-title {
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: var(--azul-logo);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .whatsapp-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background-color: #ECFDF5;
+            color: #065F46;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 0.92rem;
+            border: 1px solid #A7F3D0;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .whatsapp-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .whatsapp-option:hover {
+            background-color: #25D366;
+            color: var(--blanco);
         }
 
         @media (max-width: 768px) {
@@ -701,6 +780,7 @@
             .nav-links { display: none; }
             .section-title { font-size: 1.8rem; }
             .participant-item { flex-direction: column; align-items: flex-start; }
+            .whatsapp-menu { right: 20px; bottom: 170px; }
         }
     </style>
 </head>
@@ -708,7 +788,7 @@
 
     <div id="notification" class="notification"></div>
 
-    <!-- Barra de navegación con logo integrado -->
+    <!-- Barra de navegación -->
     <nav>
         <div class="nav-container">
             <a href="#viaje" class="logo">
@@ -769,14 +849,14 @@
         </div>
     </section>
 
-    <!-- Galería de imágenes del viaje -->
+    <!-- Galería de imágenes -->
     <section id="galeria">
         <h2 class="section-title">📸 Galería del Destino</h2>
         <p class="section-subtitle">Haz clic en cualquier imagen para verla en tamaño grande</p>
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- Modal para ver una imagen ampliada -->
+    <!-- Modal de imagen ampliada -->
     <div id="galleryModal" class="gallery-modal" onclick="closeGalleryModal()">
         <div class="gallery-modal-box" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeGalleryModal()">&times;</button>
@@ -855,12 +935,16 @@
             </div>
 
             <div id="adminSettings" class="admin-tab-content" style="display: none;">
-                <h3>Configuración de WhatsApp</h3>
+                <h3>Configuración de Números de WhatsApp</h3>
                 <div class="form-group">
-                    <label>Número de WhatsApp Principal (sin guiones):</label>
-                    <input type="text" id="whatsappNumber" value="18094030141">
+                    <label>WhatsApp Opción 1 (sin guiones, con código de país):</label>
+                    <input type="text" id="whatsappNumber1" value="18094030141">
                 </div>
-                <button class="btn-cta" onclick="saveSettings()">Guardar WhatsApp</button>
+                <div class="form-group">
+                    <label>WhatsApp Opción 2 (sin guiones, con código de país):</label>
+                    <input type="text" id="whatsappNumber2" value="18099968875">
+                </div>
+                <button class="btn-cta" onclick="saveSettings()">Guardar Números</button>
             </div>
         </div>
     </section>
@@ -897,13 +981,35 @@
         <p>Teléfonos: 809-403-0141 | 809-996-8875</p>
     </footer>
 
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/18094030141?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9%20(3%20al%207%20de%20marzo)"
-       class="whatsapp-float"
+    <!-- Botón flotante de Instagram -->
+    <a href="https://www.instagram.com/piesandantesrd?utm_source=ig_web_button_share_sheet&jplx=ZDNlZDc0MzIxNw=="
+       class="instagram-float"
        target="_blank"
-       title="WhatsApp 809-403-0141">
-        <i class="fab fa-whatsapp"></i>
+       rel="noopener noreferrer"
+       title="Instagram @piesandantesrd">
+        <i class="fab fa-instagram"></i>
     </a>
+
+    <!-- Menú flotante de selección de WhatsApp -->
+    <div id="whatsappMenu" class="whatsapp-menu" onclick="event.stopPropagation()">
+        <div class="whatsapp-menu-title">Elige un número de WhatsApp:</div>
+        <a id="waLink1" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-option">
+            <i class="fab fa-whatsapp"></i>
+            <span id="waLabel1">809-403-0141</span>
+        </a>
+        <a id="waLink2" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-option">
+            <i class="fab fa-whatsapp"></i>
+            <span id="waLabel2">809-996-8875</span>
+        </a>
+    </div>
+
+    <!-- Botón flotante de WhatsApp (abre el selector de los 2 números) -->
+    <button type="button"
+            class="whatsapp-float"
+            onclick="toggleWhatsAppMenu(event)"
+            title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </button>
 
     <!-- Modal de reserva y pago -->
     <div id="paymentModal" class="payment-modal">
@@ -981,7 +1087,9 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const ADMIN_PASS = 'admin123'; // Clave para abrir el Panel Admin con Ctrl + Shift + A
+        const ADMIN_PASS = 'admin123';
+        const DEFAULT_WA_1 = '18094030141';
+        const DEFAULT_WA_2 = '18099968875';
 
         let tripData = {
             title: 'Medellín y Guatapé',
@@ -990,7 +1098,6 @@
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
 
-        // Arreglo de las 11 fotos del viaje (foto1.jpg a foto11.jpg)
         const tripImages = [
             { src: 'foto1.jpg', caption: 'Centro de Medellín y Metro' },
             { src: 'foto2.jpg', caption: 'Piedra del Peñol y Guatapé' },
@@ -1010,7 +1117,6 @@
         let ticketCounter = 1;
         let isAdmin = false;
 
-        // Formatea montos en US$ o RD$
         function formatMoney(amount, currency) {
             const formatted = Number(amount).toLocaleString('en-US', {
                 minimumFractionDigits: currency === 'USD' && !Number.isInteger(Number(amount)) ? 2 : 0,
@@ -1019,7 +1125,6 @@
             return currency === 'USD' ? `US$ ${formatted}` : `RD$ ${formatted}`;
         }
 
-        // Muestra mensajes temporales en pantalla
         function showNotification(message, type = 'success') {
             const el = document.getElementById('notification');
             el.textContent = message;
@@ -1028,7 +1133,43 @@
         }
 
         // =================================
-        // 2. RENDERIZADO DEL VIAJE Y GALERÍA
+        // 2. MENÚ DE WHATSAPP (2 NÚMEROS)
+        // =================================
+        function formatDisplayPhone(rawNumber) {
+            const digits = String(rawNumber || '').replace(/\D/g, '');
+            if (digits.length === 11 && digits.startsWith('1')) {
+                return `${digits.slice(1, 4)}-${digits.slice(4, 7)}-${digits.slice(7)}`;
+            }
+            if (digits.length === 10) {
+                return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+            }
+            return digits;
+        }
+
+        function applyWhatsAppNumbers(num1, num2) {
+            const clean1 = String(num1 || DEFAULT_WA_1).replace(/\D/g, '') || DEFAULT_WA_1;
+            const clean2 = String(num2 || DEFAULT_WA_2).replace(/\D/g, '') || DEFAULT_WA_2;
+            const msg = encodeURIComponent(`Hola PiesandantesRD, quiero información sobre el viaje a ${tripData.title} (${tripData.date})`);
+
+            document.getElementById('waLink1').href = `https://wa.me/${clean1}?text=${msg}`;
+            document.getElementById('waLabel1').textContent = formatDisplayPhone(clean1);
+
+            document.getElementById('waLink2').href = `https://wa.me/${clean2}?text=${msg}`;
+            document.getElementById('waLabel2').textContent = formatDisplayPhone(clean2);
+        }
+
+        function toggleWhatsAppMenu(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('whatsappMenu').classList.toggle('open');
+        }
+
+        document.addEventListener('click', function () {
+            const menu = document.getElementById('whatsappMenu');
+            if (menu) menu.classList.remove('open');
+        });
+
+        // =================================
+        // 3. RENDERIZADO DEL VIAJE Y GALERÍA
         // =================================
         function renderTrip() {
             const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
@@ -1070,7 +1211,7 @@
         }
 
         // =================================
-        // 3. ATAJO DE TECLADO (Ctrl + Shift + A)
+        // 4. ATAJO DE TECLADO (Ctrl + Shift + A)
         // =================================
         document.addEventListener('keydown', function (e) {
             if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
@@ -1128,11 +1269,15 @@
             };
             localStorage.setItem('piesandantesTrip', JSON.stringify(tripData));
             renderTrip();
+            applyWhatsAppNumbers(
+                localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1,
+                localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2
+            );
             showNotification('Información del viaje actualizada', 'success');
         }
 
         // =================================
-        // 4. GESTIÓN DE NOTICIAS
+        // 5. GESTIÓN DE NOTICIAS
         // =================================
         function loadNews() {
             let news = JSON.parse(localStorage.getItem('news') || '[]');
@@ -1203,7 +1348,7 @@
         }
 
         // =================================
-        // 5. RESERVAS, MONEDA Y REPORTES
+        // 6. RESERVAS, MONEDA Y REPORTES
         // =================================
         function openPaymentModal() {
             currentCurrency = 'USD';
@@ -1361,26 +1506,30 @@
         }
 
         function saveSettings() {
-            const num = document.getElementById('whatsappNumber').value.trim();
-            if (num) {
-                localStorage.setItem('whatsappNumber', num);
-                document.querySelector('.whatsapp-float').href = `https://wa.me/${num}?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9`;
-                showNotification('WhatsApp actualizado', 'success');
-            }
+            const num1 = document.getElementById('whatsappNumber1').value.replace(/\D/g, '');
+            const num2 = document.getElementById('whatsappNumber2').value.replace(/\D/g, '');
+            if (!num1 || !num2) return showNotification('Ingresa ambos números válidos', 'error');
+
+            localStorage.setItem('whatsappNumber1', num1);
+            localStorage.setItem('whatsappNumber2', num2);
+            applyWhatsAppNumbers(num1, num2);
+            showNotification('Números de WhatsApp actualizados', 'success');
         }
 
         // =================================
-        // 6. INICIALIZACIÓN AL CARGAR
+        // 7. INICIALIZACIÓN AL CARGAR
         // =================================
         document.addEventListener('DOMContentLoaded', function () {
             const savedCounter = localStorage.getItem('ticketCounter');
             if (savedCounter) ticketCounter = parseInt(savedCounter, 10) || 1;
-            const savedWa = localStorage.getItem('whatsappNumber');
-            if (savedWa) {
-                document.getElementById('whatsappNumber').value = savedWa;
-                document.querySelector('.whatsapp-float').href = `https://wa.me/${savedWa}?text=Hola%20PiesandantesRD,%20quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20a%20Medell%C3%ADn%20y%20Guatap%C3%A9`;
-            }
+
+            const savedWa1 = localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1;
+            const savedWa2 = localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2;
+            document.getElementById('whatsappNumber1').value = savedWa1;
+            document.getElementById('whatsappNumber2').value = savedWa2;
+
             renderTrip();
+            applyWhatsAppNumbers(savedWa1, savedWa2);
             renderGallery();
             loadNews();
         });
