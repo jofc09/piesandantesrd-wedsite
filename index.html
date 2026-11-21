@@ -1217,6 +1217,7 @@
     <footer>
         <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo</p>
         <p>Teléfonos: 809-403-0141 | 809-996-8875</p>
+        <p id="codeVersionFooter" style="font-size: 0.78rem; color: #9CA3AF; margin-top: 6px;"></p>
     </footer>
 
     <!-- Botón flotante de Instagram -->
@@ -1455,7 +1456,7 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-v3'; // Cambia este valor al actualizar el código para refrescar datos base en localStorage
+        const APP_CODE_VERSION = '2026-11-21-v4'; // Versión actual del código para refrescar datos base en localStorage
         const ADMIN_PASS = 'admin123'; // Clave actual del Panel Admin (Ctrl + Shift + A)
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
@@ -1508,6 +1509,10 @@
                 localStorage.removeItem('piesandantesTrip');
                 localStorage.removeItem('news');
                 localStorage.setItem('appCodeVersion', APP_CODE_VERSION);
+            }
+            const footerVersionEl = document.getElementById('codeVersionFooter');
+            if (footerVersionEl) {
+                footerVersionEl.textContent = `Versión de código: ${APP_CODE_VERSION}`;
             }
         }
 
