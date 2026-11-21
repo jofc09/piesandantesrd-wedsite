@@ -621,7 +621,7 @@
         }
 
         /* =================================
-           9. NOSOTROS, QR DE ACCESO RÁPIDO Y CONTACTO
+           9. NOSOTROS Y CONTACTO
            ================================= */
         .about-container {
             display: flex;
@@ -656,26 +656,6 @@
         .about-text {
             flex: 1.5;
             min-width: 280px;
-        }
-
-        .quick-qr-box {
-            background: var(--blanco);
-            border-radius: 18px;
-            padding: 28px;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(27, 59, 111, 0.08);
-            border: 2px solid var(--azul-logo);
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        #pageAccessQrCanvas {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 10px;
-            border: 1px solid #D1D5DB;
-            margin: 12px auto;
-            display: block;
         }
 
         .contact-section {
@@ -1054,7 +1034,6 @@
                 <a href="#viaje">Viaje Medellín y Guatapé</a>
                 <a href="#galeria">Galería</a>
                 <a href="#noticias">Noticias</a>
-                <a href="#acceso-qr">QR Rápido</a>
                 <a href="#contacto">Contacto</a>
             </div>
         </div>
@@ -1263,26 +1242,18 @@
             <!-- Código QR dentro del Panel de Administración -->
             <div class="admin-qr-box" id="adminQrSection">
                 <h4 style="color: var(--azul-logo); margin-bottom: 4px;">📲 Código QR de Acceso Rápido (Panel Admin)</h4>
-                <p style="font-size: 0.85rem; color: #4B5563;">Comparte o escanea este QR para abrir la página al instante</p>
+                <p style="font-size: 0.85rem; color: #4B5563;">Enlace limpio con piesandantesrd + dominio de despliegue</p>
                 <canvas id="adminPageQrCanvas" width="160" height="160"></canvas>
-                <p id="adminPageQrUrl" style="font-size: 0.8rem; color: #4B5563; word-break: break-all; margin-bottom: 10px;"></p>
-                <button type="button" class="btn-cta" onclick="downloadPageAccessQr()">
-                    <i class="fas fa-download"></i> Descargar QR (PNG)
-                </button>
+                <p id="adminPageQrUrl" style="font-size: 0.85rem; font-weight: bold; color: var(--azul-logo); word-break: break-all; margin-bottom: 10px;"></p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-cta" onclick="copyCleanBrandLink()">
+                        <i class="fas fa-copy"></i> Copiar Enlace
+                    </button>
+                    <button type="button" class="btn-cta" onclick="downloadPageAccessQr()">
+                        <i class="fas fa-download"></i> Descargar QR (PNG)
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Sección de QR rápido para entrar a la página -->
-    <section id="acceso-qr">
-        <h2 class="section-title">📱 QR Rápido para Entrar a la Página</h2>
-        <p class="section-subtitle">Escanea este código con tu cámara para abrir la página más rápido</p>
-        <div class="quick-qr-box">
-            <canvas id="pageAccessQrCanvas" width="180" height="180"></canvas>
-            <p id="pageAccessQrUrl" style="font-size: 0.85rem; color: #4B5563; word-break: break-all; margin-bottom: 12px;"></p>
-            <button type="button" class="btn-cta" onclick="downloadPageAccessQr()">
-                <i class="fas fa-download"></i> Descargar QR de la Página (PNG)
-            </button>
         </div>
     </section>
 
@@ -1550,7 +1521,11 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-pages-v7';
+        const APP_CODE_VERSION = '2026-11-21-cf-v9';
+        const BRAND_SLUG = 'piesandantesrd';
+        // Deja CUSTOM_DEPLOY_DOMAIN vacío ('') para usar el dominio base del despliegue actual,
+        // o escribe un dominio específico (ej. 'pages.dev' o 'tudominio.com') para forzar piesandantesrd.<dominio>.
+        const CUSTOM_DEPLOY_DOMAIN = '';
         const ADMIN_PASS = 'admin123';
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
@@ -1622,6 +1597,24 @@
             if (footerVersionEl) {
                 footerVersionEl.textContent = `Versión de código: ${APP_CODE_VERSION}`;
             }
+        }
+
+        function getCleanBrandUrl() {
+            let baseDomain = String(CUSTOM_DEPLOY_DOMAIN || '').trim().replace(/^https?:\/\//i, '').replace(/\/+$/, '');
+            if (!baseDomain) {
+                const host = (window.location && window.location.hostname) ? window.location.hostname.toLowerCase() : '';
+                if (!host || host === 'localhost' || host === '127.0.0.1') {
+                    baseDomain = 'pages.dev';
+                } else {
+                    const parts = host.split('.');
+                    if (parts.length >= 2) {
+                        baseDomain = parts.slice(1).join('.');
+                    } else {
+                        baseDomain = host;
+                    }
+                }
+            }
+            return `https://${BRAND_SLUG}.${baseDomain}`;
         }
 
         function getBalanceAmountUSD() {
@@ -1771,25 +1764,28 @@
         }
 
         function renderPageAccessQr() {
-            const pageUrl = window.location.href || 'https://piesandantesrd.pages.dev';
-            renderQrOnCanvas('pageAccessQrCanvas', pageUrl);
-            renderQrOnCanvas('adminPageQrCanvas', pageUrl);
-
-            const urlEl = document.getElementById('pageAccessQrUrl');
-            if (urlEl) urlEl.textContent = pageUrl;
+            const cleanUrl = getCleanBrandUrl();
+            renderQrOnCanvas('adminPageQrCanvas', cleanUrl);
 
             const adminUrlEl = document.getElementById('adminPageQrUrl');
-            if (adminUrlEl) adminUrlEl.textContent = pageUrl;
+            if (adminUrlEl) adminUrlEl.textContent = cleanUrl;
+        }
+
+        function copyCleanBrandLink() {
+            const cleanUrl = getCleanBrandUrl();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(cleanUrl).then(() => showNotification(`Enlace copiado: ${cleanUrl}`, 'info'));
+            }
         }
 
         function downloadPageAccessQr() {
-            const canvas = document.getElementById('pageAccessQrCanvas') || document.getElementById('adminPageQrCanvas');
+            const canvas = document.getElementById('adminPageQrCanvas');
             if (!canvas) return;
             const link = document.createElement('a');
-            link.download = 'QR_Acceso_PiesandantesRD.png';
+            link.download = `QR_${BRAND_SLUG}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
-            showNotification('QR de acceso rápido descargado en PNG', 'success');
+            showNotification('QR descargado en PNG', 'success');
         }
 
         function formatDisplayPhone(rawNumber) {
