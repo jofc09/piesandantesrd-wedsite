@@ -1455,6 +1455,7 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
+        const APP_CODE_VERSION = '2026-11-21-v3'; // Cambia este valor al actualizar el código para refrescar datos base en localStorage
         const ADMIN_PASS = 'admin123'; // Clave actual del Panel Admin (Ctrl + Shift + A)
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
@@ -1500,6 +1501,15 @@
         let currentReceiptDataUrl = '';
         let ticketCounter = 1;
         let isAdmin = false;
+
+        function syncCodeVersionStorage() {
+            const savedVersion = localStorage.getItem('appCodeVersion');
+            if (savedVersion !== APP_CODE_VERSION) {
+                localStorage.removeItem('piesandantesTrip');
+                localStorage.removeItem('news');
+                localStorage.setItem('appCodeVersion', APP_CODE_VERSION);
+            }
+        }
 
         function getBalanceAmountUSD() {
             return Math.max(0, Number(tripData.priceUSD) - DEPOSIT_AMOUNT_USD);
@@ -1696,7 +1706,7 @@
                 : `Total US$ ${tripData.priceUSD} • Apartado US$ ${DEPOSIT_AMOUNT_USD}`;
 
             document.getElementById('stageSummaryBox').innerHTML = expired
-                ? `<strong>Plazo del apartado vencido (${deadlineStr}):</strong> Ahora corresponde el pago restante de <strong>US$ ${balanceUSD}</strong>. (Apartado no reembolsable si no vas).`
+                ? `<strong>Plazo del apartado vencido (${deadlineDateStr}):</strong> Ahora corresponde el pago restante de <strong>US$ ${balanceUSD}</strong>. (Apartado no reembolsable si no vas).`
                 : `<strong>Apartado (US$ ${DEPOSIT_AMOUNT_USD}):</strong> Disponible hasta <strong>${deadlineDateStr}</strong> (1 mes antes del vuelo, no reembolsable si no vas). Luego corresponde pagar <strong>US$ ${balanceUSD}</strong>. Cierre 1 día antes del vuelo.`;
 
             const reserveBtn = document.getElementById('reserveTripBtn');
@@ -2178,6 +2188,7 @@
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             const payload = {
                 brand: 'PiesandantesRD',
+                appCodeVersion: APP_CODE_VERSION,
                 exportedAt: new Date().toISOString(),
                 depositMonthsBeforeFlight: DEPOSIT_MONTHS_BEFORE_FLIGHT,
                 flightDate: tripData.flightDate,
@@ -2340,6 +2351,8 @@
         // 9. INICIALIZACIÓN AL CARGAR
         // =================================
         document.addEventListener('DOMContentLoaded', function () {
+            syncCodeVersionStorage();
+
             const savedCounter = localStorage.getItem('ticketCounter');
             if (savedCounter) ticketCounter = parseInt(savedCounter, 10) || 1;
 
