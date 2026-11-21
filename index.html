@@ -273,6 +273,28 @@
             margin-right: 8px;
         }
 
+        .stage-summary-box {
+            background: #FFFBEB;
+            border: 1px solid var(--amarillo-logo);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 14px;
+        }
+
+        .booking-closed-banner {
+            background: #FEE2E2;
+            border: 1px solid #FCA5A5;
+            color: #991B1B;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: none;
+        }
+
         .price-display {
             background-color: var(--naranja-logo);
             color: var(--blanco);
@@ -301,9 +323,10 @@
             font-size: 1rem;
         }
 
-        .btn-card:hover { background-color: var(--naranja-logo); }
+        .btn-card:hover:not(:disabled) { background-color: var(--naranja-logo); }
+        .btn-card:disabled { background-color: #9CA3AF; cursor: not-allowed; opacity: 0.85; }
         .btn-secondary { background-color: var(--amarillo-logo); color: var(--azul-logo); }
-        .btn-secondary:hover { background-color: #dba116; }
+        .btn-secondary:hover:not(:disabled) { background-color: #dba116; }
 
         /* =================================
            7. GALERÍA DE IMÁGENES
@@ -532,7 +555,7 @@
         }
 
         /* =================================
-           9. NOSOTROS (LOGO INTEGRADO) Y CONTACTO
+           9. NOSOTROS, QR DE ACCESO RÁPIDO Y CONTACTO
            ================================= */
         .about-container {
             display: flex;
@@ -569,6 +592,26 @@
             min-width: 280px;
         }
 
+        .quick-qr-box {
+            background: var(--blanco);
+            border-radius: 18px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(27, 59, 111, 0.08);
+            border: 2px solid var(--azul-logo);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        #pageAccessQrCanvas {
+            background: #FFFFFF;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #D1D5DB;
+            margin: 12px auto;
+            display: block;
+        }
+
         .contact-section {
             background-color: var(--azul-logo);
             color: var(--blanco);
@@ -595,7 +638,7 @@
         }
 
         /* =================================
-           10. MÉTODOS DE PAGO, COMPROBANTE Y QR
+           10. ETAPAS, FACTURACIÓN, TÉRMINOS, COMPROBANTE Y PASE
            ================================= */
         .payment-modal, .ticket-modal {
             display: none;
@@ -612,7 +655,7 @@
             background: var(--blanco);
             padding: 2rem;
             border-radius: 16px;
-            max-width: 560px;
+            max-width: 610px;
             width: 100%;
             max-height: 92vh;
             overflow-y: auto;
@@ -646,6 +689,83 @@
             border: 2px solid #D1D5DB;
             border-radius: 8px;
             font-size: 0.98rem;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .stage-timer-hint {
+            background: #FEF3C7;
+            border-left: 4px solid #D97706;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            color: #78350F;
+            margin-top: 6px;
+        }
+
+        .billing-box {
+            background: #EFF6FF;
+            border: 1px solid #93C5FD;
+            border-radius: 12px;
+            padding: 14px;
+            margin: 14px 0;
+        }
+
+        .billing-box h4 {
+            color: var(--azul-logo);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
+
+        .terms-box {
+            background: #F9FAFB;
+            border: 2px solid var(--azul-logo);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 16px 0;
+        }
+
+        .terms-box h4 {
+            color: var(--azul-logo);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .terms-clauses {
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 0.86rem;
+            color: #1F2937;
+            max-height: 165px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .terms-clauses p {
+            margin-bottom: 6px;
+        }
+
+        .terms-check-label {
+            display: flex !important;
+            align-items: flex-start;
+            gap: 8px;
+            font-weight: 600 !important;
+            font-size: 0.88rem;
+            color: var(--texto-oscuro);
+            cursor: pointer;
+        }
+
+        .terms-check-label input[type="checkbox"] {
+            width: auto !important;
+            margin-top: 3px;
+            transform: scale(1.15);
+            cursor: pointer;
         }
 
         .bank-methods-grid {
@@ -721,24 +841,10 @@
         }
 
         .ticket-number {
-            font-size: 1.65rem;
+            font-size: 1.75rem;
             font-weight: bold;
             color: var(--azul-logo);
-        }
-
-        .qr-wrapper {
-            margin: 12px auto 6px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        #ticketQrCanvas {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #E5E7EB;
+            margin-bottom: 6px;
         }
 
         .ticket-details {
@@ -882,7 +988,7 @@
                 <a href="#viaje">Viaje Medellín y Guatapé</a>
                 <a href="#galeria">Galería</a>
                 <a href="#noticias">Noticias</a>
-                <a href="#nosotros">Nosotros</a>
+                <a href="#acceso-qr">QR Rápido</a>
                 <a href="#contacto">Contacto</a>
             </div>
         </div>
@@ -892,7 +998,7 @@
     <header>
         <div class="hero-content">
             <h1 id="heroTitleDisplay">Medellín y Guatapé</h1>
-            <p id="heroSubtitleDisplay">Del 3 al 7 de marzo • US$ 700 por persona</p>
+            <p id="heroSubtitleDisplay">Del 3 al 7 de marzo • Total US$ 700 (Aparta con US$ 100)</p>
             <a href="#viaje" class="btn-cta">Ver Detalles y Reservar</a>
         </div>
     </header>
@@ -900,7 +1006,7 @@
     <!-- Tarjeta principal del viaje -->
     <section id="viaje">
         <h2 class="section-title">✈️ Próxima Aventura</h2>
-        <p class="section-subtitle">Cupos limitados en habitaciones compartidas • ¡Asegura tu espacio!</p>
+        <p class="section-subtitle">Apartado hasta 1 mes antes del vuelo • Luego pago restante • Cierre 1 día antes del vuelo</p>
 
         <div class="trip-showcase">
             <div class="trip-cover"></div>
@@ -914,12 +1020,14 @@
                         <li><i class="fas fa-coffee"></i><strong>Desayuno incluido</strong></li>
                         <li><i class="fas fa-route"></i><strong>Excursiones y traslados:</strong> Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros</li>
                     </ul>
+                    <div class="stage-summary-box" id="stageSummaryBox"></div>
+                    <div class="booking-closed-banner" id="bookingClosedBanner"></div>
                 </div>
 
                 <div>
-                    <div class="price-display" id="tripPriceDisplay">US$ 700 / persona</div>
+                    <div class="price-display" id="tripPriceDisplay">Total US$ 700 • Apartado US$ 100</div>
                     <button class="btn-card" id="reserveTripBtn" onclick="openPaymentModal()">
-                        Reservar y Subir Comprobante (US$ 700)
+                        Reservar y Completar Factura Electrónica
                     </button>
                     <button class="btn-card btn-secondary" onclick="showParticipants()">
                         Ver Participantes Inscritos
@@ -962,25 +1070,31 @@
         <div class="admin-tabs">
             <button class="admin-tab active" onclick="switchAdminTab('editTrip', event)">Editar Viaje</button>
             <button class="admin-tab" onclick="switchAdminTab('manageNews', event)">Editar Noticias</button>
-            <button class="admin-tab" onclick="switchAdminTab('participants', event)">Pase de Lista / Reservas</button>
+            <button class="admin-tab" onclick="switchAdminTab('participants', event)">Verificación por Código (2 Pasos)</button>
             <button class="admin-tab" onclick="switchAdminTab('reports', event)">Reportes y Respaldo JSON</button>
             <button class="admin-tab" onclick="switchAdminTab('settings', event)">Cuentas y WhatsApp</button>
         </div>
 
         <div class="admin-content">
             <div id="adminEditTrip" class="admin-tab-content">
-                <h3>Editar Información del Viaje</h3>
+                <h3>Editar Información y Fecha de Vuelo</h3>
                 <div class="form-group">
                     <label>Nombre del Destino:</label>
                     <input type="text" id="editTripTitle">
                 </div>
                 <div class="form-group">
-                    <label>Fechas del Viaje:</label>
+                    <label>Fechas Visibles del Viaje:</label>
                     <input type="text" id="editTripDate">
                 </div>
-                <div class="form-group">
-                    <label>Precio por Persona (en US$):</label>
-                    <input type="number" id="editTripPrice" min="1">
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>Precio Total por Persona (en US$):</label>
+                        <input type="number" id="editTripPrice" min="101">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha y Hora de Vuelo (apartado vence 1 mes antes; cierra 24h antes):</label>
+                        <input type="datetime-local" id="editFlightDate">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Excursiones y Lugares Incluidos:</label>
@@ -1005,28 +1119,20 @@
             </div>
 
             <div id="adminParticipants" class="admin-tab-content" style="display: none;">
-                <h3>Pase de Lista y Verificación de Pases</h3>
+                <h3>Verificación por Código en Dos Etapas (Apartado y Pago Restante)</h3>
                 <div class="form-group">
-                    <label for="codeCheckInput">Confirmar Código de Pase o QR (ej. PRD-00001):</label>
+                    <label for="codeCheckInput">Ingresa el Código del Usuario (ej. PRD-00001):</label>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <input type="text" id="codeCheckInput" placeholder="Escribe o pega el código del QR..." style="flex: 1; min-width: 220px;">
-                        <button type="button" class="btn-cta" onclick="confirmarCodigoPase()">Confirmar Pase</button>
-                    </div>
-                </div>
-
-                <!-- Escáner QR con cámara -->
-                <div style="margin: 12px 0 18px 0; padding: 12px; background: #F3F4F6; border-radius: 10px; border: 1px solid #D1D5DB;">
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-                        <button type="button" class="btn-cta" style="padding: 8px 16px; font-size: 0.9rem;" onclick="startQrCameraScanner()">
-                            <i class="fas fa-camera"></i> Escanear QR con Cámara
+                        <input type="text" id="codeCheckInput" placeholder="Escribe o pega el código (ej. PRD-00001)..." style="flex: 1; min-width: 220px;">
+                        <button type="button" class="btn-cta" onclick="confirmarCodigoEtapa('deposit')">
+                            1. Confirmar Apartado
                         </button>
-                        <button type="button" class="btn-small btn-delete" id="stopScannerBtn" style="display: none; padding: 9px 14px;" onclick="stopQrCameraScanner()">
-                            Detener Cámara
+                        <button type="button" class="btn-cta" style="background-color: var(--azul-logo);" onclick="confirmarCodigoEtapa('balance')">
+                            2. Confirmar Pago Restante
                         </button>
                     </div>
-                    <video id="qrScannerVideo" playsinline style="display: none; width: 100%; max-width: 340px; margin-top: 10px; border-radius: 8px; border: 2px solid var(--azul-logo);"></video>
                 </div>
-
+                <div id="codeCheckResultBanner"></div>
                 <div id="participantsList"></div>
             </div>
 
@@ -1036,7 +1142,7 @@
                 <hr style="margin: 18px 0;">
                 <h4>Mover Reservas y Comprobantes entre Dispositivos (JSON)</h4>
                 <p style="font-size: 0.9rem; color: #4B5563; margin-top: 4px;">
-                    Exporta un archivo JSON con reservas y fotos de comprobantes, y ábrelo en otro dispositivo para restaurar o combinar los datos.
+                    Exporta un archivo JSON con reservas, fechas de apartado/vuelo, campos de facturación electrónica, términos y fotos de comprobantes.
                 </p>
                 <div class="backup-actions">
                     <button type="button" class="btn-cta" onclick="exportBackupJSON()">
@@ -1065,6 +1171,19 @@
                 </div>
                 <button class="btn-cta" onclick="saveSettings()">Guardar Configuración</button>
             </div>
+        </div>
+    </section>
+
+    <!-- Sección de QR rápido para entrar a la página -->
+    <section id="acceso-qr">
+        <h2 class="section-title">📱 QR Rápido para Entrar a la Página</h2>
+        <p class="section-subtitle">Escanea este código con tu cámara para abrir la página más rápido</p>
+        <div class="quick-qr-box">
+            <canvas id="pageAccessQrCanvas" width="180" height="180"></canvas>
+            <p id="pageAccessQrUrl" style="font-size: 0.85rem; color: #4B5563; word-break: break-all; margin-bottom: 12px;"></p>
+            <button type="button" class="btn-cta" onclick="downloadPageAccessQr()">
+                <i class="fas fa-download"></i> Descargar QR de la Página (PNG)
+            </button>
         </div>
     </section>
 
@@ -1130,34 +1249,99 @@
         <i class="fab fa-whatsapp"></i>
     </button>
 
-    <!-- Modal de reserva, métodos bancarios y comprobante -->
+    <!-- Modal de reserva, apartado hasta 1 mes antes del vuelo, facturación electrónica y términos -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
             <h3 id="paymentModalTitle" style="color: var(--azul-logo); margin-bottom: 1rem;">Reservar Viaje</h3>
             <form id="paymentForm">
+                <!-- Etapa de pago controlada por límite de 1 mes antes del vuelo -->
+                <div class="form-group">
+                    <label for="paymentStage">Modalidad de Pago *</label>
+                    <select id="paymentStage" onchange="handleCurrencyChange()">
+                        <option value="deposit" selected>Apartado (US$ 100 — No reembolsable si no vas)</option>
+                        <option value="balance">Pago restante para ir (US$ 600)</option>
+                    </select>
+                    <div class="stage-timer-hint" id="stageTimerHint"></div>
+                </div>
+
                 <div class="form-group">
                     <label for="participantName">Nombre Completo *</label>
                     <input type="text" id="participantName" required>
                 </div>
-                <div class="form-group">
-                    <label for="participantPhone">Teléfono *</label>
-                    <input type="tel" id="participantPhone" required>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="participantAge">Edad *</label>
+                        <input type="number" id="participantAge" min="1" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="participantResidence">Residencia (Ciudad / Sector / País) *</label>
+                        <input type="text" id="participantResidence" placeholder="Ej. Santo Domingo, RD" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="participantEmail">Correo Electrónico *</label>
-                    <input type="email" id="participantEmail" required>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="participantPhone">Teléfono *</label>
+                        <input type="tel" id="participantPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="participantEmail">Correo Electrónico *</label>
+                        <input type="email" id="participantEmail" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label for="paymentCurrency">Moneda del Pago *</label>
-                    <select id="paymentCurrency" onchange="handleCurrencyChange()">
-                        <option value="USD" selected>Dólares Estadounidenses (US$)</option>
-                        <option value="DOP">Pesos Dominicanos (RD$)</option>
-                    </select>
+                    <label for="emergencyContact">Número / Contacto de Emergencia *</label>
+                    <input type="text" id="emergencyContact" placeholder="Nombre y teléfono de emergencia" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="exchangeRateInput">Tasa de referencia (RD$ por US$ 1, si eliges RD$):</label>
-                    <input type="number" id="exchangeRateInput" value="60" min="1" step="0.5" onchange="handleCurrencyChange()">
+                    <label for="healthConditions">Condición de Salud, Alergias o Si Padece de Algo *</label>
+                    <textarea id="healthConditions" rows="2" placeholder="Indica alergias, medicamentos, condiciones médicas o escribe 'Ninguna'" required></textarea>
+                </div>
+
+                <!-- Campos estructurados para comprobante / factura electrónica (e-CF) -->
+                <div class="billing-box" id="billingSection">
+                    <h4>🧾 Datos para Factura Electrónica (e-CF)</h4>
+                    <div class="form-row-2">
+                        <div class="form-group" style="margin-bottom: 8px;">
+                            <label for="ecfType">Tipo de Comprobante Electrónico *</label>
+                            <select id="ecfType" required>
+                                <option value="E32" selected>E32 - Factura de Consumo Electrónica</option>
+                                <option value="E31">E31 - Factura de Crédito Fiscal Electrónica</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 8px;">
+                            <label for="rncOrId">RNC o Cédula Comprador *</label>
+                            <input type="text" id="rncOrId" placeholder="RNC o Cédula" required>
+                        </div>
+                    </div>
+                    <div class="form-row-2">
+                        <div class="form-group" style="margin-bottom: 8px;">
+                            <label for="billingName">Nombre o Razón Social Comprador *</label>
+                            <input type="text" id="billingName" placeholder="Nombre legal o razón social" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 8px;">
+                            <label for="billingEmail">Correo para Factura Electrónica *</label>
+                            <input type="email" id="billingEmail" placeholder="correo@ejemplo.com" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="paymentCurrency">Moneda del Pago *</label>
+                        <select id="paymentCurrency" onchange="handleCurrencyChange()">
+                            <option value="USD" selected>Dólares Estadounidenses (US$)</option>
+                            <option value="DOP">Pesos Dominicanos (RD$)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchangeRateInput">Tasa de referencia (RD$ por US$ 1):</label>
+                        <input type="number" id="exchangeRateInput" value="60" min="1" step="0.5" onchange="handleCurrencyChange()">
+                    </div>
                 </div>
 
                 <!-- Métodos de pago con logos de cada banco / plataforma -->
@@ -1224,39 +1408,45 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="emergencyContact">Contacto de Emergencia *</label>
-                    <input type="text" id="emergencyContact" placeholder="Nombre y teléfono" required>
+                    <label for="specialRequests">Notas o Solicitudes Especiales (opcional)</label>
+                    <textarea id="specialRequests" rows="2" placeholder="Preferencias de habitación compartida, etc."></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="specialRequests">Notas o Solicitudes Especiales (opcional)</label>
-                    <textarea id="specialRequests" rows="2" placeholder="Preferencias de habitación compartida, alergias, etc."></textarea>
+                <!-- Formulario de Términos y Condiciones -->
+                <div class="terms-box" id="termsSection">
+                    <h4>📋 Términos y Condiciones del Viaje</h4>
+                    <div class="terms-clauses">
+                        <p><strong>1. Apartado hasta 1 mes antes del vuelo y no reembolsable:</strong> El apartado (US$ 100) aplica hasta 1 mes exacto antes de la fecha del vuelo, no se devuelve si no vas y al vencer el plazo corresponde pagar el restante.</p>
+                        <p><strong>2. Cierre previo al vuelo:</strong> Las reservas cierran automáticamente 1 día (24 horas) antes de la fecha del vuelo.</p>
+                        <p><strong>3. Pérdida de objetos:</strong> PiesandantesRD no se hace responsable por la pérdida, extravío, daño o sustracción de ningún objeto personal, equipaje, dinero, documentos o dispositivos durante el trayecto o las excursiones.</p>
+                        <p><strong>4. Conducta y protocolo:</strong> Cualquier comportamiento fuera de nuestro protocolo, normas de convivencia, horarios o indicaciones del equipo organizador está bajo la exclusiva responsabilidad y consecuencia del participante.</p>
+                        <p><strong>5. Datos de facturación y salud:</strong> Declaro que los datos para factura electrónica, edad, residencia, contacto de emergencia y condiciones de salud, alergias o padecimientos son verídicos.</p>
+                    </div>
+                    <label class="terms-check-label" for="acceptTermsCheckbox">
+                        <input type="checkbox" id="acceptTermsCheckbox" required>
+                        <span>Acepto los Términos y Condiciones: entiendo que el apartado no se devuelve si no voy, que vence 1 mes antes del vuelo, que no se responsabilizan por la pérdida de ningún objeto y que cualquier comportamiento fuera del protocolo es bajo mi responsabilidad y consecuencia. *</span>
+                    </label>
                 </div>
 
                 <div style="text-align: center; margin-top: 16px;">
-                    <button type="submit" class="btn-cta">Enviar Comprobante y Generar QR</button>
+                    <button type="submit" class="btn-cta">Aceptar Términos y Generar Código</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Modal de ticket con código, QR de pase y descarga PNG -->
+    <!-- Modal de pase solo con código (sin QR del pase) -->
     <div id="ticketModal" class="ticket-modal">
         <div class="ticket">
             <button class="close-modal" onclick="closeTicketModal()">&times;</button>
-            <h3 style="color: var(--azul-logo);">¡Pase de Viaje Generado!</h3>
-            <p style="font-size: 0.9rem; color: #4B5563;">Presenta este código o QR el día del viaje para pasar lista.</p>
+            <h3 style="color: var(--azul-logo);">¡Código de Reserva Generado!</h3>
+            <p style="font-size: 0.9rem; color: #4B5563;">Guarda este código: se usará para confirmar tu apartado y luego tu pago restante.</p>
             <div class="ticket-canvas">
                 <div class="ticket-number" id="ticketNumber">#PRD-00001</div>
-                <div class="qr-wrapper">
-                    <canvas id="ticketQrCanvas" width="168" height="168"></canvas>
-                    <small id="qrPayloadText" style="color: #6B7280; font-size: 0.78rem;"></small>
-                </div>
                 <div class="ticket-details" id="ticketDetails"></div>
             </div>
             <div class="ticket-actions">
-                <button type="button" class="btn-cta" onclick="shareTicket()">Copiar Código de Pase</button>
-                <button type="button" class="btn-cta" onclick="downloadTicketQrImage()">Descargar QR (PNG)</button>
+                <button type="button" class="btn-cta" onclick="shareTicket()">Copiar Código</button>
             </div>
         </div>
     </div>
@@ -1268,8 +1458,10 @@
         const ADMIN_PASS = 'admin123'; // Clave actual del Panel Admin (Ctrl + Shift + A)
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
+        const DEPOSIT_AMOUNT_USD = 100; // Monto de apartado en US$ (no reembolsable si no van)
+        const DEPOSIT_MONTHS_BEFORE_FLIGHT = 1; // Apartado vence exactamente 1 mes antes del vuelo
+        const FLIGHT_CLOSE_LEAD_MS = 24 * 60 * 60 * 1000; // Cierre 1 día (24h) antes del vuelo
         const MAX_RECEIPT_BYTES = 1.5 * 1024 * 1024;
-        const SCAN_INTERVAL_MS = 350;
         const BACKUP_FILE_PREFIX = 'respaldo_piesandantesrd';
 
         const BANK_HINTS = {
@@ -1283,6 +1475,7 @@
         let tripData = {
             title: 'Medellín y Guatapé',
             date: '3 al 7 de marzo',
+            flightDate: '2027-03-03T08:00:00', // Fecha/hora del vuelo (apartado vence 1 mes antes; cierra 24h antes)
             priceUSD: 700,
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
@@ -1301,13 +1494,45 @@
             { src: 'foto11.jpg.jpg', caption: 'Recuerdos del viaje' }
         ];
 
+        let currentStage = 'deposit';
         let currentCurrency = 'USD';
-        let currentConvertedPrice = 700;
+        let currentConvertedPrice = DEPOSIT_AMOUNT_USD;
         let currentReceiptDataUrl = '';
         let ticketCounter = 1;
         let isAdmin = false;
-        let qrVideoStream = null;
-        let qrScanTimer = null;
+
+        function getBalanceAmountUSD() {
+            return Math.max(0, Number(tripData.priceUSD) - DEPOSIT_AMOUNT_USD);
+        }
+
+        // Calcula exactamente 1 mes antes de la fecha del vuelo
+        function getDepositDeadlineTimestamp() {
+            const flightMs = Date.parse(tripData.flightDate);
+            if (Number.isNaN(flightMs)) return Date.now();
+            const d = new Date(flightMs);
+            d.setMonth(d.getMonth() - DEPOSIT_MONTHS_BEFORE_FLIGHT);
+            return d.getTime();
+        }
+
+        function isDepositExpired() {
+            return Date.now() > getDepositDeadlineTimestamp();
+        }
+
+        function isBookingClosedByFlightDate() {
+            const flightMs = Date.parse(tripData.flightDate);
+            if (Number.isNaN(flightMs)) return false;
+            return Date.now() >= (flightMs - FLIGHT_CLOSE_LEAD_MS);
+        }
+
+        function getStageAmountUSD(stage) {
+            return stage === 'balance' ? getBalanceAmountUSD() : DEPOSIT_AMOUNT_USD;
+        }
+
+        function getStageLabel(stage) {
+            return stage === 'balance'
+                ? 'Etapa 2: Pago restante para ir'
+                : 'Etapa 1: Apartado (no reembolsable)';
+        }
 
         function formatMoney(amount, currency) {
             const formatted = Number(amount).toLocaleString('en-US', {
@@ -1325,7 +1550,7 @@
         }
 
         // =================================
-        // 2. GENERADOR QR EN CANVAS
+        // 2. GENERADOR QR PARA ENTRAR RÁPIDO A LA PÁGINA
         // =================================
         function hashString(str) {
             let h = 2166136261;
@@ -1336,7 +1561,7 @@
             return h >>> 0;
         }
 
-        function renderQrCode(canvasId, payloadText) {
+        function renderQrOnCanvas(canvasId, payloadText) {
             const canvas = document.getElementById(canvasId);
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
@@ -1395,21 +1620,23 @@
                     }
                 }
             }
-
-            const labelEl = document.getElementById('qrPayloadText');
-            if (labelEl) labelEl.textContent = payloadText;
         }
 
-        function downloadTicketQrImage() {
-            const qrCanvas = document.getElementById('ticketQrCanvas');
-            const ticketCode = document.getElementById('ticketNumber').textContent.replace('#', '').trim();
-            if (!qrCanvas) return;
+        function renderPageAccessQr() {
+            const pageUrl = window.location.href || 'https://piesandantesrd.com';
+            renderQrOnCanvas('pageAccessQrCanvas', pageUrl);
+            const urlEl = document.getElementById('pageAccessQrUrl');
+            if (urlEl) urlEl.textContent = pageUrl;
+        }
 
+        function downloadPageAccessQr() {
+            const canvas = document.getElementById('pageAccessQrCanvas');
+            if (!canvas) return;
             const link = document.createElement('a');
-            link.download = `Pase_${ticketCode}_PiesandantesRD.png`;
-            link.href = qrCanvas.toDataURL('image/png');
+            link.download = 'QR_Acceso_PiesandantesRD.png';
+            link.href = canvas.toDataURL('image/png');
             link.click();
-            showNotification('Imagen QR descargada en PNG', 'success');
+            showNotification('QR de acceso rápido descargado en PNG', 'success');
         }
 
         // =================================
@@ -1449,18 +1676,45 @@
         });
 
         // =================================
-        // 4. RENDERIZADO DEL VIAJE Y GALERÍA
+        // 4. RENDERIZADO DEL VIAJE Y PLAZOS
         // =================================
         function renderTrip() {
             const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
-            if (savedTrip) tripData = savedTrip;
+            if (savedTrip) tripData = { ...tripData, ...savedTrip };
+
+            const balanceUSD = getBalanceAmountUSD();
+            const expired = isDepositExpired();
+            const closed = isBookingClosedByFlightDate();
+            const deadlineDateStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
 
             document.getElementById('heroTitleDisplay').textContent = tripData.title;
-            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • US$ ${tripData.priceUSD} por persona`;
+            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • Total US$ ${tripData.priceUSD}`;
             document.getElementById('tripDateDisplay').innerHTML = `<i class="far fa-calendar-alt"></i> ${tripData.date}`;
             document.getElementById('tripTitleDisplay').textContent = tripData.title;
-            document.getElementById('tripPriceDisplay').textContent = `US$ ${tripData.priceUSD} / persona`;
-            document.getElementById('reserveTripBtn').textContent = `Reservar y Subir Comprobante (US$ ${tripData.priceUSD})`;
+            document.getElementById('tripPriceDisplay').textContent = expired
+                ? `Apartado vencido • Restante US$ ${balanceUSD}`
+                : `Total US$ ${tripData.priceUSD} • Apartado US$ ${DEPOSIT_AMOUNT_USD}`;
+
+            document.getElementById('stageSummaryBox').innerHTML = expired
+                ? `<strong>Plazo del apartado vencido (${deadlineStr}):</strong> Ahora corresponde el pago restante de <strong>US$ ${balanceUSD}</strong>. (Apartado no reembolsable si no vas).`
+                : `<strong>Apartado (US$ ${DEPOSIT_AMOUNT_USD}):</strong> Disponible hasta <strong>${deadlineDateStr}</strong> (1 mes antes del vuelo, no reembolsable si no vas). Luego corresponde pagar <strong>US$ ${balanceUSD}</strong>. Cierre 1 día antes del vuelo.`;
+
+            const reserveBtn = document.getElementById('reserveTripBtn');
+            const closedBanner = document.getElementById('bookingClosedBanner');
+
+            if (closed) {
+                reserveBtn.disabled = true;
+                reserveBtn.textContent = 'Reservas Cerradas (1 Día Antes del Vuelo)';
+                closedBanner.style.display = 'block';
+                closedBanner.textContent = 'Las reservas están cerradas porque falta 1 día (24 horas) o menos para la fecha del vuelo.';
+            } else {
+                reserveBtn.disabled = false;
+                reserveBtn.textContent = expired
+                    ? `Pagar Restante para Ir (US$ ${balanceUSD})`
+                    : `Reservar (Apartado US$ ${DEPOSIT_AMOUNT_USD} / Restante US$ ${balanceUSD})`;
+                closedBanner.style.display = 'none';
+            }
+
             document.getElementById('tripIncludesDisplay').innerHTML = `
                 <li><i class="fas fa-plane"></i><strong>Vuelo incluido</strong></li>
                 <li><i class="fas fa-bed"></i><strong>Alojamiento</strong> en habitaciones compartidas</li>
@@ -1520,7 +1774,6 @@
         }
 
         function logoutAdmin() {
-            stopQrCameraScanner();
             isAdmin = false;
             document.getElementById('adminBadge').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'none';
@@ -1528,7 +1781,6 @@
         }
 
         function switchAdminTab(tab, event) {
-            if (tab !== 'participants') stopQrCameraScanner();
             document.querySelectorAll('.admin-tab-content').forEach(c => c.style.display = 'none');
             document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('admin' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
@@ -1539,14 +1791,18 @@
             document.getElementById('editTripTitle').value = tripData.title;
             document.getElementById('editTripDate').value = tripData.date;
             document.getElementById('editTripPrice').value = tripData.priceUSD;
+            document.getElementById('editFlightDate').value = tripData.flightDate ? tripData.flightDate.slice(0, 16) : '';
             document.getElementById('editTripPlaces').value = tripData.places;
         }
 
         function saveTripEdits() {
+            const parsedPrice = parseFloat(document.getElementById('editTripPrice').value);
+            const rawFlight = document.getElementById('editFlightDate').value;
             tripData = {
                 title: document.getElementById('editTripTitle').value.trim() || tripData.title,
                 date: document.getElementById('editTripDate').value.trim() || tripData.date,
-                priceUSD: parseFloat(document.getElementById('editTripPrice').value) || tripData.priceUSD,
+                flightDate: rawFlight ? new Date(rawFlight).toISOString() : tripData.flightDate,
+                priceUSD: (!isNaN(parsedPrice) && parsedPrice > DEPOSIT_AMOUNT_USD) ? parsedPrice : tripData.priceUSD,
                 places: document.getElementById('editTripPlaces').value.trim() || tripData.places
             };
             localStorage.setItem('piesandantesTrip', JSON.stringify(tripData));
@@ -1555,7 +1811,7 @@
                 localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1,
                 localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2
             );
-            showNotification('Información del viaje actualizada', 'success');
+            showNotification('Información del viaje y fecha de vuelo actualizadas', 'success');
         }
 
         // =================================
@@ -1568,7 +1824,7 @@
                     {
                         id: 1,
                         title: '¡Viaje a Medellín y Guatapé (3 al 7 de marzo)!',
-                        content: 'Paquete de US$ 700 por persona. Paga por Banreservas, Popular, BHD, Token Popular o Qik, sube tu comprobante y obtén tu código QR para el pase del viaje.',
+                        content: 'Aparta con US$ 100 hasta 1 mes antes del vuelo (no reembolsable si no vas), paga el restante para ir y reserva hasta 1 día antes del vuelo.',
                         date: '2026-01-15',
                         priority: 'alta'
                     },
@@ -1630,12 +1886,44 @@
         }
 
         // =================================
-        // 7. RESERVAS, COMPROBANTE SEGURO Y QR
+        // 7. RESERVAS, LÍMITE DE 1 MES ANTES DEL VUELO, FACTURA ELECTRÓNICA Y CÓDIGO
         // =================================
+        function syncStageOptionsText() {
+            const selectEl = document.getElementById('paymentStage');
+            const hintEl = document.getElementById('stageTimerHint');
+            if (!selectEl) return;
+
+            const balanceUSD = getBalanceAmountUSD();
+            const expired = isDepositExpired();
+            const deadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+
+            selectEl.options[0].text = `Apartado (US$ ${DEPOSIT_AMOUNT_USD} — No reembolsable si no vas)`;
+            selectEl.options[1].text = `Pago restante para ir (US$ ${balanceUSD})`;
+            selectEl.options[0].disabled = expired;
+
+            if (expired) {
+                selectEl.value = 'balance';
+                currentStage = 'balance';
+                if (hintEl) {
+                    hintEl.textContent = `El plazo del apartado (1 mes antes del vuelo: ${deadlineStr}) ya venció. Ahora corresponde el pago restante de US$ ${balanceUSD}.`;
+                }
+            } else {
+                if (hintEl) {
+                    hintEl.textContent = `Límite del apartado: ${deadlineStr} (1 mes antes del vuelo). Al vencer ese plazo aplica el restante de US$ ${balanceUSD}.`;
+                }
+            }
+        }
+
         function openPaymentModal() {
+            if (isBookingClosedByFlightDate()) {
+                return showNotification('Las reservas cerraron 1 día (24h) antes del vuelo', 'error');
+            }
+
             currentCurrency = 'USD';
             currentReceiptDataUrl = '';
             document.getElementById('paymentForm').reset();
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
             document.getElementById('paymentCurrency').value = 'USD';
             document.getElementById('receiptPreviewBox').innerHTML = '';
             document.querySelectorAll('.bank-method-card').forEach(m => m.classList.remove('selected'));
@@ -1647,14 +1935,18 @@
         }
 
         function handleCurrencyChange() {
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
             const currency = document.getElementById('paymentCurrency').value;
             const rate = parseFloat(document.getElementById('exchangeRateInput').value) || 60;
+            const stageUSD = getStageAmountUSD(currentStage);
+
             currentCurrency = currency;
-            currentConvertedPrice = currency === 'USD' ? tripData.priceUSD : Math.round(tripData.priceUSD * rate);
+            currentConvertedPrice = currency === 'USD' ? stageUSD : Math.round(stageUSD * rate);
 
             document.getElementById('paymentModalTitle').innerHTML = `
-                Reservar: ${tripData.title} (${tripData.date})<br>
-                <small style="color: var(--naranja-logo);">Total: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
+                ${getStageLabel(currentStage)} • ${tripData.title}<br>
+                <small style="color: var(--naranja-logo);">Monto a registrar: ${formatMoney(currentConvertedPrice, currentCurrency)}</small>
             `;
         }
 
@@ -1705,30 +1997,67 @@
 
         document.getElementById('paymentForm').addEventListener('submit', function (e) {
             e.preventDefault();
+
+            if (isBookingClosedByFlightDate()) {
+                closePaymentModal();
+                renderTrip();
+                return showNotification('Reservas cerradas 1 día antes del vuelo', 'error');
+            }
+
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
+            handleCurrencyChange();
+
             const method = document.getElementById('paymentMethod').value;
+            const acceptedTerms = document.getElementById('acceptTermsCheckbox').checked;
+
             if (!method) return showNotification('Selecciona Banreservas, Popular, BHD, Token Popular o Qik', 'error');
             if (!currentReceiptDataUrl) return showNotification('Adjunta la foto de tu transferencia o token', 'error');
+            if (!acceptedTerms) return showNotification('Debes aceptar los Términos y Condiciones para continuar', 'error');
 
             const ticketCode = `PRD-${String(ticketCounter).padStart(5, '0')}`;
             const participantName = document.getElementById('participantName').value.trim();
-            const qrPayload = `PIESANDANTESRD|${ticketCode}|${participantName}|${method}|${tripData.title}`;
+            const participantAge = document.getElementById('participantAge').value.trim();
+            const participantResidence = document.getElementById('participantResidence').value.trim();
+            const healthConditions = document.getElementById('healthConditions').value.trim();
+            const emergencyContact = document.getElementById('emergencyContact').value.trim();
+            const ecfType = document.getElementById('ecfType').value;
+            const rncOrId = document.getElementById('rncOrId').value.trim();
+            const billingName = document.getElementById('billingName').value.trim();
+            const billingEmail = document.getElementById('billingEmail').value.trim();
+            const stageLabel = getStageLabel(currentStage);
+            const depositDeadlineAt = new Date(getDepositDeadlineTimestamp()).toISOString();
 
             const reserva = {
                 id: Date.now(),
                 ticketNumber: ticketCode,
-                qrPayload,
                 adventure: `${tripData.title} (${tripData.date})`,
+                flightDate: tripData.flightDate,
+                paymentStage: currentStage,
+                stageLabel,
+                depositDeadlineAt,
+                nonRefundableDepositNotice: 'El apartado no se devuelve si no van',
                 name: participantName,
+                age: participantAge,
+                residence: participantResidence,
                 phone: document.getElementById('participantPhone').value.trim(),
                 email: document.getElementById('participantEmail').value.trim(),
+                emergency: emergencyContact,
+                healthConditions,
+                ecfType,
+                rncOrId,
+                billingName,
+                billingEmail,
+                acceptedTerms: true,
+                acceptedTermsAt: new Date().toISOString(),
                 currency: currentCurrency,
                 price: currentConvertedPrice,
                 paymentMethod: method,
                 transferRef: document.getElementById('transferRefCode').value.trim() || 'Sin ref.',
                 receiptImage: currentReceiptDataUrl,
-                emergency: document.getElementById('emergencyContact').value.trim(),
                 requests: document.getElementById('specialRequests').value.trim(),
-                checkedIn: false
+                depositConfirmed: currentStage === 'deposit',
+                balanceConfirmed: currentStage === 'balance'
             };
 
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
@@ -1739,21 +2068,27 @@
             localStorage.setItem('ticketCounter', String(ticketCounter));
 
             document.getElementById('ticketNumber').textContent = `#${reserva.ticketNumber}`;
-            renderQrCode('ticketQrCanvas', reserva.qrPayload);
 
             document.getElementById('ticketDetails').innerHTML = `
+                <p><strong>Código de Verificación:</strong> ${reserva.ticketNumber}</p>
                 <p><strong>Viaje:</strong> ${reserva.adventure}</p>
-                <p><strong>Participante:</strong> ${reserva.name}</p>
+                <p><strong>Modalidad:</strong> ${reserva.stageLabel}</p>
+                <p><strong>Participante:</strong> ${reserva.name} (${reserva.age} años)</p>
+                <p><strong>Residencia:</strong> ${reserva.residence}</p>
+                <p><strong>Emergencia:</strong> ${reserva.emergency}</p>
+                <p><strong>Salud / Alergias:</strong> ${reserva.healthConditions}</p>
+                <p><strong>Factura Electrónica (${reserva.ecfType}):</strong> ${reserva.billingName} • RNC/Cédula: ${reserva.rncOrId} • ${reserva.billingEmail}</p>
+                <p><strong>Términos:</strong> Aceptados (apartado no reembolsable si no van)</p>
                 <p><strong>Método:</strong> ${reserva.paymentMethod} (Ref: ${reserva.transferRef})</p>
                 <p><strong>Monto:</strong> ${formatMoney(reserva.price, reserva.currency)}</p>
-                <p><strong>Estado de Pase:</strong> Pendiente de escaneo el día del viaje</p>
+                <p><strong>Verificación en 2 pasos:</strong> Se confirma por código (1) Apartado y (2) Pago restante</p>
                 <p><strong>Contacto PiesandantesRD:</strong> 809-403-0141 / 809-996-8875</p>
             `;
 
             closePaymentModal();
             document.getElementById('ticketModal').style.display = 'flex';
             if (isAdmin) updateAdminPanel();
-            showNotification('¡Reserva y comprobante registrados con éxito!', 'success');
+            showNotification('¡Reserva y código generados! Verificación en 2 pasos por código.', 'success');
         });
 
         function closeTicketModal() {
@@ -1761,136 +2096,91 @@
         }
 
         function shareTicket() {
-            const num = document.getElementById('ticketNumber').textContent;
-            const texto = `Pase PiesandantesRD ${num} - ${tripData.title} (${tripData.date})`;
+            const num = document.getElementById('ticketNumber').textContent.replace('#', '').trim();
+            const texto = `Código PiesandantesRD: ${num} - ${tripData.title} (${tripData.date})`;
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(texto).then(() => showNotification('Código de pase copiado', 'info'));
+                navigator.clipboard.writeText(texto).then(() => showNotification('Código copiado al portapapeles', 'info'));
             }
         }
 
         function showParticipants() {
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             if (!lista.length) return showNotification('Aún no hay participantes registrados', 'info');
-            alert(lista.map(p => `• ${p.name} (${p.ticketNumber}) - ${p.checkedIn ? 'Pase Validado' : 'Inscrito'}`).join('\n'));
+            alert(lista.map(p => {
+                const st1 = p.depositConfirmed ? 'Apartado OK' : 'Apartado Pendiente';
+                const st2 = p.balanceConfirmed ? 'Restante OK' : 'Restante Pendiente';
+                return `• ${p.name} (${p.ticketNumber}) - ${st1} / ${st2}`;
+            }).join('\n'));
         }
 
         // =================================
-        // 8. CONFIRMACIÓN DE PASE, ESCÁNER QR Y RESPALDO JSON
+        // 8. VERIFICACIÓN POR CÓDIGO EN 2 PASOS Y RESPALDO JSON
         // =================================
-        function toggleCheckIn(id) {
-            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
-            const updated = lista.map(p => String(p.id) === String(id) ? { ...p, checkedIn: !p.checkedIn } : p);
-            localStorage.setItem('participants', JSON.stringify(updated));
-            updateAdminPanel();
-            showNotification('Estado de pase de lista actualizado', 'success');
-        }
-
-        function confirmarCodigoPase(codigoIngresado) {
-            const limpio = String(codigoIngresado || document.getElementById('codeCheckInput').value || '')
+        function confirmarCodigoEtapa(stepType) {
+            const limpio = String(document.getElementById('codeCheckInput').value || '')
                 .trim()
                 .toUpperCase();
 
             if (!limpio) {
-                showNotification('Escribe o pega un código de pase (ej. PRD-00001)', 'error');
+                showNotification('Escribe o pega el código del usuario (ej. PRD-00001)', 'error');
                 return null;
             }
 
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
-            const encontrado = lista.find(p =>
-                String(p.ticketNumber || '').toUpperCase() === limpio ||
-                String(p.qrPayload || '').toUpperCase().includes(limpio)
-            );
+            const encontrado = lista.find(p => String(p.ticketNumber || '').toUpperCase() === limpio);
 
             if (!encontrado) {
-                showNotification(`Código "${limpio}" no encontrado en las reservas`, 'error');
+                showNotification(`Código "${limpio}" no encontrado`, 'error');
                 return null;
             }
 
-            const actualizada = lista.map(p =>
-                String(p.id) === String(encontrado.id) ? { ...p, checkedIn: true } : p
-            );
+            const actualizada = lista.map(p => {
+                if (String(p.id) !== String(encontrado.id)) return p;
+                if (stepType === 'balance') {
+                    return { ...p, balanceConfirmed: true };
+                }
+                return { ...p, depositConfirmed: true };
+            });
+
             localStorage.setItem('participants', JSON.stringify(actualizada));
             updateAdminPanel();
 
-            const bannerBox = document.getElementById('participantsList');
-            if (bannerBox) {
-                bannerBox.insertAdjacentHTML('afterbegin', `
+            const pasoTexto = stepType === 'balance' ? 'PAGO RESTANTE' : 'APARTADO';
+            const bannerEl = document.getElementById('codeCheckResultBanner');
+            if (bannerEl) {
+                bannerEl.innerHTML = `
                     <div style="background:#ECFDF5;border:2px solid #10B981;color:#065F46;padding:12px;border-radius:10px;margin-bottom:12px;">
-                        <strong>Código Confirmado: ${encontrado.ticketNumber}</strong><br>
-                        Participante: <strong>${encontrado.name}</strong> • Método: ${encontrado.paymentMethod} • Estado: <strong>PASE VALIDADO</strong>
+                        <strong>Código Verificado: ${encontrado.ticketNumber}</strong><br>
+                        Participante: <strong>${encontrado.name}</strong> • Confirmación registrada: <strong>${pasoTexto}</strong>
                     </div>
-                `);
+                `;
             }
 
-            showNotification(`Pase confirmado para ${encontrado.name} (${encontrado.ticketNumber})`, 'success');
+            showNotification(`${pasoTexto} confirmado para ${encontrado.ticketNumber}`, 'success');
             return encontrado;
         }
 
-        async function startQrCameraScanner() {
-            const videoEl = document.getElementById('qrScannerVideo');
-            const stopBtn = document.getElementById('stopScannerBtn');
-
-            if (!('BarcodeDetector' in window)) {
-                return showNotification('Este navegador no soporta escáner QR nativo; escribe el código arriba.', 'info');
-            }
-
-            try {
-                qrVideoStream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: 'environment' }
-                });
-                videoEl.srcObject = qrVideoStream;
-                videoEl.style.display = 'block';
-                stopBtn.style.display = 'inline-block';
-                await videoEl.play();
-
-                const detector = new BarcodeDetector({ formats: ['qr_code'] });
-
-                qrScanTimer = setInterval(async () => {
-                    if (videoEl.readyState < 2) return;
-                    try {
-                        const codes = await detector.detect(videoEl);
-                        if (codes.length > 0 && codes[0].rawValue) {
-                            const scannedText = codes[0].rawValue.trim();
-                            document.getElementById('codeCheckInput').value = scannedText;
-                            confirmarCodigoPase(scannedText);
-                            stopQrCameraScanner();
-                        }
-                    } catch (err) {
-                        console.error('Error leyendo fotograma QR:', err);
-                    }
-                }, SCAN_INTERVAL_MS);
-
-                showNotification('Cámara activa: apunta al QR del viajero', 'info');
-            } catch (error) {
-                showNotification('No se pudo acceder a la cámara. Verifica permisos y HTTPS.', 'error');
-            }
+        function toggleStepConfirmation(id, stepType) {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            const updated = lista.map(p => {
+                if (String(p.id) !== String(id)) return p;
+                if (stepType === 'balance') {
+                    return { ...p, balanceConfirmed: !p.balanceConfirmed };
+                }
+                return { ...p, depositConfirmed: !p.depositConfirmed };
+            });
+            localStorage.setItem('participants', JSON.stringify(updated));
+            updateAdminPanel();
+            showNotification('Estado de verificación actualizado', 'success');
         }
 
-        function stopQrCameraScanner() {
-            if (qrScanTimer) {
-                clearInterval(qrScanTimer);
-                qrScanTimer = null;
-            }
-            if (qrVideoStream) {
-                qrVideoStream.getTracks().forEach(track => track.stop());
-                qrVideoStream = null;
-            }
-            const videoEl = document.getElementById('qrScannerVideo');
-            const stopBtn = document.getElementById('stopScannerBtn');
-            if (videoEl) {
-                videoEl.pause();
-                videoEl.srcObject = null;
-                videoEl.style.display = 'none';
-            }
-            if (stopBtn) stopBtn.style.display = 'none';
-        }
-
-        // Exporta reservas y comprobantes en un archivo JSON para mover entre dispositivos
         function exportBackupJSON() {
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             const payload = {
                 brand: 'PiesandantesRD',
                 exportedAt: new Date().toISOString(),
+                depositMonthsBeforeFlight: DEPOSIT_MONTHS_BEFORE_FLIGHT,
+                flightDate: tripData.flightDate,
                 ticketCounter: ticketCounter,
                 participants: lista
             };
@@ -1907,7 +2197,6 @@
             showNotification('Respaldo JSON exportado con éxito', 'success');
         }
 
-        // Importa y combina reservas/comprobantes desde un archivo JSON
         function importBackupJSON(event) {
             const file = event.target.files && event.target.files[0];
             if (!file) return;
@@ -1964,16 +2253,23 @@
                 ? lista.map(p => `
                     <div class="participant-item">
                         <div>
-                            <strong>${p.name}</strong>
-                            <span class="status-pill ${p.checkedIn ? 'status-checked' : 'status-pending'}">
-                                ${p.checkedIn ? 'PASE VALIDADO' : 'PENDIENTE'}
+                            <strong>${p.name}</strong> (${p.age || '-'} años)
+                            <span class="status-pill ${p.depositConfirmed ? 'status-checked' : 'status-pending'}">
+                                ${p.depositConfirmed ? '1. APARTADO OK' : '1. APARTADO PENDIENTE'}
+                            </span>
+                            <span class="status-pill ${p.balanceConfirmed ? 'status-checked' : 'status-pending'}">
+                                ${p.balanceConfirmed ? '2. RESTANTE OK' : '2. RESTANTE PENDIENTE'}
                             </span><br>
-                            <small>${p.paymentMethod} (Ref: ${p.transferRef || '-'}) • ${formatMoney(p.price, p.currency || 'USD')} • ${p.phone}</small>
+                            <small><strong>${p.stageLabel || 'Apartado'}</strong> • Residencia: ${p.residence || '-'} • Tel: ${p.phone}</small><br>
+                            <small>Emergencia: ${p.emergency || '-'} • Salud/Alergias: ${p.healthConditions || '-'}</small><br>
+                            <small>Factura (${p.ecfType || 'E32'}): ${p.billingName || '-'} • RNC/Cédula: ${p.rncOrId || '-'} • ${p.billingEmail || '-'}</small><br>
+                            <small>Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${p.paymentMethod} (Ref: ${p.transferRef || '-'}) • ${formatMoney(p.price, p.currency || 'USD')}</small>
                             ${p.receiptImage ? `<div style="margin-top:6px;"><img src="${p.receiptImage}" alt="Comprobante ${p.ticketNumber}" style="max-height:70px;border-radius:6px;border:1px solid #D1D5DB;"></div>` : ''}
                         </div>
                         <span class="ticket-number-small">${p.ticketNumber}</span>
                         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                            <button class="btn-small btn-check" onclick="toggleCheckIn('${p.id}')">${p.checkedIn ? 'Quitar Pase' : 'Dar Pase'}</button>
+                            <button class="btn-small btn-check" onclick="toggleStepConfirmation('${p.id}', 'deposit')">${p.depositConfirmed ? 'Quitar Apartado' : 'Confirmar Apartado'}</button>
+                            <button class="btn-small btn-check" onclick="toggleStepConfirmation('${p.id}', 'balance')">${p.balanceConfirmed ? 'Quitar Restante' : 'Confirmar Restante'}</button>
                             <button class="btn-small btn-export" onclick="exportSingle('${p.id}')">CSV</button>
                             <button class="btn-small btn-delete" onclick="deleteParticipant('${p.id}')">X</button>
                         </div>
@@ -1983,13 +2279,15 @@
 
             const totalUSD = lista.filter(p => (p.currency || 'USD') === 'USD').reduce((s, p) => s + Number(p.price), 0);
             const totalDOP = lista.filter(p => p.currency === 'DOP').reduce((s, p) => s + Number(p.price), 0);
-            const checkedCount = lista.filter(p => p.checkedIn).length;
+            const depConfirmedCount = lista.filter(p => p.depositConfirmed).length;
+            const balConfirmedCount = lista.filter(p => p.balanceConfirmed).length;
 
             document.getElementById('salesReports').innerHTML = `
                 <p><strong>Total reservas:</strong> ${lista.length}</p>
-                <p><strong>Pases validados (pase de lista):</strong> ${checkedCount} / ${lista.length}</p>
-                <p><strong>Total en US$:</strong> ${formatMoney(totalUSD, 'USD')}</p>
-                <p><strong>Total en RD$:</strong> ${formatMoney(totalDOP, 'DOP')}</p>
+                <p><strong>Confirmaciones de Apartado (Paso 1):</strong> ${depConfirmedCount} / ${lista.length}</p>
+                <p><strong>Confirmaciones de Pago Restante (Paso 2):</strong> ${balConfirmedCount} / ${lista.length}</p>
+                <p><strong>Total registrado en US$:</strong> ${formatMoney(totalUSD, 'USD')}</p>
+                <p><strong>Total registrado en RD$:</strong> ${formatMoney(totalDOP, 'DOP')}</p>
                 <button class="btn-cta" style="margin-top: 12px;" onclick="exportAll()">Exportar Todo a CSV</button>
             `;
         }
@@ -2003,14 +2301,14 @@
 
         function exportSingle(id) {
             const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
-            if (p) downloadCSV([['Ticket', 'Nombre', 'Método', 'Ref', 'Moneda', 'Monto', 'PaseValidado'], [p.ticketNumber, p.name, p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.checkedIn ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
+            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
         }
 
         function exportAll() {
             const lista = JSON.parse(localStorage.getItem('participants') || '[]');
             if (!lista.length) return showNotification('Sin datos para exportar', 'info');
-            const rows = [['Ticket', 'Viaje', 'Nombre', 'Teléfono', 'Método', 'Referencia', 'Moneda', 'Monto', 'PaseValidado']];
-            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.name, p.phone, p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.checkedIn ? 'SI' : 'NO']));
+            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
+            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
             downloadCSV(rows, 'reservas_medellin_guatape.csv');
         }
 
@@ -2057,6 +2355,7 @@
             applyWhatsAppNumbers(savedWa1, savedWa2);
             renderGallery();
             loadNews();
+            renderPageAccessQr();
         });
     </script>
 </body>
