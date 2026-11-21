@@ -329,8 +329,42 @@
         .btn-secondary:hover:not(:disabled) { background-color: #dba116; }
 
         /* =================================
-           7. GALERÍA DE IMÁGENES
+           7. GALERÍA DINÁMICA CON ROTACIÓN INTELIGENTE
            ================================= */
+        .smart-controls-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .smart-pill {
+            background: #EEF2FF;
+            color: var(--azul-logo);
+            border: 1px solid #C7D2FE;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .btn-mini-toggle {
+            background: var(--azul-logo);
+            color: var(--blanco);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-mini-toggle:hover {
+            background: var(--naranja-logo);
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -343,13 +377,19 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             cursor: pointer;
-            transition: transform 0.25s;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
             border: 1px solid #E5E7EB;
         }
 
         .gallery-card:hover {
             transform: translateY(-6px);
             border-color: var(--naranja-logo);
+        }
+
+        .gallery-card.smart-active {
+            transform: translateY(-6px) scale(1.02);
+            border: 2px solid var(--naranja-logo);
+            box-shadow: 0 10px 22px rgba(232, 106, 51, 0.25);
         }
 
         .gallery-card img {
@@ -396,7 +436,7 @@
         }
 
         /* =================================
-           8. NOTICIAS Y PANEL ADMIN PRIVADO
+           8. NOTICIAS INTELIGENTES Y PANEL ADMIN PRIVADO
            ================================= */
         .news-section {
             background-color: #EEF2FF;
@@ -417,6 +457,14 @@
             border-left: 5px solid var(--naranja-logo);
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             position: relative;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .news-item.smart-spotlight {
+            transform: translateY(-4px);
+            border-left-width: 7px;
+            border-left-color: var(--azul-logo);
+            box-shadow: 0 10px 22px rgba(27, 59, 111, 0.2);
         }
 
         .news-date {
@@ -490,6 +538,24 @@
             color: var(--texto-oscuro);
             padding: 1.8rem;
             border-radius: 12px;
+        }
+
+        .admin-qr-box {
+            margin-top: 20px;
+            background: #F8FAFC;
+            border: 2px dashed var(--azul-logo);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        #adminPageQrCanvas {
+            background: #FFFFFF;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #D1D5DB;
+            margin: 10px auto;
+            display: block;
         }
 
         .participant-item {
@@ -1006,7 +1072,7 @@
     <!-- Tarjeta principal del viaje -->
     <section id="viaje">
         <h2 class="section-title">✈️ Próxima Aventura</h2>
-        <p class="section-subtitle">Apartado hasta 1 mes antes del vuelo • Luego pago restante • Cierre 1 día antes del vuelo</p>
+        <p class="section-subtitle" id="tripRuleSubtitle">Apartado con tiempo limitado hasta 1 mes antes del vuelo • Pago restante con fecha activa y cierre 1 mes antes</p>
 
         <div class="trip-showcase">
             <div class="trip-cover"></div>
@@ -1027,7 +1093,7 @@
                 <div>
                     <div class="price-display" id="tripPriceDisplay">Total US$ 700 • Apartado US$ 100</div>
                     <button class="btn-card" id="reserveTripBtn" onclick="openPaymentModal()">
-                        Reservar y Completar Factura Electrónica
+                        Reservar (Apartado Tiempo Limitado / Restante)
                     </button>
                     <button class="btn-card btn-secondary" onclick="showParticipants()">
                         Ver Participantes Inscritos
@@ -1037,10 +1103,16 @@
         </div>
     </section>
 
-    <!-- Galería de imágenes -->
-    <section id="galeria">
+    <!-- Galería dinámica con rotación automática inteligente -->
+    <section id="galeria" onmouseenter="setGalleryHoverPause(true)" onmouseleave="setGalleryHoverPause(false)">
         <h2 class="section-title">📸 Galería del Destino</h2>
-        <p class="section-subtitle">Haz clic en cualquier imagen para verla en tamaño grande</p>
+        <p class="section-subtitle">Rotación automática inteligente • Pasa el cursor encima para pausar o haz clic para ampliar</p>
+        <div class="smart-controls-bar">
+            <span class="smart-pill" id="gallerySmartStatus">Auto-rotación activa</span>
+            <button type="button" class="btn-mini-toggle" id="toggleGalleryAutoBtn" onclick="toggleGalleryAutoRotation()">
+                Pausar / Reanudar Galería
+            </button>
+        </div>
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
@@ -1053,10 +1125,16 @@
         </div>
     </div>
 
-    <!-- Sección de noticias -->
-    <section id="noticias" class="news-section">
+    <!-- Sección de noticias con rotación automática inteligente -->
+    <section id="noticias" class="news-section" onmouseenter="setNewsHoverPause(true)" onmouseleave="setNewsHoverPause(false)">
         <h2 class="section-title">📰 Noticias y Novedades</h2>
-        <p class="section-subtitle">Información importante sobre el viaje a Medellín y Guatapé</p>
+        <p class="section-subtitle">Carrusel inteligente automático • Prioriza avisos destacados y pausa al leer</p>
+        <div class="smart-controls-bar">
+            <span class="smart-pill" id="newsSmartStatus">Auto-rotación activa</span>
+            <button type="button" class="btn-mini-toggle" id="toggleNewsAutoBtn" onclick="toggleNewsAutoRotation()">
+                Pausar / Reanudar Noticias
+            </button>
+        </div>
         <div class="news-grid" id="newsGrid"></div>
     </section>
 
@@ -1077,7 +1155,7 @@
 
         <div class="admin-content">
             <div id="adminEditTrip" class="admin-tab-content">
-                <h3>Editar Información y Fecha de Vuelo</h3>
+                <h3>Editar Información, Apartado y Ventana de Pago Restante</h3>
                 <div class="form-group">
                     <label>Nombre del Destino:</label>
                     <input type="text" id="editTripTitle">
@@ -1092,8 +1170,18 @@
                         <input type="number" id="editTripPrice" min="101">
                     </div>
                     <div class="form-group">
-                        <label>Fecha y Hora de Vuelo (apartado vence 1 mes antes; cierra 24h antes):</label>
+                        <label>Fecha y Hora de Vuelo (base de tiempos y cierres):</label>
                         <input type="datetime-local" id="editFlightDate">
+                    </div>
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>Inicio Ventana Pago Restante (opcional, por defecto 1 mes antes):</label>
+                        <input type="datetime-local" id="editBalanceStartDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Cierre Ventana Pago Restante (por defecto 1 mes antes del vuelo):</label>
+                        <input type="datetime-local" id="editBalanceCloseDate">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1170,6 +1258,17 @@
                     <input type="text" id="whatsappNumber2" value="18099968875">
                 </div>
                 <button class="btn-cta" onclick="saveSettings()">Guardar Configuración</button>
+            </div>
+
+            <!-- Código QR dentro del Panel de Administración -->
+            <div class="admin-qr-box" id="adminQrSection">
+                <h4 style="color: var(--azul-logo); margin-bottom: 4px;">📲 Código QR de Acceso Rápido (Panel Admin)</h4>
+                <p style="font-size: 0.85rem; color: #4B5563;">Comparte o escanea este QR para abrir la página al instante</p>
+                <canvas id="adminPageQrCanvas" width="160" height="160"></canvas>
+                <p id="adminPageQrUrl" style="font-size: 0.8rem; color: #4B5563; word-break: break-all; margin-bottom: 10px;"></p>
+                <button type="button" class="btn-cta" onclick="downloadPageAccessQr()">
+                    <i class="fas fa-download"></i> Descargar QR (PNG)
+                </button>
             </div>
         </div>
     </section>
@@ -1250,18 +1349,18 @@
         <i class="fab fa-whatsapp"></i>
     </button>
 
-    <!-- Modal de reserva, apartado hasta 1 mes antes del vuelo, facturación electrónica y términos -->
+    <!-- Modal de reserva, apartado con tiempo limitado, pago restante con ventana activa/cierre y facturación electrónica -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
             <h3 id="paymentModalTitle" style="color: var(--azul-logo); margin-bottom: 1rem;">Reservar Viaje</h3>
             <form id="paymentForm">
-                <!-- Etapa de pago controlada por límite de 1 mes antes del vuelo -->
+                <!-- Etapa de pago controlada por límite de apartado y ventana activa/cierre del pago restante -->
                 <div class="form-group">
                     <label for="paymentStage">Modalidad de Pago *</label>
                     <select id="paymentStage" onchange="handleCurrencyChange()">
-                        <option value="deposit" selected>Apartado (US$ 100 — No reembolsable si no vas)</option>
-                        <option value="balance">Pago restante para ir (US$ 600)</option>
+                        <option value="deposit" selected>Apartado tiempo limitado (US$ 100 — No reembolsable si no vas)</option>
+                        <option value="balance">Pago restante para ir (US$ 600 — Ventana con fecha de activación y cierre)</option>
                     </select>
                     <div class="stage-timer-hint" id="stageTimerHint"></div>
                 </div>
@@ -1417,15 +1516,15 @@
                 <div class="terms-box" id="termsSection">
                     <h4>📋 Términos y Condiciones del Viaje</h4>
                     <div class="terms-clauses">
-                        <p><strong>1. Apartado hasta 1 mes antes del vuelo y no reembolsable:</strong> El apartado (US$ 100) aplica hasta 1 mes exacto antes de la fecha del vuelo, no se devuelve si no vas y al vencer el plazo corresponde pagar el restante.</p>
-                        <p><strong>2. Cierre previo al vuelo:</strong> Las reservas cierran automáticamente 1 día (24 horas) antes de la fecha del vuelo.</p>
+                        <p><strong>1. Apartado con tiempo limitado y no reembolsable:</strong> El apartado (US$ 100) aplica hasta 1 mes exacto antes del vuelo, no se devuelve si no vas y al vencer pasa a la etapa de pago restante.</p>
+                        <p><strong>2. Ventana de activación y cierre del pago restante:</strong> El pago restante se activa según el calendario configurado y cierra al cumplirse el plazo de 1 mes antes del vuelo (o cierre general de reservas).</p>
                         <p><strong>3. Pérdida de objetos:</strong> PiesandantesRD no se hace responsable por la pérdida, extravío, daño o sustracción de ningún objeto personal, equipaje, dinero, documentos o dispositivos durante el trayecto o las excursiones.</p>
                         <p><strong>4. Conducta y protocolo:</strong> Cualquier comportamiento fuera de nuestro protocolo, normas de convivencia, horarios o indicaciones del equipo organizador está bajo la exclusiva responsabilidad y consecuencia del participante.</p>
                         <p><strong>5. Datos de facturación y salud:</strong> Declaro que los datos para factura electrónica, edad, residencia, contacto de emergencia y condiciones de salud, alergias o padecimientos son verídicos.</p>
                     </div>
                     <label class="terms-check-label" for="acceptTermsCheckbox">
                         <input type="checkbox" id="acceptTermsCheckbox" required>
-                        <span>Acepto los Términos y Condiciones: entiendo que el apartado no se devuelve si no voy, que vence 1 mes antes del vuelo, que no se responsabilizan por la pérdida de ningún objeto y que cualquier comportamiento fuera del protocolo es bajo mi responsabilidad y consecuencia. *</span>
+                        <span>Acepto los Términos y Condiciones: entiendo que el apartado tiene tiempo limitado y no se devuelve si no voy, que el pago restante tiene fecha de activación y cierre, que no se responsabilizan por la pérdida de ningún objeto y que cualquier comportamiento fuera del protocolo es bajo mi responsabilidad y consecuencia. *</span>
                     </label>
                 </div>
 
@@ -1456,13 +1555,15 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-21-v4'; // Versión actual del código para refrescar datos base en localStorage
+        const APP_CODE_VERSION = '2026-11-21-v5'; // Incrementa este valor al publicar cambios para refrescar datos base en localStorage
         const ADMIN_PASS = 'admin123'; // Clave actual del Panel Admin (Ctrl + Shift + A)
         const DEFAULT_WA_1 = '18094030141';
         const DEFAULT_WA_2 = '18099968875';
         const DEPOSIT_AMOUNT_USD = 100; // Monto de apartado en US$ (no reembolsable si no van)
-        const DEPOSIT_MONTHS_BEFORE_FLIGHT = 1; // Apartado vence exactamente 1 mes antes del vuelo
-        const FLIGHT_CLOSE_LEAD_MS = 24 * 60 * 60 * 1000; // Cierre 1 día (24h) antes del vuelo
+        const DEPOSIT_MONTHS_BEFORE_FLIGHT = 1; // Apartado vence 1 mes antes del vuelo
+        const BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT = 1; // Fecha de activación/cierre de referencia (1 mes antes del vuelo)
+        const NEWS_ROTATION_MS = 4500; // Velocidad de rotación automática de noticias (ms)
+        const GALLERY_ROTATION_MS = 3200; // Velocidad de rotación automática de galería (ms)
         const MAX_RECEIPT_BYTES = 1.5 * 1024 * 1024;
         const BACKUP_FILE_PREFIX = 'respaldo_piesandantesrd';
 
@@ -1477,7 +1578,9 @@
         let tripData = {
             title: 'Medellín y Guatapé',
             date: '3 al 7 de marzo',
-            flightDate: '2027-03-03T08:00:00', // Fecha/hora del vuelo (apartado vence 1 mes antes; cierra 24h antes)
+            flightDate: '2027-03-03T08:00:00', // Fecha/hora del vuelo
+            balanceStartDate: '', // Opcional: fecha de activación del pago restante (si está vacío, usa 1 mes antes del vuelo)
+            balanceCloseDate: '', // Opcional: fecha de cierre del pago restante (si está vacío, usa 1 mes antes del vuelo)
             priceUSD: 700,
             places: 'Comuna 13, Piedra del Peñol, Centro de Medellín, finca cafetera y otros'
         };
@@ -1503,6 +1606,17 @@
         let ticketCounter = 1;
         let isAdmin = false;
 
+        // Estado de rotación automática inteligente para Noticias y Galería
+        let newsAutoEnabled = true;
+        let newsHoverPaused = false;
+        let newsOrderOffset = 0;
+        let newsTimerId = null;
+
+        let galleryAutoEnabled = true;
+        let galleryHoverPaused = false;
+        let galleryActiveIndex = 0;
+        let galleryTimerId = null;
+
         function syncCodeVersionStorage() {
             const savedVersion = localStorage.getItem('appCodeVersion');
             if (savedVersion !== APP_CODE_VERSION) {
@@ -1520,7 +1634,7 @@
             return Math.max(0, Number(tripData.priceUSD) - DEPOSIT_AMOUNT_USD);
         }
 
-        // Calcula exactamente 1 mes antes de la fecha del vuelo
+        // Límite del apartado: 1 mes antes de la fecha del vuelo
         function getDepositDeadlineTimestamp() {
             const flightMs = Date.parse(tripData.flightDate);
             if (Number.isNaN(flightMs)) return Date.now();
@@ -1529,14 +1643,44 @@
             return d.getTime();
         }
 
+        // Ventana de activación y cierre del pago restante (por defecto vinculada a 1 mes antes del vuelo)
+        function getBalanceActivationTimestamp() {
+            if (tripData.balanceStartDate) {
+                const parsed = Date.parse(tripData.balanceStartDate);
+                if (!Number.isNaN(parsed)) return parsed;
+            }
+            return getDepositDeadlineTimestamp();
+        }
+
+        function getBalanceClosingTimestamp() {
+            if (tripData.balanceCloseDate) {
+                const parsed = Date.parse(tripData.balanceCloseDate);
+                if (!Number.isNaN(parsed)) return parsed;
+            }
+            const flightMs = Date.parse(tripData.flightDate);
+            if (Number.isNaN(flightMs)) return Date.now();
+            const d = new Date(flightMs);
+            d.setMonth(d.getMonth() - BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT);
+            return d.getTime();
+        }
+
         function isDepositExpired() {
             return Date.now() > getDepositDeadlineTimestamp();
         }
 
-        function isBookingClosedByFlightDate() {
-            const flightMs = Date.parse(tripData.flightDate);
-            if (Number.isNaN(flightMs)) return false;
-            return Date.now() >= (flightMs - FLIGHT_CLOSE_LEAD_MS);
+        function isBalanceWindowOpen() {
+            const now = Date.now();
+            const startMs = getBalanceActivationTimestamp();
+            const closeMs = getBalanceClosingTimestamp();
+            return now >= startMs && now <= closeMs;
+        }
+
+        function isBalanceWindowClosed() {
+            return Date.now() > getBalanceClosingTimestamp();
+        }
+
+        function isAllBookingsClosed() {
+            return isDepositExpired() && isBalanceWindowClosed();
         }
 
         function getStageAmountUSD(stage) {
@@ -1546,7 +1690,7 @@
         function getStageLabel(stage) {
             return stage === 'balance'
                 ? 'Etapa 2: Pago restante para ir'
-                : 'Etapa 1: Apartado (no reembolsable)';
+                : 'Etapa 1: Apartado (tiempo limitado, no reembolsable)';
         }
 
         function formatMoney(amount, currency) {
@@ -1565,7 +1709,7 @@
         }
 
         // =================================
-        // 2. GENERADOR QR PARA ENTRAR RÁPIDO A LA PÁGINA
+        // 2. GENERADOR QR PARA ENTRAR RÁPIDO A LA PÁGINA (PÁGINA Y PANEL ADMIN)
         // =================================
         function hashString(str) {
             let h = 2166136261;
@@ -1638,14 +1782,19 @@
         }
 
         function renderPageAccessQr() {
-            const pageUrl = window.location.href || 'https://piesandantesrd.com';
+            const pageUrl = window.location.href || 'https://piesandantesrd.netlify.app';
             renderQrOnCanvas('pageAccessQrCanvas', pageUrl);
+            renderQrOnCanvas('adminPageQrCanvas', pageUrl);
+
             const urlEl = document.getElementById('pageAccessQrUrl');
             if (urlEl) urlEl.textContent = pageUrl;
+
+            const adminUrlEl = document.getElementById('adminPageQrUrl');
+            if (adminUrlEl) adminUrlEl.textContent = pageUrl;
         }
 
         function downloadPageAccessQr() {
-            const canvas = document.getElementById('pageAccessQrCanvas');
+            const canvas = document.getElementById('pageAccessQrCanvas') || document.getElementById('adminPageQrCanvas');
             if (!canvas) return;
             const link = document.createElement('a');
             link.download = 'QR_Acceso_PiesandantesRD.png';
@@ -1691,43 +1840,62 @@
         });
 
         // =================================
-        // 4. RENDERIZADO DEL VIAJE Y PLAZOS
+        // 4. RENDERIZADO DEL VIAJE, APARTADO Y VENTANA DE PAGO RESTANTE
         // =================================
         function renderTrip() {
             const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
             if (savedTrip) tripData = { ...tripData, ...savedTrip };
 
             const balanceUSD = getBalanceAmountUSD();
-            const expired = isDepositExpired();
-            const closed = isBookingClosedByFlightDate();
-            const deadlineDateStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const depExpired = isDepositExpired();
+            const balOpen = isBalanceWindowOpen();
+            const allClosed = isAllBookingsClosed();
+
+            const depositDeadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const balanceStartStr = new Date(getBalanceActivationTimestamp()).toLocaleString('es-DO');
+            const balanceCloseStr = new Date(getBalanceClosingTimestamp()).toLocaleString('es-DO');
 
             document.getElementById('heroTitleDisplay').textContent = tripData.title;
-            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • Total US$ ${tripData.priceUSD}`;
+            document.getElementById('heroSubtitleDisplay').textContent = `Del ${tripData.date} • Total US$ ${tripData.priceUSD} (Aparta con US$ ${DEPOSIT_AMOUNT_USD})`;
             document.getElementById('tripDateDisplay').innerHTML = `<i class="far fa-calendar-alt"></i> ${tripData.date}`;
             document.getElementById('tripTitleDisplay').textContent = tripData.title;
-            document.getElementById('tripPriceDisplay').textContent = expired
-                ? `Apartado vencido • Restante US$ ${balanceUSD}`
-                : `Total US$ ${tripData.priceUSD} • Apartado US$ ${DEPOSIT_AMOUNT_USD}`;
 
-            document.getElementById('stageSummaryBox').innerHTML = expired
-                ? `<strong>Plazo del apartado vencido (${deadlineDateStr}):</strong> Ahora corresponde el pago restante de <strong>US$ ${balanceUSD}</strong>. (Apartado no reembolsable si no vas).`
-                : `<strong>Apartado (US$ ${DEPOSIT_AMOUNT_USD}):</strong> Disponible hasta <strong>${deadlineDateStr}</strong> (1 mes antes del vuelo, no reembolsable si no vas). Luego corresponde pagar <strong>US$ ${balanceUSD}</strong>. Cierre 1 día antes del vuelo.`;
+            if (allClosed) {
+                document.getElementById('tripPriceDisplay').textContent = `Plazos cerrados • Total US$ ${tripData.priceUSD}`;
+            } else if (balOpen) {
+                document.getElementById('tripPriceDisplay').textContent = `Pago Restante Activo: US$ ${balanceUSD} (Total US$ ${tripData.priceUSD})`;
+            } else if (!depExpired) {
+                document.getElementById('tripPriceDisplay').textContent = `Apartado US$ ${DEPOSIT_AMOUNT_USD} • Restante US$ ${balanceUSD} (Total US$ ${tripData.priceUSD})`;
+            } else {
+                document.getElementById('tripPriceDisplay').textContent = `Apartado vencido • Total US$ ${tripData.priceUSD}`;
+            }
+
+            document.getElementById('stageSummaryBox').innerHTML = `
+                <div><strong>Apartado tiempo limitado (US$ ${DEPOSIT_AMOUNT_USD}):</strong> vence <strong>${depositDeadlineStr}</strong> (1 mes antes del vuelo, no reembolsable si no vas).</div>
+                <div style="margin-top:4px;"><strong>Pago restante (US$ ${balanceUSD}):</strong> se activa el <strong>${balanceStartStr}</strong> y cierra el <strong>${balanceCloseStr}</strong>.</div>
+            `;
 
             const reserveBtn = document.getElementById('reserveTripBtn');
             const closedBanner = document.getElementById('bookingClosedBanner');
 
-            if (closed) {
+            if (allClosed) {
                 reserveBtn.disabled = true;
-                reserveBtn.textContent = 'Reservas Cerradas (1 Día Antes del Vuelo)';
+                reserveBtn.textContent = 'Plazo de Apartado y Pago Restante Cerrado';
                 closedBanner.style.display = 'block';
-                closedBanner.textContent = 'Las reservas están cerradas porque falta 1 día (24 horas) o menos para la fecha del vuelo.';
-            } else {
+                closedBanner.textContent = `El apartado venció el ${depositDeadlineStr} y la ventana del pago restante cerró el ${balanceCloseStr}.`;
+            } else if (balOpen) {
                 reserveBtn.disabled = false;
-                reserveBtn.textContent = expired
-                    ? `Pagar Restante para Ir (US$ ${balanceUSD})`
-                    : `Reservar (Apartado US$ ${DEPOSIT_AMOUNT_USD} / Restante US$ ${balanceUSD})`;
+                reserveBtn.textContent = `Pagar Restante Ahora (US$ ${balanceUSD})`;
                 closedBanner.style.display = 'none';
+            } else if (!depExpired) {
+                reserveBtn.disabled = false;
+                reserveBtn.textContent = `Apartar con US$ ${DEPOSIT_AMOUNT_USD} (Tiempo Limitado)`;
+                closedBanner.style.display = 'none';
+            } else {
+                reserveBtn.disabled = true;
+                reserveBtn.textContent = 'Pago Restante Fuera de Fecha Activa';
+                closedBanner.style.display = 'block';
+                closedBanner.textContent = `El apartado venció el ${depositDeadlineStr}. El pago restante está habilitado entre ${balanceStartStr} y ${balanceCloseStr}.`;
             }
 
             document.getElementById('tripIncludesDisplay').innerHTML = `
@@ -1738,17 +1906,58 @@
             `;
         }
 
+        // =================================
+        // 5. GALERÍA DINÁMICA CON ROTACIÓN INTELIGENTE
+        // =================================
+        function updateGalleryStatusLabel() {
+            const statusEl = document.getElementById('gallerySmartStatus');
+            if (!statusEl) return;
+            if (!galleryAutoEnabled) {
+                statusEl.textContent = 'Auto-rotación pausada por usuario';
+            } else if (galleryHoverPaused) {
+                statusEl.textContent = 'Pausada al pasar el cursor (lectura/selección)';
+            } else {
+                const currentItem = tripImages[galleryActiveIndex] || tripImages[0];
+                statusEl.textContent = `Destacando: ${currentItem ? currentItem.caption : ''}`;
+            }
+        }
+
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
+            if (!tripImages.length) return;
             grid.innerHTML = tripImages.map((item, idx) => `
-                <div class="gallery-card" onclick="openGalleryModal(${idx})">
+                <div class="gallery-card ${idx === galleryActiveIndex ? 'smart-active' : ''}" onclick="openGalleryModal(${idx})">
                     <img src="${item.src}" alt="${item.caption}">
                     <div class="gallery-caption">${item.caption}</div>
                 </div>
             `).join('');
+            updateGalleryStatusLabel();
+        }
+
+        function rotateGallerySmartStep() {
+            if (!galleryAutoEnabled || galleryHoverPaused || !tripImages.length) return;
+            galleryActiveIndex = (galleryActiveIndex + 1) % tripImages.length;
+            renderGallery();
+        }
+
+        function startSmartGalleryRotation() {
+            if (galleryTimerId) clearInterval(galleryTimerId);
+            galleryTimerId = setInterval(rotateGallerySmartStep, GALLERY_ROTATION_MS);
+        }
+
+        function setGalleryHoverPause(paused) {
+            galleryHoverPaused = paused;
+            updateGalleryStatusLabel();
+        }
+
+        function toggleGalleryAutoRotation() {
+            galleryAutoEnabled = !galleryAutoEnabled;
+            updateGalleryStatusLabel();
         }
 
         function openGalleryModal(index) {
+            galleryHoverPaused = true;
+            updateGalleryStatusLabel();
             const item = tripImages[index];
             document.getElementById('galleryModalImg').src = item.src;
             document.getElementById('galleryModalCaption').textContent = item.caption;
@@ -1757,10 +1966,12 @@
 
         function closeGalleryModal() {
             document.getElementById('galleryModal').style.display = 'none';
+            galleryHoverPaused = false;
+            updateGalleryStatusLabel();
         }
 
         // =================================
-        // 5. PANEL ADMIN (Ctrl + Shift + A)
+        // 6. PANEL ADMIN (Ctrl + Shift + A)
         // =================================
         document.addEventListener('keydown', function (e) {
             if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
@@ -1771,6 +1982,7 @@
 
         function promptAdminAccess() {
             if (isAdmin) {
+                renderPageAccessQr();
                 document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
                 return;
             }
@@ -1781,6 +1993,7 @@
                 document.getElementById('adminPanel').style.display = 'block';
                 fillAdminTripForm();
                 updateAdminPanel();
+                renderPageAccessQr();
                 document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
                 showNotification('Panel de administración desbloqueado', 'success');
             } else if (pass !== null) {
@@ -1800,6 +2013,7 @@
             document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('admin' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
             if (event) event.target.classList.add('active');
+            renderPageAccessQr();
         }
 
         function fillAdminTripForm() {
@@ -1807,16 +2021,23 @@
             document.getElementById('editTripDate').value = tripData.date;
             document.getElementById('editTripPrice').value = tripData.priceUSD;
             document.getElementById('editFlightDate').value = tripData.flightDate ? tripData.flightDate.slice(0, 16) : '';
+            document.getElementById('editBalanceStartDate').value = tripData.balanceStartDate ? tripData.balanceStartDate.slice(0, 16) : '';
+            document.getElementById('editBalanceCloseDate').value = tripData.balanceCloseDate ? tripData.balanceCloseDate.slice(0, 16) : '';
             document.getElementById('editTripPlaces').value = tripData.places;
         }
 
         function saveTripEdits() {
             const parsedPrice = parseFloat(document.getElementById('editTripPrice').value);
             const rawFlight = document.getElementById('editFlightDate').value;
+            const rawBalStart = document.getElementById('editBalanceStartDate').value;
+            const rawBalClose = document.getElementById('editBalanceCloseDate').value;
+
             tripData = {
                 title: document.getElementById('editTripTitle').value.trim() || tripData.title,
                 date: document.getElementById('editTripDate').value.trim() || tripData.date,
                 flightDate: rawFlight ? new Date(rawFlight).toISOString() : tripData.flightDate,
+                balanceStartDate: rawBalStart ? new Date(rawBalStart).toISOString() : '',
+                balanceCloseDate: rawBalClose ? new Date(rawBalClose).toISOString() : '',
                 priceUSD: (!isNaN(parsedPrice) && parsedPrice > DEPOSIT_AMOUNT_USD) ? parsedPrice : tripData.priceUSD,
                 places: document.getElementById('editTripPlaces').value.trim() || tripData.places
             };
@@ -1826,12 +2047,31 @@
                 localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1,
                 localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2
             );
-            showNotification('Información del viaje y fecha de vuelo actualizadas', 'success');
+            showNotification('Información del viaje, apartado y fechas del pago restante actualizadas', 'success');
         }
 
         // =================================
-        // 6. NOTICIAS
+        // 7. NOTICIAS CON ROTACIÓN AUTOMÁTICA INTELIGENTE
         // =================================
+        function updateNewsStatusLabel() {
+            const statusEl = document.getElementById('newsSmartStatus');
+            if (!statusEl) return;
+            if (!newsAutoEnabled) {
+                statusEl.textContent = 'Auto-rotación pausada por usuario';
+            } else if (newsHoverPaused) {
+                statusEl.textContent = 'Pausada al pasar el cursor (lectura activa)';
+            } else {
+                statusEl.textContent = 'Auto-rotación inteligente activa';
+            }
+        }
+
+        function getOrderedNewsList() {
+            const rawNews = JSON.parse(localStorage.getItem('news') || '[]');
+            if (rawNews.length <= 1) return rawNews;
+            const shift = newsOrderOffset % rawNews.length;
+            return rawNews.slice(shift).concat(rawNews.slice(0, shift));
+        }
+
         function loadNews() {
             let news = JSON.parse(localStorage.getItem('news') || '[]');
             if (!news.length) {
@@ -1839,7 +2079,7 @@
                     {
                         id: 1,
                         title: '¡Viaje a Medellín y Guatapé (3 al 7 de marzo)!',
-                        content: 'Aparta con US$ 100 hasta 1 mes antes del vuelo (no reembolsable si no vas), paga el restante para ir y reserva hasta 1 día antes del vuelo.',
+                        content: 'Aparta con US$ 100 por tiempo limitado (hasta 1 mes antes del vuelo, no reembolsable si no vas). El pago restante tiene su ventana de activación y cierre.',
                         date: '2026-01-15',
                         priority: 'alta'
                     },
@@ -1849,12 +2089,21 @@
                         content: 'Comunícate con nosotros al 809-403-0141 o al 809-996-8875 para separar tu cupo.',
                         date: '2026-01-20',
                         priority: 'media'
+                    },
+                    {
+                        id: 3,
+                        title: 'Verificación de código en 2 pasos',
+                        content: 'Tu código de reserva se verifica en dos momentos: confirmación de apartado y confirmación de pago restante.',
+                        date: '2026-01-25',
+                        priority: 'alta'
                     }
                 ];
                 localStorage.setItem('news', JSON.stringify(news));
             }
-            document.getElementById('newsGrid').innerHTML = news.map(n => `
-                <div class="news-item">
+
+            const ordered = getOrderedNewsList();
+            document.getElementById('newsGrid').innerHTML = ordered.map((n, idx) => `
+                <div class="news-item ${idx === 0 ? 'smart-spotlight' : ''}">
                     ${n.priority === 'alta' ? '<span class="news-priority">DESTACADO</span>' : ''}
                     <div class="news-date">${n.date}</div>
                     <h3 class="news-title">${n.title}</h3>
@@ -1871,6 +2120,30 @@
                     </div>
                 `).join('');
             }
+            updateNewsStatusLabel();
+        }
+
+        function rotateNewsSmartStep() {
+            if (!newsAutoEnabled || newsHoverPaused) return;
+            const news = JSON.parse(localStorage.getItem('news') || '[]');
+            if (news.length <= 1) return;
+            newsOrderOffset = (newsOrderOffset + 1) % news.length;
+            loadNews();
+        }
+
+        function startSmartNewsRotation() {
+            if (newsTimerId) clearInterval(newsTimerId);
+            newsTimerId = setInterval(rotateNewsSmartStep, NEWS_ROTATION_MS);
+        }
+
+        function setNewsHoverPause(paused) {
+            newsHoverPaused = paused;
+            updateNewsStatusLabel();
+        }
+
+        function toggleNewsAutoRotation() {
+            newsAutoEnabled = !newsAutoEnabled;
+            updateNewsStatusLabel();
         }
 
         function createNewsFromAdmin() {
@@ -1887,6 +2160,7 @@
                 priority: 'alta'
             });
             localStorage.setItem('news', JSON.stringify(news));
+            newsOrderOffset = 0;
             document.getElementById('newNewsTitle').value = '';
             document.getElementById('newNewsContent').value = '';
             loadNews();
@@ -1896,12 +2170,13 @@
         function deleteNewsItem(id) {
             const news = JSON.parse(localStorage.getItem('news') || '[]').filter(n => n.id !== id);
             localStorage.setItem('news', JSON.stringify(news));
+            newsOrderOffset = 0;
             loadNews();
             showNotification('Noticia eliminada', 'info');
         }
 
         // =================================
-        // 7. RESERVAS, LÍMITE DE 1 MES ANTES DEL VUELO, FACTURA ELECTRÓNICA Y CÓDIGO
+        // 8. RESERVAS, APARTADO LIMITADO, VENTANA DE PAGO RESTANTE, FACTURA ELECTRÓNICA Y CÓDIGO
         // =================================
         function syncStageOptionsText() {
             const selectEl = document.getElementById('paymentStage');
@@ -1909,29 +2184,36 @@
             if (!selectEl) return;
 
             const balanceUSD = getBalanceAmountUSD();
-            const expired = isDepositExpired();
-            const deadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const depExpired = isDepositExpired();
+            const balOpen = isBalanceWindowOpen();
+            const depositDeadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const balanceStartStr = new Date(getBalanceActivationTimestamp()).toLocaleString('es-DO');
+            const balanceCloseStr = new Date(getBalanceClosingTimestamp()).toLocaleString('es-DO');
 
-            selectEl.options[0].text = `Apartado (US$ ${DEPOSIT_AMOUNT_USD} — No reembolsable si no vas)`;
+            selectEl.options[0].text = `Apartado tiempo limitado (US$ ${DEPOSIT_AMOUNT_USD} — No reembolsable si no vas)`;
             selectEl.options[1].text = `Pago restante para ir (US$ ${balanceUSD})`;
-            selectEl.options[0].disabled = expired;
+            selectEl.options[0].disabled = depExpired;
+            selectEl.options[1].disabled = !balOpen;
 
-            if (expired) {
+            if (balOpen && depExpired) {
                 selectEl.value = 'balance';
                 currentStage = 'balance';
-                if (hintEl) {
-                    hintEl.textContent = `El plazo del apartado (1 mes antes del vuelo: ${deadlineStr}) ya venció. Ahora corresponde el pago restante de US$ ${balanceUSD}.`;
-                }
-            } else {
-                if (hintEl) {
-                    hintEl.textContent = `Límite del apartado: ${deadlineStr} (1 mes antes del vuelo). Al vencer ese plazo aplica el restante de US$ ${balanceUSD}.`;
-                }
+            } else if (!depExpired && (!balOpen || selectEl.value === 'balance' && !balOpen)) {
+                selectEl.value = 'deposit';
+                currentStage = 'deposit';
+            }
+
+            if (hintEl) {
+                hintEl.textContent = `Apartado vence: ${depositDeadlineStr} (1 mes antes del vuelo). Pago restante activo: ${balanceStartStr} hasta ${balanceCloseStr}.`;
             }
         }
 
         function openPaymentModal() {
-            if (isBookingClosedByFlightDate()) {
-                return showNotification('Las reservas cerraron 1 día (24h) antes del vuelo', 'error');
+            if (isAllBookingsClosed()) {
+                return showNotification('Los plazos de apartado y pago restante ya cerraron', 'error');
+            }
+            if (isDepositExpired() && !isBalanceWindowOpen()) {
+                return showNotification('El apartado venció y el pago restante está fuera de su ventana activa', 'error');
             }
 
             currentCurrency = 'USD';
@@ -2013,14 +2295,21 @@
         document.getElementById('paymentForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            if (isBookingClosedByFlightDate()) {
+            if (isAllBookingsClosed()) {
                 closePaymentModal();
                 renderTrip();
-                return showNotification('Reservas cerradas 1 día antes del vuelo', 'error');
+                return showNotification('Los plazos de reserva ya cerraron', 'error');
             }
 
             syncStageOptionsText();
             currentStage = document.getElementById('paymentStage').value || 'deposit';
+            if (currentStage === 'deposit' && isDepositExpired()) {
+                return showNotification('El tiempo límite del apartado ya venció', 'error');
+            }
+            if (currentStage === 'balance' && !isBalanceWindowOpen()) {
+                return showNotification('El pago restante no está dentro de su ventana activa', 'error');
+            }
+
             handleCurrencyChange();
 
             const method = document.getElementById('paymentMethod').value;
@@ -2129,7 +2418,7 @@
         }
 
         // =================================
-        // 8. VERIFICACIÓN POR CÓDIGO EN 2 PASOS Y RESPALDO JSON
+        // 9. VERIFICACIÓN POR CÓDIGO EN 2 PASOS Y RESPALDO JSON
         // =================================
         function confirmarCodigoEtapa(stepType) {
             const limpio = String(document.getElementById('codeCheckInput').value || '')
@@ -2197,6 +2486,8 @@
                 exportedAt: new Date().toISOString(),
                 depositMonthsBeforeFlight: DEPOSIT_MONTHS_BEFORE_FLIGHT,
                 flightDate: tripData.flightDate,
+                balanceStartDate: tripData.balanceStartDate,
+                balanceCloseDate: tripData.balanceCloseDate,
                 ticketCounter: ticketCounter,
                 participants: lista
             };
@@ -2353,7 +2644,7 @@
         }
 
         // =================================
-        // 9. INICIALIZACIÓN AL CARGAR
+        // 10. INICIALIZACIÓN AL CARGAR
         // =================================
         document.addEventListener('DOMContentLoaded', function () {
             syncCodeVersionStorage();
@@ -2374,6 +2665,8 @@
             renderGallery();
             loadNews();
             renderPageAccessQr();
+            startSmartGalleryRotation();
+            startSmartNewsRotation();
         });
     </script>
 </body>
