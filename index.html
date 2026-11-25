@@ -3802,7 +3802,8 @@
                             </span><br>
                             <small><strong>${escapeHtml(p.stageLabel || 'Apartado')}</strong> • Residencia: ${escapeHtml(p.residence || '-')} • Tel: ${escapeHtml(p.phone)}</small><br>
                             <small>Emergencia: ${escapeHtml(p.emergency || '-')} • Salud/Alergias: ${escapeHtml(p.healthConditions || '-')}</small><br>
-                            <small>DGII (${escapeHtml(p.ecfType || 'E32')}): ${escapeHtml(p.billingName || '-')} • RNC/Cédula: ${escapeHtml(p.rncOrId || '-'} • ${escapeHtml(p.billingEmail || '-')}</small><br>
+                        
+<small>DGII (${escapeHtml(p.ecfType || 'E32')}): ${escapeHtml(p.billingName || '-')} • RNC/Cédula: ${escapeHtml(p.rncOrId || '-')} • ${escapeHtml(p.billingEmail || '-')}</small><br>
                             <small>Recompensa: ${escapeHtml(p.rewardBenefit || '-')} • Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${escapeHtml(p.paymentMethod)} (Ref: ${escapeHtml(p.transferRef || '-')}) • ${escapeHtml(formatMoney(p.price, p.currency || 'USD'))}</small>
                             ${p.receiptImage ? `<div style="margin-top:6px;"><img src="${p.receiptImage}" alt="Comprobante ${escapeHtml(p.ticketNumber)}" style="max-height:70px;border-radius:6px;border:1px solid #D1D5DB;"></div>` : ''}
                         </div>
