@@ -8,6 +8,7 @@
     <style>
         /* =================================
            1. VARIABLES DE COLOR (PALETA LOGO + MODO NOCTURNO)
+           Ajusta aquí los colores principales
            ================================= */
         :root {
             --azul-logo: #1B3B6F;
@@ -35,16 +36,32 @@
         }
 
         @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes modalPopIn {
-            from { opacity: 0; transform: scale(0.96) translateY(8px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -55,6 +72,9 @@
             animation: fadeSlideIn 0.55s ease;
         }
 
+        /* =================================
+           2. NOTIFICACIONES FLOTANTES
+           ================================= */
         .notification {
             position: fixed;
             top: 20px;
@@ -66,7 +86,7 @@
             z-index: 10001;
             transform: translateX(130%);
             transition: transform 0.3s ease;
-            max-width: 360px;
+            max-width: 340px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
@@ -75,6 +95,9 @@
         .notification.error { background-color: var(--rojo-error); }
         .notification.info { background-color: var(--azul-info); }
 
+        /* =================================
+           3. NAVEGACIÓN, TEMA NOCTURNO Y CUENTA
+           ================================= */
         nav {
             background: linear-gradient(90deg, #152F59 0%, var(--azul-logo) 55%, #1E447E 100%);
             padding: 0.7rem 1rem;
@@ -117,7 +140,11 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.22);
         }
 
-        .logo-svg-mark { width: 26px; height: 26px; flex-shrink: 0; }
+        .logo-svg-mark {
+            width: 26px;
+            height: 26px;
+            flex-shrink: 0;
+        }
 
         .logo-img {
             height: 34px;
@@ -127,7 +154,12 @@
             border-radius: 6px;
         }
 
-        .nav-links { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
         .nav-links a {
             color: #FFFFFF;
@@ -139,9 +171,16 @@
             font-size: 0.9rem;
         }
 
-        .nav-links a:hover { background-color: var(--naranja-logo); transform: translateY(-1px); }
+        .nav-links a:hover {
+            background-color: var(--naranja-logo);
+            transform: translateY(-1px);
+        }
 
-        .nav-controls { display: flex; gap: 8px; align-items: center; }
+        .nav-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
 
         .nav-theme-btn {
             background: rgba(255,255,255,0.16);
@@ -155,7 +194,9 @@
             transition: background 0.25s ease;
         }
 
-        .nav-theme-btn:hover { background: var(--naranja-logo); }
+        .nav-theme-btn:hover {
+            background: var(--naranja-logo);
+        }
 
         .nav-account-btn {
             background-color: var(--amarillo-logo);
@@ -184,6 +225,9 @@
             font-weight: bold;
         }
 
+        /* =================================
+           4. BIENVENIDA DINÁMICA Y HERO GIRATORIO
+           ================================= */
         .welcome-banner-wrap {
             max-width: 1200px;
             margin: 14px auto 0 auto;
@@ -205,7 +249,11 @@
             box-shadow: 0 4px 14px rgba(0,0,0,0.06);
         }
 
-        .welcome-meta { font-size: 0.86rem; color: var(--texto-suave); margin-top: 4px; }
+        .welcome-meta {
+            font-size: 0.86rem;
+            color: var(--texto-suave);
+            margin-top: 4px;
+        }
 
         .hero-carousel-wrap {
             position: relative;
@@ -281,7 +329,10 @@
             justify-content: center;
         }
 
-        .carousel-arrow:hover { background: var(--naranja-logo); }
+        .carousel-arrow:hover {
+            background: var(--naranja-logo);
+        }
+
         .carousel-arrow.prev { left: 26px; }
         .carousel-arrow.next { right: 26px; }
 
@@ -304,7 +355,10 @@
             cursor: pointer;
         }
 
-        .carousel-dot.active { background: var(--amarillo-logo); transform: scale(1.2); }
+        .carousel-dot.active {
+            background: var(--amarillo-logo);
+            transform: scale(1.2);
+        }
 
         .btn-cta {
             background-color: var(--naranja-logo);
@@ -326,6 +380,9 @@
             transform: scale(1.03);
         }
 
+        /* =================================
+           5. SECCIONES Y TÍTULOS CENTRADOS
+           ================================= */
         section {
             padding: 3.5rem 20px;
             max-width: 1200px;
@@ -333,7 +390,9 @@
             transition: opacity 0.35s ease, transform 0.35s ease;
         }
 
-        section.section-focus { animation: fadeSlideIn 0.45s ease; }
+        section.section-focus {
+            animation: fadeSlideIn 0.45s ease;
+        }
 
         .section-title {
             color: var(--amarillo-logo);
@@ -346,7 +405,9 @@
             padding-bottom: 8px;
         }
 
-        body:not(.dark-mode) .section-title { color: var(--azul-logo); }
+        body:not(.dark-mode) .section-title {
+            color: var(--azul-logo);
+        }
 
         .section-subtitle {
             text-align: center;
@@ -355,6 +416,9 @@
             color: var(--texto-suave);
         }
 
+        /* =================================
+           6. TARJETA PRINCIPAL DEL VIAJE, RECOMPENSAS Y CONFIANZA
+           ================================= */
         .trip-showcase {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -367,9 +431,17 @@
             transition: background-color 0.35s ease, border-color 0.35s ease;
         }
 
-        .trip-cover { min-height: 330px; background: url('foto2.jpg.jpg') center/cover no-repeat; }
+        .trip-cover {
+            min-height: 330px;
+            background: url('foto2.jpg.jpg') center/cover no-repeat;
+        }
 
-        .trip-details { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+        .trip-details {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
         .date-badge {
             background-color: var(--azul-logo);
@@ -382,10 +454,27 @@
             margin-bottom: 12px;
         }
 
-        .trip-title { font-size: 1.8rem; color: var(--texto-oscuro); margin-bottom: 12px; }
-        .trip-list { list-style: none; margin: 12px 0 20px; }
-        .trip-list li { margin-bottom: 9px; color: var(--texto-oscuro); font-size: 0.98rem; }
-        .trip-list i { color: var(--naranja-logo); margin-right: 8px; }
+        .trip-title {
+            font-size: 1.8rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 12px;
+        }
+
+        .trip-list {
+            list-style: none;
+            margin: 12px 0 20px;
+        }
+
+        .trip-list li {
+            margin-bottom: 9px;
+            color: var(--texto-oscuro);
+            font-size: 0.98rem;
+        }
+
+        .trip-list i {
+            color: var(--naranja-logo);
+            margin-right: 8px;
+        }
 
         .stage-summary-box {
             background: var(--superficie-suave);
@@ -415,7 +504,10 @@
         }
 
         .reward-card:hover { transform: translateY(-3px); }
-        .reward-card.premium { border-left-color: var(--azul-logo); }
+
+        .reward-card.premium {
+            border-left-color: var(--azul-logo);
+        }
 
         .reward-badge {
             display: inline-block;
@@ -444,8 +536,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        .trust-fiscal-card h4 { color: var(--texto-oscuro); margin-bottom: 6px; font-size: 1rem; }
-        .trust-fiscal-card p { font-size: 0.9rem; color: var(--texto-suave); }
+        .trust-fiscal-card h4 {
+            color: var(--texto-oscuro);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .trust-fiscal-card p {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+        }
 
         .booking-closed-banner {
             background: #FEE2E2;
@@ -492,6 +592,9 @@
         .btn-secondary { background-color: var(--amarillo-logo); color: #1B3B6F; }
         .btn-secondary:hover:not(:disabled) { background-color: #dba116; }
 
+        /* =================================
+           7. GALERÍA DINÁMICA CON ROTACIÓN INTELIGENTE
+           ================================= */
         .smart-controls-bar {
             display: flex;
             justify-content: center;
@@ -522,7 +625,9 @@
             cursor: pointer;
         }
 
-        .btn-mini-toggle:hover { background: var(--naranja-logo); }
+        .btn-mini-toggle:hover {
+            background: var(--naranja-logo);
+        }
 
         .gallery-grid {
             display: grid;
@@ -540,7 +645,10 @@
             border: 1px solid var(--borde-suave);
         }
 
-        .gallery-card:hover { transform: translateY(-6px); border-color: var(--naranja-logo); }
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--naranja-logo);
+        }
 
         .gallery-card.smart-active {
             transform: translateY(-6px) scale(1.02);
@@ -548,7 +656,12 @@
             box-shadow: 0 10px 22px rgba(232, 106, 51, 0.25);
         }
 
-        .gallery-card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+        .gallery-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            display: block;
+        }
 
         .gallery-caption {
             padding: 10px 12px;
@@ -581,8 +694,16 @@
             animation: modalPopIn 0.3s ease;
         }
 
-        .gallery-modal-box img { max-width: 100%; max-height: 65vh; border-radius: 10px; object-fit: contain; }
+        .gallery-modal-box img {
+            max-width: 100%;
+            max-height: 65vh;
+            border-radius: 10px;
+            object-fit: contain;
+        }
 
+        /* =================================
+           8. NOTICIAS INTELIGENTES Y PANEL ADMIN PRIVADO
+           ================================= */
         .news-section {
             background-color: var(--superficie-suave);
             border-radius: 20px;
@@ -613,9 +734,22 @@
             box-shadow: 0 10px 22px rgba(27, 59, 111, 0.2);
         }
 
-        .news-date { color: var(--amarillo-logo); font-weight: bold; font-size: 0.88rem; margin-bottom: 6px; }
-        body:not(.dark-mode) .news-date { color: var(--azul-logo); }
-        .news-title { font-size: 1.15rem; margin-bottom: 8px; color: var(--texto-oscuro); }
+        .news-date {
+            color: var(--amarillo-logo);
+            font-weight: bold;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+
+        body:not(.dark-mode) .news-date {
+            color: var(--azul-logo);
+        }
+
+        .news-title {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--texto-oscuro);
+        }
 
         .news-priority {
             position: absolute;
@@ -649,7 +783,12 @@
             gap: 10px;
         }
 
-        .admin-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
 
         .admin-tab {
             background: rgba(255,255,255,0.18);
@@ -662,9 +801,17 @@
             font-size: 0.88rem;
         }
 
-        .admin-tab.active { background: var(--amarillo-logo); color: #1B3B6F; }
+        .admin-tab.active {
+            background: var(--amarillo-logo);
+            color: #1B3B6F;
+        }
 
-        .admin-content { background: var(--blanco); color: var(--texto-oscuro); padding: 1.8rem; border-radius: 12px; }
+        .admin-content {
+            background: var(--blanco);
+            color: var(--texto-oscuro);
+            padding: 1.8rem;
+            border-radius: 12px;
+        }
 
         .admin-qr-box {
             margin-top: 20px;
@@ -715,22 +862,20 @@
             margin-left: 6px;
         }
 
-        .status-pending { background: #FEF3C7; color: #92400E; }
-        .status-checked { background: #D1FAE5; color: #065F46; }
-        .status-blocked { background: #FEE2E2; color: #991B1B; }
-
-        .fraud-box {
-            margin-top: 8px;
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-size: 0.84rem;
-            border: 1px solid var(--borde-suave);
-            background: var(--blanco);
+        .status-pending {
+            background: #FEF3C7;
+            color: #92400E;
         }
 
-        .fraud-low { border-left: 4px solid #10B981; }
-        .fraud-medium { border-left: 4px solid #F59E0B; background: #FFFBEB; color: #78350F; }
-        .fraud-high { border-left: 4px solid #EF4444; background: #FEF2F2; color: #991B1B; }
+        .status-checked {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status-blocked {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
 
         .btn-small {
             padding: 6px 10px;
@@ -746,8 +891,16 @@
         .btn-delete { background: var(--rojo-error); }
         .btn-check { background: var(--azul-info); }
 
-        .backup-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+        .backup-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
 
+        /* =================================
+           9. NOSOTROS, SOPORTE, CONTACTO Y LOGOS DE BANCOS
+           ================================= */
         .about-container {
             display: flex;
             flex-wrap: wrap;
@@ -780,8 +933,14 @@
             filter: contrast(1.05);
         }
 
-        body.dark-mode .about-logo-blended img { mix-blend-mode: normal; }
-        .about-text { flex: 1.5; min-width: 280px; }
+        body.dark-mode .about-logo-blended img {
+            mix-blend-mode: normal;
+        }
+
+        .about-text {
+            flex: 1.5;
+            min-width: 280px;
+        }
 
         .support-box {
             max-width: 720px;
@@ -794,7 +953,13 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         }
 
-        .support-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+        .support-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
 
         .contact-section {
             background-color: var(--azul-logo);
@@ -805,10 +970,25 @@
             border-bottom: 5px solid var(--naranja-logo);
         }
 
-        .contact-section .section-title { color: #FFFFFF; border-color: var(--amarillo-logo); }
-        .phones-box { margin: 18px 0; font-size: 1.15rem; }
-        .phones-box a { color: var(--amarillo-logo); text-decoration: none; font-weight: bold; }
+        .contact-section .section-title {
+            color: #FFFFFF;
+            border-color: var(--amarillo-logo);
+        }
 
+        .phones-box {
+            margin: 18px 0;
+            font-size: 1.15rem;
+        }
+
+        .phones-box a {
+            color: var(--amarillo-logo);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* =================================
+           10. MODALES DE CUENTA, RESERVA Y PASE
+           ================================= */
         .payment-modal, .ticket-modal, .account-modal {
             display: none;
             position: fixed;
@@ -833,7 +1013,12 @@
             animation: modalPopIn 0.3s ease;
         }
 
-        .account-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .account-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
 
         .account-tab-btn {
             padding: 8px 14px;
@@ -845,7 +1030,10 @@
             cursor: pointer;
         }
 
-        .account-tab-btn.active { background: var(--azul-logo); color: #FFFFFF; }
+        .account-tab-btn.active {
+            background: var(--azul-logo);
+            color: #FFFFFF;
+        }
 
         .close-modal {
             position: absolute;
@@ -858,8 +1046,15 @@
             color: var(--texto-suave);
         }
 
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; }
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
@@ -871,7 +1066,11 @@
             font-size: 0.98rem;
         }
 
-        .form-row-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
 
         .stage-timer-hint {
             background: #FEF3C7;
@@ -891,7 +1090,11 @@
             margin: 14px 0;
         }
 
-        .billing-box h4 { color: var(--texto-oscuro); margin-bottom: 8px; font-size: 0.98rem; }
+        .billing-box h4 {
+            color: var(--texto-oscuro);
+            margin-bottom: 8px;
+            font-size: 0.98rem;
+        }
 
         .tax-summary-line {
             background: var(--blanco);
@@ -911,7 +1114,11 @@
             margin: 16px 0;
         }
 
-        .terms-box h4 { color: var(--texto-oscuro); margin-bottom: 8px; font-size: 1rem; }
+        .terms-box h4 {
+            color: var(--texto-oscuro);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
 
         .terms-clauses {
             background: var(--blanco);
@@ -925,7 +1132,9 @@
             margin-bottom: 10px;
         }
 
-        .terms-clauses p { margin-bottom: 6px; }
+        .terms-clauses p {
+            margin-bottom: 6px;
+        }
 
         .terms-check-label {
             display: flex !important;
@@ -944,7 +1153,11 @@
             cursor: pointer;
         }
 
-        .bank-methods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px; }
+        .bank-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 10px;
+        }
 
         .bank-method-card {
             padding: 10px 8px;
@@ -956,8 +1169,15 @@
             transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
-        .bank-method-card:hover { transform: translateY(-2px); border-color: var(--azul-logo); }
-        .bank-method-card.selected { border-color: var(--naranja-logo); box-shadow: 0 0 0 2px rgba(232, 106, 51, 0.25); }
+        .bank-method-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--azul-logo);
+        }
+
+        .bank-method-card.selected {
+            border-color: var(--naranja-logo);
+            box-shadow: 0 0 0 2px rgba(232, 106, 51, 0.25);
+        }
 
         .bank-logo-img {
             height: 30px;
@@ -971,7 +1191,11 @@
             padding: 2px 4px;
         }
 
-        .bank-method-name { font-size: 0.85rem; font-weight: bold; color: var(--texto-oscuro); }
+        .bank-method-name {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--texto-oscuro);
+        }
 
         .bank-instructions-box {
             background: var(--superficie-suave);
@@ -983,7 +1207,10 @@
             color: var(--texto-oscuro);
         }
 
-        .receipt-preview-box { margin-top: 10px; text-align: center; }
+        .receipt-preview-box {
+            margin-top: 10px;
+            text-align: center;
+        }
 
         .receipt-preview-box img {
             max-width: 100%;
@@ -991,16 +1218,6 @@
             border-radius: 8px;
             border: 1px solid var(--borde-suave);
             object-fit: contain;
-        }
-
-        .receipt-audit-badge {
-            margin-top: 8px;
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-size: 0.84rem;
-            text-align: left;
-            background: var(--superficie-suave);
-            border: 1px solid var(--borde-suave);
         }
 
         .ticket-canvas {
@@ -1012,12 +1229,39 @@
             text-align: center;
         }
 
-        .ticket-number { font-size: 1.75rem; font-weight: bold; color: var(--amarillo-logo); margin-bottom: 6px; }
-        body:not(.dark-mode) .ticket-number { color: var(--azul-logo); }
-        .ticket-details { text-align: left; margin-top: 12px; }
-        .ticket-details p { padding: 5px 0; border-bottom: 1px solid var(--borde-suave); font-size: 0.92rem; }
-        .ticket-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+        .ticket-number {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: var(--amarillo-logo);
+            margin-bottom: 6px;
+        }
 
+        body:not(.dark-mode) .ticket-number {
+            color: var(--azul-logo);
+        }
+
+        .ticket-details {
+            text-align: left;
+            margin-top: 12px;
+        }
+
+        .ticket-details p {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--borde-suave);
+            font-size: 0.92rem;
+        }
+
+        .ticket-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* =================================
+           11. FOOTER CON LOGOS DE BANCOS Y BOTONES FLOTANTES
+           ================================= */
         footer {
             background-color: #111827;
             color: #FFFFFF;
@@ -1071,6 +1315,7 @@
         }
 
         .float-btn:hover { transform: scale(1.08); }
+
         .yt-float { background-color: #FF0000; }
         .tt-float { background-color: #000000; border: 1px solid #25F4EE; }
         .ig-float { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); }
@@ -1092,7 +1337,14 @@
         }
 
         .whatsapp-menu.open { display: block; }
-        .whatsapp-menu-title { font-size: 0.88rem; font-weight: bold; color: var(--texto-oscuro); margin-bottom: 10px; text-align: center; }
+
+        .whatsapp-menu-title {
+            font-size: 0.88rem;
+            font-weight: bold;
+            color: var(--texto-oscuro);
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
         .whatsapp-option {
             display: flex;
@@ -1125,6 +1377,7 @@
 
     <div id="notification" class="notification"></div>
 
+    <!-- Barra de navegación con logo integrado, modo nocturno y acceso a cuenta -->
     <nav>
         <div class="nav-container">
             <a href="#viaje" class="logo" onclick="focusSection('#viaje')">
@@ -1158,6 +1411,7 @@
         </div>
     </nav>
 
+    <!-- Barra de bienvenida personalizada, historial de cambios/viajes y control de notificaciones -->
     <div class="welcome-banner-wrap">
         <div class="welcome-banner" id="welcomeBanner">
             <div>
@@ -1175,6 +1429,7 @@
         </div>
     </div>
 
+    <!-- Giratorio automático de portada -->
     <div class="hero-carousel-wrap" id="heroCarouselWrap">
         <div class="hero-carousel" id="heroCarousel"></div>
         <button type="button" class="carousel-arrow prev" onclick="prevCarouselSlide()" aria-label="Slide anterior">&lsaquo;</button>
@@ -1182,6 +1437,7 @@
         <div class="carousel-dots" id="carouselDots"></div>
     </div>
 
+    <!-- Tarjeta principal del viaje y pilares de confianza / DGII -->
     <section id="viaje">
         <h2 class="section-title">✈️ Próxima Aventura</h2>
         <p class="section-subtitle" id="tripRuleSubtitle">Apartado con tiempo limitado hasta 1 mes antes del vuelo • Pago restante con fecha activa y cierre 1 mes antes</p>
@@ -1216,8 +1472,8 @@
 
         <div class="trust-fiscal-strip">
             <div class="trust-fiscal-card">
-                <h4><i class="fas fa-shield-alt"></i> Filtro Antifraude en Comprobantes</h4>
-                <p>Analiza huella SHA-256, similitud visual, referencias duplicadas y monto esperado antes de que el admin confirme un código.</p>
+                <h4><i class="fas fa-user-lock"></i> Cuenta + Google (Sin Datos Bancarios)</h4>
+                <p>Regístrate con contraseña o cuenta de Google para autocompletar tus datos personales y fiscales sin guardar datos bancarios confidenciales.</p>
             </div>
             <div class="trust-fiscal-card">
                 <h4><i class="fas fa-file-invoice"></i> Estructura Fiscal DGII (RD)</h4>
@@ -1230,6 +1486,7 @@
         </div>
     </section>
 
+    <!-- Sección de Sistema de Recompensas -->
     <section id="recompensas">
         <h2 class="section-title">🎁 Sistema de Recompensas</h2>
         <p class="section-subtitle">Premiamos tu primera aventura y tu fidelidad en cada viaje con PiesandantesRD</p>
@@ -1252,6 +1509,7 @@
         </div>
     </section>
 
+    <!-- Galería dinámica con rotación automática inteligente -->
     <section id="galeria" onmouseenter="setGalleryHoverPause(true)" onmouseleave="setGalleryHoverPause(false)">
         <h2 class="section-title">📸 Galería del Destino</h2>
         <p class="section-subtitle">Rotación automática inteligente • Pasa el cursor encima para pausar o haz clic para ampliar</p>
@@ -1264,6 +1522,7 @@
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
+    <!-- Modal de imagen ampliada -->
     <div id="galleryModal" class="gallery-modal" onclick="closeGalleryModal()">
         <div class="gallery-modal-box" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeGalleryModal()">&times;</button>
@@ -1272,6 +1531,7 @@
         </div>
     </div>
 
+    <!-- Sección de noticias con rotación automática inteligente -->
     <section id="noticias" class="news-section" onmouseenter="setNewsHoverPause(true)" onmouseleave="setNewsHoverPause(false)">
         <h2 class="section-title">📰 Noticias y Novedades</h2>
         <p class="section-subtitle">Carrusel inteligente automático • Prioriza avisos destacados y pausa al leer</p>
@@ -1284,6 +1544,7 @@
         <div class="news-grid" id="newsGrid"></div>
     </section>
 
+    <!-- Panel administrativo privado (se abre con Ctrl + Shift + A) -->
     <section id="adminPanel" class="admin-panel">
         <div class="admin-header">
             <h2>🛠️ Panel de Administración (Privado)</h2>
@@ -1294,7 +1555,7 @@
             <button class="admin-tab active" onclick="switchAdminTab('editTrip', event)">Editar Viaje</button>
             <button class="admin-tab" onclick="switchAdminTab('manageNews', event)">Editar Noticias</button>
             <button class="admin-tab" onclick="switchAdminTab('participants', event)">Verificación por Código</button>
-            <button class="admin-tab" onclick="switchAdminTab('usersSecurity', event)">Usuarios y Antifraude</button>
+            <button class="admin-tab" onclick="switchAdminTab('usersSecurity', event)">Usuarios y Seguridad</button>
             <button class="admin-tab" onclick="switchAdminTab('reports', event)">Reportes y Respaldo JSON</button>
             <button class="admin-tab" onclick="switchAdminTab('settings', event)">Cuentas y WhatsApp</button>
         </div>
@@ -1354,7 +1615,7 @@
             </div>
 
             <div id="adminParticipants" class="admin-tab-content" style="display: none;">
-                <h3>Verificación Antifraude y por Código (Apartado y Pago Restante)</h3>
+                <h3>Verificación por Código en Dos Etapas (Apartado y Pago Restante)</h3>
                 <div class="form-group">
                     <label for="codeCheckInput">Ingresa el Código del Usuario (ej. PRD-00001):</label>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
@@ -1372,11 +1633,11 @@
             </div>
 
             <div id="adminUsersSecurity" class="admin-tab-content" style="display: none;">
-                <h3>Control de Usuarios, Alertas Antifraude y Seguridad</h3>
+                <h3>Control de Usuarios (Registrados y No Registrados) y Seguridad Anti-Abuso</h3>
                 <div id="securityAlertsBox" style="margin-bottom:14px;"></div>
                 <div id="adminRegisteredUsersList"></div>
                 <hr style="margin:16px 0;">
-                <h4>Participantes / Visitantes Sin Cuenta Registrada</h4>
+                <h4>Participantes / Visitantes No Registrados con Cuenta</h4>
                 <div id="adminUnregisteredUsersList"></div>
             </div>
 
@@ -1386,7 +1647,7 @@
                 <hr style="margin: 18px 0;">
                 <h4>Mover Reservas y Comprobantes entre Dispositivos (JSON)</h4>
                 <p style="font-size: 0.9rem; color: var(--texto-suave); margin-top: 4px;">
-                    Exporta un archivo JSON con reservas, huellas antifraude, fechas de apartado/vuelo, facturación DGII y comprobantes.
+                    Exporta un archivo JSON con reservas, fechas de apartado/vuelo, campos de facturación DGII, términos y fotos de comprobantes.
                 </p>
                 <div class="backup-actions">
                     <button type="button" class="btn-cta" onclick="exportBackupJSON()">
@@ -1416,6 +1677,7 @@
                 <button class="btn-cta" onclick="saveSettings()">Guardar Configuración</button>
             </div>
 
+            <!-- Código QR dentro del Panel de Administración -->
             <div class="admin-qr-box" id="adminQrSection">
                 <h4 style="color: var(--texto-oscuro); margin-bottom: 4px;">📲 Código QR de Acceso Rápido (Panel Admin)</h4>
                 <p style="font-size: 0.85rem; color: var(--texto-suave);">Enlace profesional con el nombre de la página y el dominio</p>
@@ -1433,6 +1695,7 @@
         </div>
     </section>
 
+    <!-- Sección sobre nosotros con logo integrado -->
     <section id="nosotros">
         <h2 class="section-title">🧭 Sobre PiesandantesRD</h2>
         <div class="about-container">
@@ -1453,6 +1716,7 @@
         </div>
     </section>
 
+    <!-- Sección específica de Soporte Técnico con el desarrollador -->
     <section id="soporte">
         <h2 class="section-title">🛠️ Soporte</h2>
         <p class="section-subtitle">Área dedicada para reportar cualquier problema de la página y hablar directamente con el desarrollador</p>
@@ -1472,6 +1736,7 @@
         </div>
     </section>
 
+    <!-- Sección de contacto -->
     <section id="contacto" class="contact-section">
         <h2 class="section-title">Contacto y Reservas</h2>
         <p>Escríbenos o llámanos para resolver tus dudas sobre el viaje a Medellín y Guatapé.</p>
@@ -1481,6 +1746,7 @@
         <p style="color: var(--amarillo-logo); font-weight: bold;">@piesandantesrd</p>
     </section>
 
+    <!-- Pie de página con logos de bancos y copyright -->
     <footer>
         <p>&copy; 2026 PiesandantesRD • Paso a paso, descubriendo • Normativa Fiscal DGII (RD)</p>
         <div class="footer-banks-strip" id="footerBanksStrip" aria-label="Bancos habilitados para transferencias"></div>
@@ -1488,6 +1754,7 @@
         <p id="codeVersionFooter" style="font-size: 0.78rem; color: #9CA3AF; margin-top: 6px;"></p>
     </footer>
 
+    <!-- Botones flotantes: YouTube, TikTok, Instagram y WhatsApp -->
     <div id="whatsappMenu" class="whatsapp-menu" onclick="event.stopPropagation()">
         <div class="whatsapp-menu-title">Elige un número de WhatsApp:</div>
         <a id="waLink1" href="#" target="_blank" rel="noopener noreferrer" class="whatsapp-option">
@@ -1501,20 +1768,36 @@
     </div>
 
     <div class="float-stack">
-        <a id="ytFloatLink" href="https://www.youtube.com/@piesandantesrd" class="float-btn yt-float" target="_blank" rel="noopener noreferrer" title="YouTube @piesandantesrd">
+        <a id="ytFloatLink" href="https://www.youtube.com/@piesandantesrd"
+           class="float-btn yt-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="YouTube @piesandantesrd">
             <i class="fab fa-youtube"></i>
         </a>
-        <a id="ttFloatLink" href="https://www.tiktok.com/@piesandantesrd" class="float-btn tt-float" target="_blank" rel="noopener noreferrer" title="TikTok @piesandantesrd">
+        <a id="ttFloatLink" href="https://www.tiktok.com/@piesandantesrd"
+           class="float-btn tt-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="TikTok @piesandantesrd">
             <i class="fab fa-tiktok"></i>
         </a>
-        <a href="https://www.instagram.com/piesandantesrd?utm_source=ig_web_button_share_sheet&jplx=ZDNlZDc0MzIxNw==" class="float-btn ig-float" target="_blank" rel="noopener noreferrer" title="Instagram @piesandantesrd">
+        <a href="https://www.instagram.com/piesandantesrd?utm_source=ig_web_button_share_sheet&jplx=ZDNlZDc0MzIxNw=="
+           class="float-btn ig-float"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="Instagram @piesandantesrd">
             <i class="fab fa-instagram"></i>
         </a>
-        <button type="button" class="float-btn wa-float" onclick="toggleWhatsAppMenu(event)" title="Contactar por WhatsApp">
+        <button type="button"
+                class="float-btn wa-float"
+                onclick="toggleWhatsAppMenu(event)"
+                title="Contactar por WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </button>
     </div>
 
+    <!-- Modal de Cuenta del Viajero (Contraseña + Google, sin datos bancarios) -->
     <div id="accountModal" class="account-modal">
         <div class="account-box">
             <button class="close-modal" onclick="closeAccountModal()">&times;</button>
@@ -1552,6 +1835,14 @@
                 <div class="form-group">
                     <label for="regName">Nombre Completo *</label>
                     <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regWelcomeStyle">Preferencia de Saludo *</label>
+                    <select id="regWelcomeStyle">
+                        <option value="neutral" selected>Bienvenido/a</option>
+                        <option value="bienvenido">Bienvenido</option>
+                        <option value="bienvenida">Bienvenida</option>
+                    </select>
                 </div>
                 <div class="form-row-2">
                     <div class="form-group">
@@ -1609,6 +1900,7 @@
         </div>
     </div>
 
+    <!-- Modal de reserva, apartado con tiempo limitado, pago restante con ventana activa/cierre y facturación DGII -->
     <div id="paymentModal" class="payment-modal">
         <div class="payment-form">
             <button class="close-modal" onclick="closePaymentModal()">&times;</button>
@@ -1712,14 +2004,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="transferReceiptInput">Foto / Captura de Transferencia o Token (JPG, PNG, WEBP · máx. 2 MB) *</label>
+                    <label for="transferReceiptInput">Foto / Captura de Transferencia o Token (JPG, PNG, WEBP · máx. 1.5 MB) *</label>
                     <input type="file" id="transferReceiptInput" accept="image/jpeg,image/png,image/webp" required onchange="handleReceiptUpload(event)">
                     <div id="receiptPreviewBox" class="receipt-preview-box"></div>
-                    <div id="receiptAuditPreview" class="receipt-audit-badge" style="display:none;"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="transferRefCode">Número de Referencia / Confirmación (recomendado para validación)</label>
+                    <label for="transferRefCode">Número de Referencia / Confirmación (opcional)</label>
                     <input type="text" id="transferRefCode" placeholder="Ej. REF-984321">
                 </div>
 
@@ -1735,11 +2026,11 @@
                         <p><strong>2. Ventana de activación y cierre del pago restante:</strong> El pago restante se activa según el calendario configurado y cierra al cumplirse el plazo de 1 mes antes del vuelo (o cierre general de reservas).</p>
                         <p><strong>3. Pérdida de objetos:</strong> PiesandantesRD no se hace responsable por la pérdida, extravío, daño o sustracción de ningún objeto personal, equipaje, dinero, documentos o dispositivos durante el trayecto o las excursiones.</p>
                         <p><strong>4. Conducta y protocolo:</strong> Cualquier comportamiento fuera de nuestro protocolo, normas de convivencia, horarios o indicaciones del equipo organizador está bajo la exclusiva responsabilidad y consecuencia del participante.</p>
-                        <p><strong>5. Antifraude y veracidad:</strong> Declaro que el comprobante de transferencia es legítimo, corresponde al pago de esta reserva y no ha sido reutilizado de otra operación.</p>
+                        <p><strong>5. Datos fiscales DGII y salud:</strong> Declaro que el RNC o Cédula, tipo de e-CF, edad, residencia, contacto de emergencia y condiciones de salud, alergias o padecimientos son verídicos.</p>
                     </div>
                     <label class="terms-check-label" for="acceptTermsCheckbox">
                         <input type="checkbox" id="acceptTermsCheckbox" required>
-                        <span>Acepto los Términos y Condiciones y declaro que mi comprobante de transferencia es legítimo y no reutilizado. *</span>
+                        <span>Acepto los Términos y Condiciones: entiendo que el apartado tiene tiempo limitado y no se devuelve si no voy, que el pago restante tiene fecha de activación y cierre, que no se responsabilizan por la pérdida de ningún objeto y que cualquier comportamiento fuera del protocolo es bajo mi responsabilidad y consecuencia. *</span>
                     </label>
                 </div>
 
@@ -1750,11 +2041,12 @@
         </div>
     </div>
 
+    <!-- Modal de pase solo con código -->
     <div id="ticketModal" class="ticket-modal">
         <div class="ticket">
             <button class="close-modal" onclick="closeTicketModal()">&times;</button>
             <h3 style="color: var(--texto-oscuro);">¡Código de Reserva Generado!</h3>
-            <p style="font-size: 0.9rem; color: var(--texto-suave);">Guarda este código: quedará sujeto a validación antifraude y confirmación bancaria por el administrador.</p>
+            <p style="font-size: 0.9rem; color: var(--texto-suave);">Guarda este código: se usará para confirmar tu apartado y luego tu pago restante.</p>
             <div class="ticket-canvas">
                 <div class="ticket-number" id="ticketNumber">#PRD-00001</div>
                 <div class="ticket-details" id="ticketDetails"></div>
@@ -1769,9 +2061,10 @@
         // =================================
         // 1. VARIABLES AJUSTABLES DEL SISTEMA
         // =================================
-        const APP_CODE_VERSION = '2026-11-23-cf-v15-antifraud';
+        const APP_CODE_VERSION = '2026-11-23-cf-v14';
         const BRAND_SLUG = 'piesandantesrd';
         const PROFESSIONAL_DEPLOY_DOMAIN = 'workers.dev';
+        const TRIP_EMAIL_ENDPOINT_URL = '';
         const DEV_SUPPORT_PHONE_DISPLAY = '809-861-4497';
         const DEV_SUPPORT_PHONE_RAW = '18098614497';
         const YOUTUBE_URL = 'https://www.youtube.com/@piesandantesrd';
@@ -1795,11 +2088,7 @@
         const BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT = 1;
         const NEWS_ROTATION_MS = 4500;
         const GALLERY_ROTATION_MS = 3200;
-        const MAX_RECEIPT_UPLOAD_BYTES = 2 * 1024 * 1024;
-        const COMPRESSED_RECEIPT_MAX_WIDTH = 900;
-        const COMPRESSED_RECEIPT_QUALITY = 0.72;
-        const MIN_RECEIPT_WIDTH = 160;
-        const MIN_RECEIPT_HEIGHT = 120;
+        const MAX_RECEIPT_BYTES = 1.5 * 1024 * 1024;
         const BACKUP_FILE_PREFIX = 'respaldo_piesandantesrd';
 
         const CAROUSEL_SLIDES = [
@@ -1821,9 +2110,9 @@
         ];
 
         const BANK_HINTS = {
-            'Banreservas': 'Transferencia Banreservas • Adjunta el comprobante claro con fecha, monto y referencia.',
-            'Banco Popular': 'Transferencia Banco Popular • Sube la captura completa de confirmación de tu transacción.',
-            'BHD': 'Transferencia Banco BHD • Adjunta la foto o captura legible del comprobante realizado.',
+            'Banreservas': 'Transferencia Banreservas • Adjunta el comprobante con fecha, monto y referencia.',
+            'Banco Popular': 'Transferencia Banco Popular • Sube la captura de confirmación de tu transacción.',
+            'BHD': 'Transferencia Banco BHD • Adjunta la foto o captura del comprobante realizado.',
             'Qik': 'Transferencia Qik Banco Digital • Adjunta la captura de la transferencia completada.'
         };
 
@@ -1859,7 +2148,6 @@
         let currentCurrency = 'USD';
         let currentConvertedPrice = DEPOSIT_AMOUNT_USD;
         let currentReceiptDataUrl = '';
-        let currentReceiptAudit = null;
         let ticketCounter = 1;
         let isAdmin = false;
 
@@ -1944,9 +2232,6 @@
             document.getElementById('bankInstructionsBox').textContent = customNote
                 ? `${method}: ${customNote}`
                 : (BANK_HINTS[method] || `Transferencia ${method} • Adjunta tu comprobante.`);
-            if (currentReceiptDataUrl) {
-                evaluateReceiptAntiFraud(currentReceiptDataUrl, currentReceiptAudit ? currentReceiptAudit.meta : {});
-            }
         }
 
         function applyThemeFromStorage() {
@@ -2001,6 +2286,12 @@
             renderWelcomeBanner();
         }
 
+        function formatWelcomeWord(style) {
+            if (style === 'bienvenido') return 'Bienvenido';
+            if (style === 'bienvenida') return 'Bienvenida';
+            return 'Bienvenido/a';
+        }
+
         function renderWelcomeBanner() {
             const greetingEl = document.getElementById('welcomeGreetingText');
             const metaEl = document.getElementById('welcomeActivityMeta');
@@ -2011,8 +2302,11 @@
             const lastChangeStr = changes[0] ? `${changes[0].description} (${changes[0].at})` : 'Sin cambios recientes registrados';
 
             if (acc) {
-                const lastTripStr = acc.lastTripDate ? `${acc.lastTripTitle || tripData.title} (${acc.lastTripDate})` : (acc.tripsCount > 0 ? `${acc.tripsCount} viaje(s) registrado(s)` : 'Aún sin viajes completados');
-                greetingEl.textContent = `¡Bienvenido/a, ${acc.name}!`;
+                const welcomeWord = formatWelcomeWord(acc.welcomeStyle);
+                const lastTripStr = acc.lastTripDate
+                    ? `${acc.lastTripTitle || tripData.title} (${acc.lastTripDate})`
+                    : (acc.tripsCount > 0 ? `${acc.tripsCount} viaje(s) registrado(s)` : 'Aún sin viajes completados');
+                greetingEl.textContent = `¡${welcomeWord}, ${acc.name}!`;
                 metaEl.textContent = `Último cambio: ${lastChangeStr} • Último viaje: ${lastTripStr}`;
             } else {
                 greetingEl.textContent = '¡Bienvenido/a a PiesandantesRD!';
@@ -2048,7 +2342,7 @@
                 targetKey,
                 autoBlocked
             });
-            localStorage.setItem('piesandantesSecurityLog', JSON.stringify(log.slice(0, 60)));
+            localStorage.setItem('piesandantesSecurityLog', JSON.stringify(log.slice(0, 50)));
             if (isAdmin) renderUsersAndSecurityAdmin();
             return autoBlocked;
         }
@@ -2075,78 +2369,1544 @@
             renderUsersAndSecurityAdmin();
         }
 
-        // =================================
-        // 2. SISTEMA ANTIFRAUDE DE IMÁGENES Y PAGOS
-        // =================================
-        async function computeSha256Hex(dataString) {
-            if (window.crypto && window.crypto.subtle) {
-                const enc = new TextEncoder().encode(dataString);
-                const buf = await window.crypto.subtle.digest('SHA-256', enc);
-                return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        function renderHeroCarousel() {
+            const carouselEl = document.getElementById('heroCarousel');
+            const dotsEl = document.getElementById('carouselDots');
+            if (!carouselEl || !dotsEl) return;
+
+            carouselEl.innerHTML = CAROUSEL_SLIDES.map((slide, idx) => `
+                <div class="hero-slide ${idx === carouselIndex ? 'active' : ''}"
+                     style="background-image: linear-gradient(rgba(27, 59, 111, 0.42), rgba(27, 59, 111, 0.58)), url('${escapeHtml(slide.image)}');">
+                    <div class="hero-content">
+                        <h1>${escapeHtml(slide.title || tripData.title)}</h1>
+                        <p>${escapeHtml(slide.subtitle || `Del ${tripData.date} • Total US$ ${tripData.priceUSD}`)}</p>
+                        <a href="#viaje" class="btn-cta" onclick="focusSection('#viaje')">Ver Detalles y Reservar</a>
+                    </div>
+                </div>
+            `).join('');
+
+            dotsEl.innerHTML = CAROUSEL_SLIDES.map((_, idx) => `
+                <button type="button" class="carousel-dot ${idx === carouselIndex ? 'active' : ''}" onclick="goToCarouselSlide(${idx})" aria-label="Slide ${idx + 1}"></button>
+            `).join('');
+        }
+
+        function goToCarouselSlide(idx) {
+            carouselIndex = (idx + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length;
+            renderHeroCarousel();
+        }
+
+        function nextCarouselSlide() {
+            goToCarouselSlide(carouselIndex + 1);
+        }
+
+        function prevCarouselSlide() {
+            goToCarouselSlide(carouselIndex - 1);
+        }
+
+        function startHeroCarouselRotation() {
+            if (carouselTimerId) clearInterval(carouselTimerId);
+            carouselTimerId = setInterval(nextCarouselSlide, CAROUSEL_AUTO_MS);
+        }
+
+        function simplePassHash(plainText) {
+            let h = 5381;
+            const s = String(plainText || '');
+            for (let i = 0; i < s.length; i++) {
+                h = ((h << 5) + h) + s.charCodeAt(i);
             }
+            return String(h >>> 0);
+        }
+
+        function getAccounts() {
+            return JSON.parse(localStorage.getItem('piesandantesAccounts') || '[]');
+        }
+
+        function saveAccounts(list) {
+            localStorage.setItem('piesandantesAccounts', JSON.stringify(list));
+        }
+
+        function getActiveAccountEmail() {
+            return localStorage.getItem('piesandantesActiveAccount') || '';
+        }
+
+        function getActiveAccount() {
+            const email = getActiveAccountEmail().toLowerCase();
+            if (!email) return null;
+            return getAccounts().find(acc => String(acc.email || '').toLowerCase() === email) || null;
+        }
+
+        function getRewardForTrips(tripsCount) {
+            const count = Number(tripsCount) || 0;
+            if (count > 20) {
+                return {
+                    tier: 'Nivel Oro (> 20 Viajes)',
+                    benefit: `Promoción activa: ${REWARD_DISCOUNT_OVER_20_PCT}% de rebaja en tus próximos viajes`,
+                    discountPct: REWARD_DISCOUNT_OVER_20_PCT
+                };
+            }
+            if (count >= 10) {
+                return {
+                    tier: 'Nivel Plata (10 Viajes)',
+                    benefit: 'Recompensa ganada: termo térmico con el logo de PiesandantesRD',
+                    discountPct: 0
+                };
+            }
+            if (count === 1) {
+                return {
+                    tier: 'Primer Viaje (Primera Vez)',
+                    benefit: 'Recompensa de bienvenida: merch oficial (t-shirt o abrigo)',
+                    discountPct: 0
+                };
+            }
+            return {
+                tier: 'Viajero Activo',
+                benefit: 'Suma 1 viaje para merch de bienvenida, 10 para termo con logo, o +20 para rebaja en próximos viajes',
+                discountPct: 0
+            };
+        }
+
+        function updateAccountNavButton() {
+            const acc = getActiveAccount();
+            const labelEl = document.getElementById('accountNavLabel');
+            if (!labelEl) return;
+            if (acc) {
+                labelEl.textContent = `${acc.name.split(' ')[0]} (${acc.tripsCount || 0}v)`;
+            } else {
+                labelEl.textContent = 'Mi Cuenta';
+            }
+            renderWelcomeBanner();
+        }
+
+        function openAccountModal() {
+            const acc = getActiveAccount();
+            document.getElementById('accountModal').style.display = 'flex';
+            if (acc) {
+                switchAccountTab('profile');
+            } else {
+                switchAccountTab('login');
+            }
+        }
+
+        function closeAccountModal() {
+            document.getElementById('accountModal').style.display = 'none';
+        }
+
+        function switchAccountTab(tabName) {
+            document.getElementById('loginAccountForm').style.display = tabName === 'login' ? 'block' : 'none';
+            document.getElementById('registerAccountForm').style.display = tabName === 'register' ? 'block' : 'none';
+            document.getElementById('profileAccountView').style.display = tabName === 'profile' ? 'block' : 'none';
+
+            document.getElementById('tabLoginBtn').classList.toggle('active', tabName === 'login');
+            document.getElementById('tabRegisterBtn').classList.toggle('active', tabName === 'register');
+            document.getElementById('tabProfileBtn').classList.toggle('active', tabName === 'profile');
+
+            if (tabName === 'profile') renderAccountProfileView();
+        }
+
+        function completeUserSignIn(acc, isFirstLogin) {
+            localStorage.setItem('piesandantesActiveAccount', acc.email);
+            acc.firstLoginDone = true;
+            acc.lastLoginAt = new Date().toLocaleString('es-DO');
+            const accounts = getAccounts().map(item => item.email === acc.email ? acc : item);
+            saveAccounts(accounts);
+            updateAccountNavButton();
+            switchAccountTab('profile');
+            recordUserChange(`Inicio de sesión (${acc.name})`);
+
+            const welcomeWord = formatWelcomeWord(acc.welcomeStyle);
+            if (isFirstLogin) {
+                showNotification(`¡Felicitaciones, ${acc.name}! ${welcomeWord} a tu primera sesión en PiesandantesRD.`, 'success');
+            } else {
+                showNotification(`¡${welcomeWord} de nuevo, ${acc.name}!`, 'success');
+            }
+        }
+
+        function handleGoogleAccountAuth() {
+            const providedEmail = prompt('Ingresa el correo de tu cuenta de Google para continuar:');
+            if (!providedEmail) return;
+            const email = providedEmail.trim().toLowerCase();
+            if (!email.includes('@')) return showNotification('Correo de Google no válido', 'error');
+            if (isTargetBlocked(email)) {
+                logSecurityAttempt('Intento de acceso con cuenta de Google bloqueada', email);
+                return showNotification('Esta cuenta ha sido bloqueada por seguridad/políticas', 'error');
+            }
+
+            const accounts = getAccounts();
+            let acc = accounts.find(a => String(a.email || '').toLowerCase() === email);
+            const isFirstLogin = !acc || !acc.firstLoginDone;
+
+            if (!acc) {
+                const defaultName = email.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                acc = {
+                    id: Date.now(),
+                    name: defaultName || 'Viajero Google',
+                    welcomeStyle: 'neutral',
+                    email,
+                    provider: 'google',
+                    passHash: '',
+                    age: '',
+                    phone: '',
+                    residence: 'República Dominicana',
+                    emergency: '',
+                    healthConditions: 'Ninguna',
+                    rncOrId: '',
+                    ecfType: 'E32',
+                    billingName: defaultName || 'Viajero Google',
+                    tripsCount: 0,
+                    firstLoginDone: false
+                };
+                accounts.push(acc);
+                saveAccounts(accounts);
+            }
+
+            completeUserSignIn(acc, isFirstLogin);
+        }
+
+        function handleAccountRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            if (isTargetBlocked(email)) {
+                logSecurityAttempt('Intento de registro con correo bloqueado', email);
+                return showNotification('Este correo está bloqueado por políticas de seguridad', 'error');
+            }
+
+            const password = document.getElementById('regPassword').value;
+            const accounts = getAccounts();
+
+            if (accounts.some(a => String(a.email || '').toLowerCase() === email)) {
+                return showNotification('Ese correo ya tiene una cuenta registrada', 'error');
+            }
+
+            const newAccount = {
+                id: Date.now(),
+                name: document.getElementById('regName').value.trim(),
+                welcomeStyle: document.getElementById('regWelcomeStyle').value || 'neutral',
+                email,
+                provider: 'password',
+                passHash: simplePassHash(password),
+                age: document.getElementById('regAge').value.trim(),
+                phone: document.getElementById('regPhone').value.trim(),
+                residence: document.getElementById('regResidence').value.trim(),
+                emergency: document.getElementById('regEmergency').value.trim(),
+                healthConditions: document.getElementById('regHealth').value.trim(),
+                rncOrId: document.getElementById('regRncId').value.trim(),
+                ecfType: document.getElementById('regEcfType').value,
+                billingName: document.getElementById('regBillingName').value.trim(),
+                tripsCount: 0,
+                firstLoginDone: false
+            };
+
+            accounts.push(newAccount);
+            saveAccounts(accounts);
+            completeUserSignIn(newAccount, true);
+        }
+
+        function handleAccountLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            if (isTargetBlocked(email)) {
+                logSecurityAttempt('Intento de login en cuenta bloqueada', email);
+                return showNotification('Cuenta bloqueada por infringir políticas o intentos repetidos', 'error');
+            }
+
+            const password = document.getElementById('loginPassword').value;
+            const acc = getAccounts().find(a => String(a.email || '').toLowerCase() === email);
+
+            if (!acc || !acc.passHash || acc.passHash !== simplePassHash(password)) {
+                const blockedNow = logSecurityAttempt('Credenciales incorrectas al iniciar sesión', email);
+                return showNotification(
+                    blockedNow
+                        ? 'Demasiados intentos fallidos: cuenta bloqueada temporalmente por seguridad'
+                        : 'Correo o contraseña incorrectos',
+                    'error'
+                );
+            }
+
+            const isFirstLogin = !acc.firstLoginDone;
+            completeUserSignIn(acc, isFirstLogin);
+        }
+
+        function logoutAccount() {
+            recordUserChange('Cierre de sesión');
+            localStorage.removeItem('piesandantesActiveAccount');
+            updateAccountNavButton();
+            switchAccountTab('login');
+            showNotification('Sesión cerrada', 'info');
+        }
+
+        function renderAccountProfileView() {
+            const viewEl = document.getElementById('profileAccountView');
+            const acc = getActiveAccount();
+            if (!viewEl) return;
+
+            if (!acc) {
+                viewEl.innerHTML = `
+                    <p style="margin-bottom: 12px;">Inicia sesión o crea tu cuenta para ver tu historial de viajes, recompensas y autocompletar tus datos.</p>
+                    <button type="button" class="btn-cta" onclick="switchAccountTab('login')">Ir a Iniciar Sesión</button>
+                `;
+                return;
+            }
+
+            const reward = getRewardForTrips(acc.tripsCount || 0);
+            viewEl.innerHTML = `
+                <div style="background:var(--superficie-suave);border:1px solid var(--borde-suave);border-radius:12px;padding:14px;">
+                    <p><strong>¡Felicitaciones por tu espacio en PiesandantesRD!</strong></p>
+                    <p><strong>Nombre:</strong> ${escapeHtml(acc.name)} (${acc.provider === 'google' ? 'Google' : 'Cuenta propia'})</p>
+                    <p><strong>Saludo preferido:</strong> ${escapeHtml(formatWelcomeWord(acc.welcomeStyle))}</p>
+                    <p><strong>Correo:</strong> ${escapeHtml(acc.email)}</p>
+                    <p><strong>Edad / Residencia:</strong> ${escapeHtml(acc.age || '-')} años • ${escapeHtml(acc.residence || '-')}</p>
+                    <p><strong>DGII (${escapeHtml(acc.ecfType || 'E32')}):</strong> ${escapeHtml(acc.billingName || acc.name)} • RNC/Cédula: ${escapeHtml(acc.rncOrId || '-')}</p>
+                    <p style="margin-top:8px;"><strong>Viajes acumulados:</strong> ${acc.tripsCount || 0}</p>
+                    <p><strong>Recompensa actual:</strong> ${escapeHtml(reward.tier)} — ${escapeHtml(reward.benefit)}</p>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+                    <button type="button" class="btn-cta" onclick="closeAccountModal(); openPaymentModal();">Reservar con Mis Datos</button>
+                    <button type="button" class="btn-small btn-delete" onclick="logoutAccount()">Cerrar Sesión</button>
+                </div>
+            `;
+        }
+
+        function autofillFormFromActiveAccount() {
+            const acc = getActiveAccount();
+            if (!acc) return;
+            document.getElementById('participantName').value = acc.name || '';
+            document.getElementById('participantAge').value = acc.age || '';
+            document.getElementById('participantResidence').value = acc.residence || '';
+            document.getElementById('participantPhone').value = acc.phone || '';
+            document.getElementById('participantEmail').value = acc.email || '';
+            document.getElementById('emergencyContact').value = acc.emergency || '';
+            document.getElementById('healthConditions').value = acc.healthConditions || '';
+            document.getElementById('rncOrId').value = acc.rncOrId || '';
+            document.getElementById('ecfType').value = acc.ecfType || 'E32';
+            document.getElementById('billingName').value = acc.billingName || acc.name || '';
+            document.getElementById('billingEmail').value = acc.email || '';
+        }
+
+        function getProfessionalBrandUrl() {
+            const cleanDomain = String(PROFESSIONAL_DEPLOY_DOMAIN || 'workers.dev')
+                .trim()
+                .replace(/^https?:\/\//i, '')
+                .replace(/\/+$/, '');
+            return `https://${BRAND_SLUG}.${cleanDomain}`;
+        }
+
+        function computeTaxBreakdown(totalAmount) {
+            const safeTotal = Number(totalAmount) || 0;
+            if (!SHOW_ITBIS_BREAKDOWN || ITBIS_RATE <= 0) {
+                return { subtotal: safeTotal, itbis: 0, total: safeTotal };
+            }
+            const subtotal = Number((safeTotal / (1 + ITBIS_RATE)).toFixed(2));
+            const itbis = Number((safeTotal - subtotal).toFixed(2));
+            return { subtotal, itbis, total: safeTotal };
+        }
+
+        function getBalanceAmountUSD() {
+            return Math.max(0, Number(tripData.priceUSD) - DEPOSIT_AMOUNT_USD);
+        }
+
+        function getDepositDeadlineTimestamp() {
+            const flightMs = Date.parse(tripData.flightDate);
+            if (Number.isNaN(flightMs)) return Date.now();
+            const d = new Date(flightMs);
+            d.setMonth(d.getMonth() - DEPOSIT_MONTHS_BEFORE_FLIGHT);
+            return d.getTime();
+        }
+
+        function getBalanceActivationTimestamp() {
+            if (tripData.balanceStartDate) {
+                const parsed = Date.parse(tripData.balanceStartDate);
+                if (!Number.isNaN(parsed)) return parsed;
+            }
+            return getDepositDeadlineTimestamp();
+        }
+
+        function getBalanceClosingTimestamp() {
+            if (tripData.balanceCloseDate) {
+                const parsed = Date.parse(tripData.balanceCloseDate);
+                if (!Number.isNaN(parsed)) return parsed;
+            }
+            const flightMs = Date.parse(tripData.flightDate);
+            if (Number.isNaN(flightMs)) return Date.now();
+            const d = new Date(flightMs);
+            d.setMonth(d.getMonth() - BALANCE_WINDOW_MONTHS_BEFORE_FLIGHT);
+            return d.getTime();
+        }
+
+        function isDepositExpired() {
+            return Date.now() > getDepositDeadlineTimestamp();
+        }
+
+        function isBalanceWindowOpen() {
+            const now = Date.now();
+            const startMs = getBalanceActivationTimestamp();
+            const closeMs = getBalanceClosingTimestamp();
+            return now >= startMs && now <= closeMs;
+        }
+
+        function isBalanceWindowClosed() {
+            return Date.now() > getBalanceClosingTimestamp();
+        }
+
+        function isAllBookingsClosed() {
+            return isDepositExpired() && isBalanceWindowClosed();
+        }
+
+        function getStageAmountUSD(stage) {
+            const baseUSD = stage === 'balance' ? getBalanceAmountUSD() : DEPOSIT_AMOUNT_USD;
+            const acc = getActiveAccount();
+            const reward = getRewardForTrips(acc ? acc.tripsCount : 0);
+            if (reward.discountPct > 0) {
+                return Number((baseUSD * (1 - reward.discountPct / 100)).toFixed(2));
+            }
+            return baseUSD;
+        }
+
+        function getStageLabel(stage) {
+            return stage === 'balance'
+                ? 'Etapa 2: Pago restante para ir'
+                : 'Etapa 1: Apartado (tiempo limitado, no reembolsable)';
+        }
+
+        function formatMoney(amount, currency) {
+            const formatted = Number(amount).toLocaleString('en-US', {
+                minimumFractionDigits: currency === 'USD' && !Number.isInteger(Number(amount)) ? 2 : 0,
+                maximumFractionDigits: 2
+            });
+            return currency === 'USD' ? `US$ ${formatted}` : `RD$ ${formatted}`;
+        }
+
+        function showNotification(message, type = 'success') {
+            if (!areUserNotificationsEnabled() && type !== 'error') return;
+            const el = document.getElementById('notification');
+            if (!el) return;
+            el.textContent = message;
+            el.className = `notification ${type} show`;
+            clearTimeout(window.__notifTimer);
+            window.__notifTimer = setTimeout(() => el.classList.remove('show'), 3800);
+        }
+
+        function hashString(str) {
             let h = 2166136261;
-            for (let i = 0; i < dataString.length; i++) {
-                h ^= dataString.charCodeAt(i);
+            for (let i = 0; i < str.length; i++) {
+                h ^= str.charCodeAt(i);
                 h = Math.imul(h, 16777619);
             }
-            return (h >>> 0).toString(16).padStart(8, '0');
+            return h >>> 0;
         }
 
-        function computePerceptualHashFromImg(imgEl) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 8;
-            canvas.height = 8;
+        function renderQrOnCanvas(canvasId, payloadText) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(imgEl, 0, 0, 8, 8);
-            const data = ctx.getImageData(0, 0, 8, 8).data;
-            const grays = [];
-            for (let i = 0; i < data.length; i += 4) {
-                grays.push(0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]);
+            const size = 21;
+            const cell = Math.floor(canvas.width / size);
+            const offset = Math.floor((canvas.width - size * cell) / 2);
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const grid = Array.from({ length: size }, () => Array(size).fill(false));
+
+            function drawFinder(r0, c0) {
+                for (let r = -1; r <= 7; r++) {
+                    for (let c = -1; c <= 7; c++) {
+                        const rr = r0 + r;
+                        const cc = c0 + c;
+                        if (rr < 0 || rr >= size || cc < 0 || cc >= size) continue;
+                        const isBorder = r === 0 || r === 6 || c === 0 || c === 6;
+                        const isCenter = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+                        grid[rr][cc] = isBorder || isCenter;
+                    }
+                }
             }
-            const avg = grays.reduce((a, b) => a + b, 0) / grays.length;
-            return grays.map(g => (g >= avg ? '1' : '0')).join('');
-        }
 
-        function hammingDistance(bitsA, bitsB) {
-            if (!bitsA || !bitsB || bitsA.length !== bitsB.length) return 64;
-            let diff = 0;
-            for (let i = 0; i < bitsA.length; i++) {
-                if (bitsA[i] !== bitsB[i]) diff++;
+            drawFinder(0, 0);
+            drawFinder(0, size - 7);
+            drawFinder(size - 7, 0);
+
+            for (let i = 8; i < size - 8; i++) {
+                grid[6][i] = i % 2 === 0;
+                grid[i][6] = i % 2 === 0;
             }
-            return diff;
+
+            let seed = hashString(payloadText);
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    const inTopLeft = r < 8 && c < 8;
+                    const inTopRight = r < 8 && c >= size - 8;
+                    const inBottomLeft = r >= size - 8 && c < 8;
+                    const onTiming = r === 6 || c === 6;
+                    if (inTopLeft || inTopRight || inBottomLeft || onTiming) continue;
+
+                    seed ^= seed << 13;
+                    seed ^= seed >>> 17;
+                    seed ^= seed << 5;
+                    grid[r][c] = ((seed >>> 0) % 100) < 46;
+                }
+            }
+
+            ctx.fillStyle = '#111827';
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    if (grid[r][c]) {
+                        ctx.fillRect(offset + c * cell, offset + r * cell, cell, cell);
+                    }
+                }
+            }
         }
 
-        function compressImageToDataUrl(imgEl, mimeType) {
-            const scale = imgEl.width > COMPRESSED_RECEIPT_MAX_WIDTH
-                ? COMPRESSED_RECEIPT_MAX_WIDTH / imgEl.width
-                : 1;
-            const w = Math.max(1, Math.round(imgEl.width * scale));
-            const h = Math.max(1, Math.round(imgEl.height * scale));
-            const canvas = document.createElement('canvas');
-            canvas.width = w;
-            canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(imgEl, 0, 0, w, h);
-            const outMime = mimeType === 'image/png' ? 'image/png' : 'image/jpeg';
-            return outMime === 'image/png'
-                ? canvas.toDataURL('image/png')
-                : canvas.toDataURL('image/jpeg', COMPRESSED_RECEIPT_QUALITY);
+        function renderPageAccessQr() {
+            const professionalUrl = getProfessionalBrandUrl();
+            renderQrOnCanvas('adminPageQrCanvas', professionalUrl);
+
+            const adminUrlEl = document.getElementById('adminPageQrUrl');
+            if (adminUrlEl) adminUrlEl.textContent = professionalUrl;
         }
 
-        async function evaluateReceiptAntiFraud(dataUrl, extraMeta = {}) {
-            const existing = JSON.parse(localStorage.getItem('participants') || '[]');
-            const refInput = (document.getElementById('transferRefCode') ? document.getElementById('transferRefCode').value.trim().toLowerCase() : '');
-            const selectedBank = document.getElementById('paymentMethod') ? document.getElementById('paymentMethod').value : '';
-            const expectedAmount = Number(currentConvertedPrice) || 0;
+        function copyCleanBrandLink() {
+            const professionalUrl = getProfessionalBrandUrl();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(professionalUrl).then(() => showNotification(`Enlace copiado: ${professionalUrl}`, 'info'));
+            }
+        }
 
-            const sha256 = await computeSha256Hex(dataUrl);
-            const pHash = extraMeta.pHash || '';
-            const width = extraMeta.width || 0;
-            const height = extraMeta.height || 0;
+        function downloadPageAccessQr() {
+            const canvas = document.getElementById('adminPageQrCanvas');
+            if (!canvas) return;
+            const link = document.createElement('a');
+            link.download = `QR_${BRAND_SLUG}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showNotification('QR descargado en PNG', 'success');
+        }
 
-            const flags = [];
-            let score = 0;
+        function formatDisplayPhone(rawNumber) {
+            const digits = String(rawNumber || '').replace(/\D/g, '');
+            if (digits.length === 11 && digits.startsWith('1')) {
+                return `${digits.slice(1, 4)}-${digits.slice(4, 7)}-${digits.slice(7)}`;
+            }
+            if (digits.length === 10) {
+                return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+            }
+            return digits;
+        }
 
-            if (width < MIN_RECEIPT_WIDTH || height < MIN_RECEIPT_HEIGHT) {
-                score += 35;
-                flags.push(
+        function applyWhatsAppNumbers(num1, num2) {
+            const clean1 = String(num1 || DEFAULT_WA_1).replace(/\D/g, '') || DEFAULT_WA_1;
+            const clean2 = String(num2 || DEFAULT_WA_2).replace(/\D/g, '') || DEFAULT_WA_2;
+            const msg = encodeURIComponent(`Hola PiesandantesRD, quiero información sobre el viaje a ${tripData.title} (${tripData.date})`);
+
+            document.getElementById('waLink1').href = `https://wa.me/${clean1}?text=${msg}`;
+            document.getElementById('waLabel1').textContent = formatDisplayPhone(clean1);
+
+            document.getElementById('waLink2').href = `https://wa.me/${clean2}?text=${msg}`;
+            document.getElementById('waLabel2').textContent = formatDisplayPhone(clean2);
+
+            const devLink = document.getElementById('devSupportWaLink');
+            if (devLink) {
+                const devMsg = encodeURIComponent(`Hola, reporto un problema técnico en la página de PiesandantesRD (${tripData.title}).`);
+                devLink.href = `https://wa.me/${DEV_SUPPORT_PHONE_RAW}?text=${devMsg}`;
+            }
+        }
+
+        function toggleWhatsAppMenu(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('whatsappMenu').classList.toggle('open');
+        }
+
+        document.addEventListener('click', function () {
+            const menu = document.getElementById('whatsappMenu');
+            if (menu) menu.classList.remove('open');
+        });
+
+        function renderTrip() {
+            const savedTrip = JSON.parse(localStorage.getItem('piesandantesTrip') || 'null');
+            if (savedTrip) tripData = { ...tripData, ...savedTrip };
+
+            const balanceUSD = getBalanceAmountUSD();
+            const depExpired = isDepositExpired();
+            const balOpen = isBalanceWindowOpen();
+            const allClosed = isAllBookingsClosed();
+
+            const depositDeadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const balanceStartStr = new Date(getBalanceActivationTimestamp()).toLocaleString('es-DO');
+            const balanceCloseStr = new Date(getBalanceClosingTimestamp()).toLocaleString('es-DO');
+
+            document.getElementById('tripDateDisplay').innerHTML = `<i class="far fa-calendar-alt"></i> ${escapeHtml(tripData.date)}`;
+            document.getElementById('tripTitleDisplay').textContent = tripData.title;
+
+            if (allClosed) {
+                document.getElementById('tripPriceDisplay').textContent = `Plazos cerrados • Total US$ ${tripData.priceUSD}`;
+            } else if (balOpen) {
+                document.getElementById('tripPriceDisplay').textContent = `Pago Restante Activo: US$ ${balanceUSD} (Total US$ ${tripData.priceUSD})`;
+            } else if (!depExpired) {
+                document.getElementById('tripPriceDisplay').textContent = `Apartado US$ ${DEPOSIT_AMOUNT_USD} • Restante US$ ${balanceUSD} (Total US$ ${tripData.priceUSD})`;
+            } else {
+                document.getElementById('tripPriceDisplay').textContent = `Apartado vencido • Total US$ ${tripData.priceUSD}`;
+            }
+
+            document.getElementById('stageSummaryBox').innerHTML = `
+                <div><strong>Apartado tiempo limitado (US$ ${DEPOSIT_AMOUNT_USD}):</strong> vence <strong>${escapeHtml(depositDeadlineStr)}</strong> (1 mes antes del vuelo, no reembolsable si no vas).</div>
+                <div style="margin-top:4px;"><strong>Pago restante (US$ ${balanceUSD}):</strong> se activa el <strong>${escapeHtml(balanceStartStr)}</strong> y cierra el <strong>${escapeHtml(balanceCloseStr)}</strong>.</div>
+            `;
+
+            const reserveBtn = document.getElementById('reserveTripBtn');
+            const closedBanner = document.getElementById('bookingClosedBanner');
+
+            if (allClosed) {
+                reserveBtn.disabled = true;
+                reserveBtn.textContent = 'Plazo de Apartado y Pago Restante Cerrado';
+                closedBanner.style.display = 'block';
+                closedBanner.textContent = `El apartado venció el ${depositDeadlineStr} y la ventana del pago restante cerró el ${balanceCloseStr}.`;
+            } else if (balOpen) {
+                reserveBtn.disabled = false;
+                reserveBtn.textContent = `Pagar Restante Ahora (US$ ${balanceUSD})`;
+                closedBanner.style.display = 'none';
+            } else if (!depExpired) {
+                reserveBtn.disabled = false;
+                reserveBtn.textContent = `Apartar con US$ ${DEPOSIT_AMOUNT_USD} (Tiempo Limitado)`;
+                closedBanner.style.display = 'none';
+            } else {
+                reserveBtn.disabled = true;
+                reserveBtn.textContent = 'Pago Restante Fuera de Fecha Activa';
+                closedBanner.style.display = 'block';
+                closedBanner.textContent = `El apartado venció el ${depositDeadlineStr}. El pago restante está habilitado entre ${balanceStartStr} y ${balanceCloseStr}.`;
+            }
+
+            document.getElementById('tripIncludesDisplay').innerHTML = `
+                <li><i class="fas fa-plane"></i><strong>Vuelo incluido</strong></li>
+                <li><i class="fas fa-bed"></i><strong>Alojamiento</strong> en habitaciones compartidas</li>
+                <li><i class="fas fa-coffee"></i><strong>Desayuno incluido</strong></li>
+                <li><i class="fas fa-route"></i><strong>Excursiones y traslados:</strong> ${escapeHtml(tripData.places)}</li>
+            `;
+        }
+
+        function updateGalleryStatusLabel() {
+            const statusEl = document.getElementById('gallerySmartStatus');
+            if (!statusEl) return;
+            if (!galleryAutoEnabled) {
+                statusEl.textContent = 'Auto-rotación pausada por usuario';
+            } else if (galleryHoverPaused) {
+                statusEl.textContent = 'Pausada al pasar el cursor (lectura/selección)';
+            } else {
+                const currentItem = tripImages[galleryActiveIndex] || tripImages[0];
+                statusEl.textContent = `Destacando: ${currentItem ? currentItem.caption : ''}`;
+            }
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (!tripImages.length || !grid) return;
+            grid.innerHTML = tripImages.map((item, idx) => `
+                <div class="gallery-card ${idx === galleryActiveIndex ? 'smart-active' : ''}" onclick="openGalleryModal(${idx})">
+                    <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption)}" loading="lazy">
+                    <div class="gallery-caption">${escapeHtml(item.caption)}</div>
+                </div>
+            `).join('');
+            updateGalleryStatusLabel();
+        }
+
+        function rotateGallerySmartStep() {
+            if (!galleryAutoEnabled || galleryHoverPaused || !tripImages.length) return;
+            galleryActiveIndex = (galleryActiveIndex + 1) % tripImages.length;
+            renderGallery();
+        }
+
+        function startSmartGalleryRotation() {
+            if (galleryTimerId) clearInterval(galleryTimerId);
+            galleryTimerId = setInterval(rotateGallerySmartStep, GALLERY_ROTATION_MS);
+        }
+
+        function setGalleryHoverPause(paused) {
+            galleryHoverPaused = paused;
+            updateGalleryStatusLabel();
+        }
+
+        function toggleGalleryAutoRotation() {
+            galleryAutoEnabled = !galleryAutoEnabled;
+            updateGalleryStatusLabel();
+        }
+
+        function openGalleryModal(index) {
+            galleryHoverPaused = true;
+            updateGalleryStatusLabel();
+            const item = tripImages[index];
+            if (!item) return;
+            document.getElementById('galleryModalImg').src = item.src;
+            document.getElementById('galleryModalCaption').textContent = item.caption;
+            document.getElementById('galleryModal').style.display = 'flex';
+        }
+
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+            galleryHoverPaused = false;
+            updateGalleryStatusLabel();
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+                e.preventDefault();
+                promptAdminAccess();
+            }
+        });
+
+        function promptAdminAccess() {
+            if (isTargetBlocked('admin_panel')) {
+                return showNotification('Panel de administración bloqueado temporalmente por seguridad', 'error');
+            }
+            if (isAdmin) {
+                renderPageAccessQr();
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+            const pass = prompt('Acceso Privado - Ingresa tu contraseña de Administrador:');
+            if (pass === ADMIN_PASS) {
+                isAdmin = true;
+                document.getElementById('adminBadge').style.display = 'inline';
+                document.getElementById('adminPanel').style.display = 'block';
+                fillAdminTripForm();
+                updateAdminPanel();
+                renderPageAccessQr();
+                document.getElementById('adminPanel').scrollIntoView({ behavior: 'smooth' });
+                showNotification('Panel de administración desbloqueado', 'success');
+            } else if (pass !== null) {
+                logSecurityAttempt('Intento fallido de clave de administrador', 'admin_panel');
+                showNotification('Contraseña incorrecta', 'error');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            document.getElementById('adminBadge').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            showNotification('Panel cerrado', 'info');
+        }
+
+        function switchAdminTab(tab, event) {
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('admin' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
+            if (event) event.target.classList.add('active');
+            if (tab === 'usersSecurity') renderUsersAndSecurityAdmin();
+            renderPageAccessQr();
+        }
+
+        function fillAdminTripForm() {
+            document.getElementById('editTripTitle').value = tripData.title;
+            document.getElementById('editTripDate').value = tripData.date;
+            document.getElementById('editTripPrice').value = tripData.priceUSD;
+            document.getElementById('editFlightDate').value = tripData.flightDate ? tripData.flightDate.slice(0, 16) : '';
+            document.getElementById('editBalanceStartDate').value = tripData.balanceStartDate ? tripData.balanceStartDate.slice(0, 16) : '';
+            document.getElementById('editBalanceCloseDate').value = tripData.balanceCloseDate ? tripData.balanceCloseDate.slice(0, 16) : '';
+            document.getElementById('editTripPlaces').value = tripData.places;
+            renderEmailDispatchQueue();
+        }
+
+        function prepareTripUpdateEmails(updatedTrip) {
+            const accounts = getAccounts();
+            const participants = JSON.parse(localStorage.getItem('participants') || '[]');
+            const recipientsSet = new Set();
+
+            accounts.forEach(a => { if (a.email) recipientsSet.add(String(a.email).toLowerCase()); });
+            participants.forEach(p => {
+                if (p.email) recipientsSet.add(String(p.email).toLowerCase());
+                if (p.billingEmail) recipientsSet.add(String(p.billingEmail).toLowerCase());
+            });
+
+            const recipients = Array.from(recipientsSet);
+            const subject = `Actualización de próximo viaje: ${updatedTrip.title} (${updatedTrip.date})`;
+            const body = `Hola, te avisamos que se actualizaron los detalles del viaje ${updatedTrip.title} (${updatedTrip.date}), precio total US$ ${updatedTrip.priceUSD}. Excursiones: ${updatedTrip.places}.`;
+
+            if (TRIP_EMAIL_ENDPOINT_URL && recipients.length) {
+                fetch(TRIP_EMAIL_ENDPOINT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ subject, body, recipients, trip: updatedTrip })
+                }).catch(() => {});
+            }
+
+            const queue = JSON.parse(localStorage.getItem('piesandantesEmailQueue') || '[]');
+            queue.unshift({
+                id: Date.now(),
+                createdAt: new Date().toLocaleString('es-DO'),
+                subject,
+                body,
+                recipients,
+                mailtoHref: `mailto:${encodeURIComponent(recipients.join(','))}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+            });
+            localStorage.setItem('piesandantesEmailQueue', JSON.stringify(queue.slice(0, 20)));
+            renderEmailDispatchQueue();
+        }
+
+        function renderEmailDispatchQueue() {
+            const box = document.getElementById('emailDispatchQueueBox');
+            if (!box) return;
+            const queue = JSON.parse(localStorage.getItem('piesandantesEmailQueue') || '[]');
+            if (!queue.length) {
+                box.innerHTML = '';
+                return;
+            }
+            const latest = queue[0];
+            box.innerHTML = `
+                <div style="background:var(--superficie-suave);border:1px solid var(--borde-suave);border-radius:10px;padding:12px;">
+                    <strong>Último aviso automático de viaje preparado (${escapeHtml(latest.createdAt)})</strong><br>
+                    <small>Destinatarios detectados (${latest.recipients.length}): ${escapeHtml(latest.recipients.join(', ') || 'Ninguno aún')}</small><br>
+                    <a href="${escapeHtml(latest.mailtoHref)}" class="btn-small btn-check" style="display:inline-block;margin-top:8px;text-decoration:none;">
+                        Abrir Correo Automático (mailto)
+                    </a>
+                </div>
+            `;
+        }
+
+        function saveTripEdits() {
+            const parsedPrice = parseFloat(document.getElementById('editTripPrice').value);
+            const rawFlight = document.getElementById('editFlightDate').value;
+            const rawBalStart = document.getElementById('editBalanceStartDate').value;
+            const rawBalClose = document.getElementById('editBalanceCloseDate').value;
+
+            tripData = {
+                title: document.getElementById('editTripTitle').value.trim() || tripData.title,
+                date: document.getElementById('editTripDate').value.trim() || tripData.date,
+                flightDate: rawFlight ? new Date(rawFlight).toISOString() : tripData.flightDate,
+                balanceStartDate: rawBalStart ? new Date(rawBalStart).toISOString() : '',
+                balanceCloseDate: rawBalClose ? new Date(rawBalClose).toISOString() : '',
+                priceUSD: (!isNaN(parsedPrice) && parsedPrice > DEPOSIT_AMOUNT_USD) ? parsedPrice : tripData.priceUSD,
+                places: document.getElementById('editTripPlaces').value.trim() || tripData.places,
+                lastUpdatedAt: new Date().toLocaleString('es-DO')
+            };
+            localStorage.setItem('piesandantesTrip', JSON.stringify(tripData));
+            renderTrip();
+            recordUserChange(`Actualización de viaje: ${tripData.title} (${tripData.date})`);
+            if (AUTO_EMAIL_ON_TRIP_UPDATE) {
+                prepareTripUpdateEmails(tripData);
+            }
+            applyWhatsAppNumbers(
+                localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1,
+                localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2
+            );
+            showNotification('Información del viaje actualizada y aviso de correo preparado', 'success');
+        }
+
+        function updateNewsStatusLabel() {
+            const statusEl = document.getElementById('newsSmartStatus');
+            if (!statusEl) return;
+            if (!newsAutoEnabled) {
+                statusEl.textContent = 'Auto-rotación pausada por usuario';
+            } else if (newsHoverPaused) {
+                statusEl.textContent = 'Pausada al pasar el cursor (lectura activa)';
+            } else {
+                statusEl.textContent = 'Auto-rotación inteligente activa';
+            }
+        }
+
+        function getOrderedNewsList() {
+            const rawNews = JSON.parse(localStorage.getItem('news') || '[]');
+            if (rawNews.length <= 1) return rawNews;
+            const shift = newsOrderOffset % rawNews.length;
+            return rawNews.slice(shift).concat(rawNews.slice(0, shift));
+        }
+
+        function loadNews() {
+            let news = JSON.parse(localStorage.getItem('news') || '[]');
+            if (!news.length) {
+                news = [
+                    {
+                        id: 1,
+                        title: '¡Viaje a Medellín y Guatapé (3 al 7 de marzo)!',
+                        content: 'Aparta con US$ 100 por tiempo limitado (hasta 1 mes antes del vuelo, no reembolsable si no vas). El pago restante tiene su ventana de activación y cierre.',
+                        date: '2026-01-15',
+                        priority: 'alta'
+                    },
+                    {
+                        id: 2,
+                        title: 'Líneas de atención directa',
+                        content: 'Comunícate con nosotros al 809-403-0141 o al 809-996-8875 para separar tu cupo.',
+                        date: '2026-01-20',
+                        priority: 'media'
+                    },
+                    {
+                        id: 3,
+                        title: 'Verificación de código en 2 pasos',
+                        content: 'Tu código de reserva se verifica en dos momentos: confirmación de apartado y confirmación de pago restante.',
+                        date: '2026-01-25',
+                        priority: 'alta'
+                    }
+                ];
+                localStorage.setItem('news', JSON.stringify(news));
+            }
+
+            const ordered = getOrderedNewsList();
+            document.getElementById('newsGrid').innerHTML = ordered.map((n, idx) => `
+                <div class="news-item ${idx === 0 ? 'smart-spotlight' : ''}">
+                    ${n.priority === 'alta' ? '<span class="news-priority">DESTACADO</span>' : ''}
+                    <div class="news-date">${escapeHtml(n.date)}</div>
+                    <h3 class="news-title">${escapeHtml(n.title)}</h3>
+                    <p>${escapeHtml(n.content)}</p>
+                </div>
+            `).join('');
+
+            const adminList = document.getElementById('adminNewsList');
+            if (adminList) {
+                adminList.innerHTML = news.map(n => `
+                    <div class="participant-item">
+                        <div><strong>${escapeHtml(n.title)}</strong><br><small>${escapeHtml(n.content)}</small></div>
+                        <button class="btn-small btn-delete" onclick="deleteNewsItem(${n.id})">Eliminar</button>
+                    </div>
+                `).join('');
+            }
+            updateNewsStatusLabel();
+        }
+
+        function rotateNewsSmartStep() {
+            if (!newsAutoEnabled || newsHoverPaused) return;
+            const news = JSON.parse(localStorage.getItem('news') || '[]');
+            if (news.length <= 1) return;
+            newsOrderOffset = (newsOrderOffset + 1) % news.length;
+            loadNews();
+        }
+
+        function startSmartNewsRotation() {
+            if (newsTimerId) clearInterval(newsTimerId);
+            newsTimerId = setInterval(rotateNewsSmartStep, NEWS_ROTATION_MS);
+        }
+
+        function setNewsHoverPause(paused) {
+            newsHoverPaused = paused;
+            updateNewsStatusLabel();
+        }
+
+        function toggleNewsAutoRotation() {
+            newsAutoEnabled = !newsAutoEnabled;
+            updateNewsStatusLabel();
+        }
+
+        function createNewsFromAdmin() {
+            const title = document.getElementById('newNewsTitle').value.trim();
+            const content = document.getElementById('newNewsContent').value.trim();
+            if (!title || !content) return showNotification('Completa título y contenido', 'error');
+
+            const news = JSON.parse(localStorage.getItem('news') || '[]');
+            news.unshift({
+                id: Date.now(),
+                title,
+                content,
+                date: new Date().toISOString().split('T')[0],
+                priority: 'alta'
+            });
+            localStorage.setItem('news', JSON.stringify(news));
+            newsOrderOffset = 0;
+            document.getElementById('newNewsTitle').value = '';
+            document.getElementById('newNewsContent').value = '';
+            loadNews();
+            showNotification('Noticia publicada', 'success');
+        }
+
+        function deleteNewsItem(id) {
+            const news = JSON.parse(localStorage.getItem('news') || '[]').filter(n => n.id !== id);
+            localStorage.setItem('news', JSON.stringify(news));
+            newsOrderOffset = 0;
+            loadNews();
+            showNotification('Noticia eliminada', 'info');
+        }
+
+        function syncStageOptionsText() {
+            const selectEl = document.getElementById('paymentStage');
+            const hintEl = document.getElementById('stageTimerHint');
+            if (!selectEl) return;
+
+            const balanceUSD = getBalanceAmountUSD();
+            const depExpired = isDepositExpired();
+            const balOpen = isBalanceWindowOpen();
+            const depositDeadlineStr = new Date(getDepositDeadlineTimestamp()).toLocaleString('es-DO');
+            const balanceStartStr = new Date(getBalanceActivationTimestamp()).toLocaleString('es-DO');
+            const balanceCloseStr = new Date(getBalanceClosingTimestamp()).toLocaleString('es-DO');
+
+            selectEl.options[0].text = `Apartado tiempo limitado (US$ ${DEPOSIT_AMOUNT_USD} — No reembolsable si no vas)`;
+            selectEl.options[1].text = `Pago restante para ir (US$ ${balanceUSD})`;
+            selectEl.options[0].disabled = depExpired;
+            selectEl.options[1].disabled = !balOpen;
+
+            if (balOpen && depExpired) {
+                selectEl.value = 'balance';
+                currentStage = 'balance';
+            } else if (!depExpired && (!balOpen || (selectEl.value === 'balance' && !balOpen))) {
+                selectEl.value = 'deposit';
+                currentStage = 'deposit';
+            }
+
+            if (hintEl) {
+                hintEl.textContent = `Apartado vence: ${depositDeadlineStr} (1 mes antes del vuelo). Pago restante activo: ${balanceStartStr} hasta ${balanceCloseStr}.`;
+            }
+        }
+
+        function openPaymentModal() {
+            if (isAllBookingsClosed()) {
+                return showNotification('Los plazos de apartado y pago restante ya cerraron', 'error');
+            }
+            if (isDepositExpired() && !isBalanceWindowOpen()) {
+                return showNotification('El apartado venció y el pago restante está fuera de su ventana activa', 'error');
+            }
+
+            currentCurrency = 'USD';
+            currentReceiptDataUrl = '';
+            document.getElementById('paymentForm').reset();
+            autofillFormFromActiveAccount();
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
+            document.getElementById('paymentCurrency').value = 'USD';
+            document.getElementById('receiptPreviewBox').innerHTML = '';
+            document.querySelectorAll('.bank-method-card').forEach(m => m.classList.remove('selected'));
+            document.getElementById('paymentMethod').value = '';
+            const savedNote = localStorage.getItem('bankNotes') || '';
+            document.getElementById('bankInstructionsBox').textContent = savedNote || 'Elige un banco de la lista y adjunta la foto o captura de tu transferencia.';
+            handleCurrencyChange();
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function handleCurrencyChange() {
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
+            const currency = document.getElementById('paymentCurrency').value;
+            const rate = parseFloat(document.getElementById('exchangeRateInput').value) || 60;
+            const stageUSD = getStageAmountUSD(currentStage);
+
+            currentCurrency = currency;
+            currentConvertedPrice = currency === 'USD' ? stageUSD : Number((stageUSD * rate).toFixed(2));
+
+            const taxInfo = computeTaxBreakdown(currentConvertedPrice);
+            const taxPreviewEl = document.getElementById('taxBreakdownPreview');
+            if (taxPreviewEl) {
+                taxPreviewEl.textContent = SHOW_ITBIS_BREAKDOWN
+                    ? `Desglose DGII (${Math.round(ITBIS_RATE * 100)}% ITBIS): Subtotal ${formatMoney(taxInfo.subtotal, currentCurrency)} + ITBIS ${formatMoney(taxInfo.itbis, currentCurrency)} = Total ${formatMoney(taxInfo.total, currentCurrency)}`
+                    : `Total a registrar: ${formatMoney(taxInfo.total, currentCurrency)}`;
+            }
+
+            const acc = getActiveAccount();
+            const reward = getRewardForTrips(acc ? acc.tripsCount : 0);
+            const rewardLine = reward.discountPct > 0 ? `<br><span style="color:#065F46;font-size:0.85rem;">Recompensa activa: ${reward.discountPct}% rebaja (>20 viajes)</span>` : '';
+
+            document.getElementById('paymentModalTitle').innerHTML = `
+                ${escapeHtml(getStageLabel(currentStage))} • ${escapeHtml(tripData.title)}<br>
+                <small style="color: var(--naranja-logo);">Monto a registrar: ${escapeHtml(formatMoney(currentConvertedPrice, currentCurrency))}</small>${rewardLine}
+            `;
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function handleReceiptUpload(event) {
+            const file = event.target.files && event.target.files[0];
+            const previewBox = document.getElementById('receiptPreviewBox');
+            currentReceiptDataUrl = '';
+            previewBox.innerHTML = '';
+
+            if (!file) return;
+
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            if (!allowedTypes.includes(file.type)) {
+                event.target.value = '';
+                return showNotification('Formato no permitido. Usa JPG, PNG o WEBP.', 'error');
+            }
+
+            if (file.size > MAX_RECEIPT_BYTES) {
+                event.target.value = '';
+                return showNotification('La imagen supera 1.5 MB. Súbela más ligera.', 'error');
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    const maxDim = 960;
+                    let width = img.width;
+                    let height = img.height;
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    currentReceiptDataUrl = canvas.toDataURL('image/jpeg', 0.78);
+                    previewBox.innerHTML = `<img src="${currentReceiptDataUrl}" alt="Vista previa del comprobante">`;
+                    showNotification('Comprobante optimizado y cargado de forma segura', 'info');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        document.getElementById('paymentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const participantEmail = document.getElementById('participantEmail').value.trim().toLowerCase();
+            if (isTargetBlocked(participantEmail)) {
+                logSecurityAttempt('Intento de reserva con correo bloqueado', participantEmail);
+                return showNotification('Este correo está bloqueado por infringir políticas o seguridad', 'error');
+            }
+
+            if (isAllBookingsClosed()) {
+                closePaymentModal();
+                renderTrip();
+                return showNotification('Los plazos de reserva ya cerraron', 'error');
+            }
+
+            syncStageOptionsText();
+            currentStage = document.getElementById('paymentStage').value || 'deposit';
+            if (currentStage === 'deposit' && isDepositExpired()) {
+                return showNotification('El tiempo límite del apartado ya venció', 'error');
+            }
+            if (currentStage === 'balance' && !isBalanceWindowOpen()) {
+                return showNotification('El pago restante no está dentro de su ventana activa', 'error');
+            }
+
+            handleCurrencyChange();
+
+            const method = document.getElementById('paymentMethod').value;
+            const acceptedTerms = document.getElementById('acceptTermsCheckbox').checked;
+
+            if (!method) return showNotification('Selecciona un banco de transferencia', 'error');
+            if (!currentReceiptDataUrl) return showNotification('Adjunta la foto de tu transferencia o token', 'error');
+            if (!acceptedTerms) return showNotification('Debes aceptar los Términos y Condiciones para continuar', 'error');
+
+            const ticketCode = `PRD-${String(ticketCounter).padStart(5, '0')}`;
+            const participantName = document.getElementById('participantName').value.trim();
+            const participantAge = document.getElementById('participantAge').value.trim();
+            const participantResidence = document.getElementById('participantResidence').value.trim();
+            const healthConditions = document.getElementById('healthConditions').value.trim();
+            const emergencyContact = document.getElementById('emergencyContact').value.trim();
+            const ecfType = document.getElementById('ecfType').value;
+            const rncOrId = document.getElementById('rncOrId').value.trim();
+            const billingName = document.getElementById('billingName').value.trim();
+            const billingEmail = document.getElementById('billingEmail').value.trim();
+            const taxInfo = computeTaxBreakdown(currentConvertedPrice);
+            const stageLabel = getStageLabel(currentStage);
+            const depositDeadlineAt = new Date(getDepositDeadlineTimestamp()).toISOString();
+
+            const accounts = getAccounts();
+            const accIdx = accounts.findIndex(a => String(a.email || '').toLowerCase() === participantEmail);
+            let tripsAfter = 1;
+            if (accIdx >= 0) {
+                accounts[accIdx].tripsCount = (Number(accounts[accIdx].tripsCount) || 0) + 1;
+                accounts[accIdx].lastTripTitle = tripData.title;
+                accounts[accIdx].lastTripDate = tripData.date;
+                tripsAfter = accounts[accIdx].tripsCount;
+                saveAccounts(accounts);
+                updateAccountNavButton();
+            }
+            const rewardInfo = getRewardForTrips(tripsAfter);
+
+            const reserva = {
+                id: Date.now(),
+                ticketNumber: ticketCode,
+                adventure: `${tripData.title} (${tripData.date})`,
+                flightDate: tripData.flightDate,
+                paymentStage: currentStage,
+                stageLabel,
+                depositDeadlineAt,
+                nonRefundableDepositNotice: 'El apartado no se devuelve si no van',
+                name: participantName,
+                age: participantAge,
+                residence: participantResidence,
+                phone: document.getElementById('participantPhone').value.trim(),
+                email: participantEmail,
+                emergency: emergencyContact,
+                healthConditions,
+                dgiiJurisdiction: 'RD',
+                ecfType,
+                rncOrId,
+                billingName,
+                billingEmail,
+                itbisRate: ITBIS_RATE,
+                subtotalAmount: taxInfo.subtotal,
+                itbisAmount: taxInfo.itbis,
+                rewardBenefit: rewardInfo.benefit,
+                acceptedTerms: true,
+                acceptedTermsAt: new Date().toISOString(),
+                currency: currentCurrency,
+                price: currentConvertedPrice,
+                paymentMethod: method,
+                transferRef: document.getElementById('transferRefCode').value.trim() || 'Sin ref.',
+                receiptImage: currentReceiptDataUrl,
+                requests: document.getElementById('specialRequests').value.trim(),
+                depositConfirmed: currentStage === 'deposit',
+                balanceConfirmed: currentStage === 'balance'
+            };
+
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            lista.push(reserva);
+            try {
+                localStorage.setItem('participants', JSON.stringify(lista));
+            } catch (storageErr) {
+                return showNotification('Almacenamiento lleno: exporta y limpia reservas antiguas en el panel Admin', 'error');
+            }
+
+            ticketCounter++;
+            localStorage.setItem('ticketCounter', String(ticketCounter));
+            recordUserChange(`Reserva generada (${reserva.ticketNumber} • ${tripData.title})`);
+
+            document.getElementById('ticketNumber').textContent = `#${reserva.ticketNumber}`;
+
+            document.getElementById('ticketDetails').innerHTML = `
+                <p><strong>Código de Verificación:</strong> ${escapeHtml(reserva.ticketNumber)}</p>
+                <p><strong>Viaje:</strong> ${escapeHtml(reserva.adventure)}</p>
+                <p><strong>Modalidad:</strong> ${escapeHtml(reserva.stageLabel)}</p>
+                <p><strong>Participante:</strong> ${escapeHtml(reserva.name)} (${escapeHtml(reserva.age)} años)</p>
+                <p><strong>Residencia:</strong> ${escapeHtml(reserva.residence)}</p>
+                <p><strong>Emergencia:</strong> ${escapeHtml(reserva.emergency)}</p>
+                <p><strong>Salud / Alergias:</strong> ${escapeHtml(reserva.healthConditions)}</p>
+                <p><strong>Comprobante DGII (${escapeHtml(reserva.ecfType)}):</strong> ${escapeHtml(reserva.billingName)} • RNC/Cédula: ${escapeHtml(reserva.rncOrId)} • ${escapeHtml(reserva.billingEmail)}</p>
+                <p><strong>Desglose Fiscal:</strong> Subtotal ${escapeHtml(formatMoney(reserva.subtotalAmount, reserva.currency))} • ITBIS ${escapeHtml(formatMoney(reserva.itbisAmount, reserva.currency))} • Total ${escapeHtml(formatMoney(reserva.price, reserva.currency))}</p>
+                <p><strong>Recompensa:</strong> ${escapeHtml(reserva.rewardBenefit)}</p>
+                <p><strong>Términos:</strong> Aceptados (apartado no reembolsable si no van)</p>
+                <p><strong>Método:</strong> ${escapeHtml(reserva.paymentMethod)} (Ref: ${escapeHtml(reserva.transferRef)})</p>
+                <p><strong>Soporte Técnico Desarrollador:</strong> ${escapeHtml(DEV_SUPPORT_PHONE_DISPLAY)}</p>
+            `;
+
+            closePaymentModal();
+            document.getElementById('ticketModal').style.display = 'flex';
+            if (isAdmin) updateAdminPanel();
+            showNotification('¡Reserva y código generados! Verificación en 2 pasos por código.', 'success');
+        });
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').style.display = 'none';
+        }
+
+        function shareTicket() {
+            const num = document.getElementById('ticketNumber').textContent.replace('#', '').trim();
+            const texto = `Código PiesandantesRD: ${num} - ${tripData.title} (${tripData.date})`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(texto).then(() => showNotification('Código copiado al portapapeles', 'info'));
+            }
+        }
+
+        function showParticipants() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            if (!lista.length) return showNotification('Aún no hay participantes registrados', 'info');
+            alert(lista.map(p => {
+                const st1 = p.depositConfirmed ? 'Apartado OK' : 'Apartado Pendiente';
+                const st2 = p.balanceConfirmed ? 'Restante OK' : 'Restante Pendiente';
+                return `• ${p.name} (${p.ticketNumber}) - ${st1} / ${st2}`;
+            }).join('\n'));
+        }
+
+        function confirmarCodigoEtapa(stepType) {
+            const limpio = String(document.getElementById('codeCheckInput').value || '')
+                .trim()
+                .toUpperCase();
+
+            if (!limpio) {
+                showNotification('Escribe o pega el código del usuario (ej. PRD-00001)', 'error');
+                return null;
+            }
+
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            const encontrado = lista.find(p => String(p.ticketNumber || '').toUpperCase() === limpio);
+
+            if (!encontrado) {
+                logSecurityAttempt(`Consulta de código inexistente: ${limpio}`, 'code_lookup');
+                showNotification(`Código "${limpio}" no encontrado`, 'error');
+                return null;
+            }
+
+            const actualizada = lista.map(p => {
+                if (String(p.id) !== String(encontrado.id)) return p;
+                if (stepType === 'balance') {
+                    return { ...p, balanceConfirmed: true };
+                }
+                return { ...p, depositConfirmed: true };
+            });
+
+            localStorage.setItem('participants', JSON.stringify(actualizada));
+            updateAdminPanel();
+
+            const pasoTexto = stepType === 'balance' ? 'PAGO RESTANTE' : 'APARTADO';
+            const bannerEl = document.getElementById('codeCheckResultBanner');
+            if (bannerEl) {
+                bannerEl.innerHTML = `
+                    <div style="background:#ECFDF5;border:2px solid #10B981;color:#065F46;padding:12px;border-radius:10px;margin-bottom:12px;">
+                        <strong>Código Verificado: ${escapeHtml(encontrado.ticketNumber)}</strong><br>
+                        Participante: <strong>${escapeHtml(encontrado.name)}</strong> • Confirmación registrada: <strong>${pasoTexto}</strong>
+                    </div>
+                `;
+            }
+
+            showNotification(`${pasoTexto} confirmado para ${encontrado.ticketNumber}`, 'success');
+            return encontrado;
+        }
+
+        function toggleStepConfirmation(id, stepType) {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            const updated = lista.map(p => {
+                if (String(p.id) !== String(id)) return p;
+                if (stepType === 'balance') {
+                    return { ...p, balanceConfirmed: !p.balanceConfirmed };
+                }
+                return { ...p, depositConfirmed: !p.depositConfirmed };
+            });
+            localStorage.setItem('participants', JSON.stringify(updated));
+            updateAdminPanel();
+            showNotification('Estado de verificación actualizado', 'success');
+        }
+
+        function renderUsersAndSecurityAdmin() {
+            const alertsBox = document.getElementById('securityAlertsBox');
+            const regBox = document.getElementById('adminRegisteredUsersList');
+            const unregBox = document.getElementById('adminUnregisteredUsersList');
+            if (!alertsBox || !regBox || !unregBox) return;
+
+            const secLog = getSecurityLog();
+            alertsBox.innerHTML = `
+                <div style="background:var(--superficie-suave);border:1px solid var(--borde-suave);border-radius:10px;padding:12px;">
+                    <strong>Registro de Seguridad / Intentos Sospechosos (${secLog.length})</strong><br>
+                    ${secLog.length ? secLog.slice(0, 6).map(s => `
+                        <small style="display:block;margin-top:4px;">• [${escapeHtml(s.at)}] ${escapeHtml(s.reason)} (${escapeHtml(s.targetKey)}) ${s.autoBlocked ? '— BLOQUEADO AUTOMÁTICAMENTE' : ''}</small>
+                    `).join('') : '<small>Sin alertas sospechosas registradas.</small>'}
+                </div>
+            `;
+
+            const accounts = getAccounts();
+            const registeredEmails = new Set(accounts.map(a => String(a.email || '').toLowerCase()));
+            regBox.innerHTML = accounts.length ? accounts.map(acc => {
+                const key = String(acc.email || '').toLowerCase();
+                const blocked = isTargetBlocked(key);
+                return `
+                    <div class="participant-item">
+                        <div>
+                            <strong>${escapeHtml(acc.name)}</strong> (${escapeHtml(acc.email)}) • ${acc.provider === 'google' ? 'Google' : 'Contraseña'}
+                            <span class="status-pill ${blocked ? 'status-blocked' : 'status-checked'}">${blocked ? 'BLOQUEADO' : 'ACTIVO'}</span><br>
+                            <small>Viajes: ${acc.tripsCount || 0} • RNC/Cédula: ${escapeHtml(acc.rncOrId || '-')}</small>
+                        </div>
+                        <button class="btn-small ${blocked ? 'btn-export' : 'btn-delete'}" onclick="toggleBlockTarget('${escapeHtml(key)}')">
+                            ${blocked ? 'Desbloquear' : 'Bloquear Usuario'}
+                        </button>
+                    </div>
+                `;
+            }).join('') : '<p>No hay usuarios con cuenta registrada aún.</p>';
+
+            const participants = JSON.parse(localStorage.getItem('participants') || '[]');
+            const unregistered = participants.filter(p => !registeredEmails.has(String(p.email || '').toLowerCase()));
+            unregBox.innerHTML = unregistered.length ? unregistered.map(p => {
+                const key = String(p.email || '').toLowerCase();
+                const blocked = isTargetBlocked(key);
+                return `
+                    <div class="participant-item">
+                        <div>
+                            <strong>${escapeHtml(p.name)}</strong> (${escapeHtml(p.email || 'Sin correo')}) • Código: ${escapeHtml(p.ticketNumber)}
+                            <span class="status-pill ${blocked ? 'status-blocked' : 'status-pending'}">${blocked ? 'BLOQUEADO' : 'SIN CUENTA'}</span><br>
+                            <small>Tel: ${escapeHtml(p.phone || '-')} • DGII: ${escapeHtml(p.rncOrId || '-')}</small>
+                        </div>
+                        ${key ? `<button class="btn-small ${blocked ? 'btn-export' : 'btn-delete'}" onclick="toggleBlockTarget('${escapeHtml(key)}')">${blocked ? 'Desbloquear' : 'Bloquear Correo'}</button>` : ''}
+                    </div>
+                `;
+            }).join('') : '<p>No hay participantes sin cuenta registrada.</p>';
+        }
+
+        function exportBackupJSON() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            const payload = {
+                brand: 'PiesandantesRD',
+                appCodeVersion: APP_CODE_VERSION,
+                exportedAt: new Date().toISOString(),
+                depositMonthsBeforeFlight: DEPOSIT_MONTHS_BEFORE_FLIGHT,
+                flightDate: tripData.flightDate,
+                balanceStartDate: tripData.balanceStartDate,
+                balanceCloseDate: tripData.balanceCloseDate,
+                ticketCounter: ticketCounter,
+                participants: lista
+            };
+
+            const jsonStr = JSON.stringify(payload, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const dateStamp = new Date().toISOString().slice(0, 10);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${BACKUP_FILE_PREFIX}_${dateStamp}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            showNotification('Respaldo JSON exportado con éxito', 'success');
+        }
+
+        function importBackupJSON(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    const incoming = Array.isArray(parsed)
+                        ? parsed
+                        : Array.isArray(parsed.participants)
+                            ? parsed.participants
+                            : null;
+
+                    if (!incoming) {
+                        event.target.value = '';
+                        return showNotification('El archivo JSON no tiene un formato de reservas válido', 'error');
+                    }
+
+                    const current = JSON.parse(localStorage.getItem('participants') || '[]');
+                    const seenKeys = new Set(current.map(item => `${item.id || ''}|${item.ticketNumber || ''}`));
+                    let addedCount = 0;
+
+                    incoming.forEach(item => {
+                        const key = `${item.id || ''}|${item.ticketNumber || ''}`;
+                        if (!seenKeys.has(key)) {
+                            current.push(item);
+                            seenKeys.add(key);
+                            addedCount++;
+                        }
+                    });
+
+                    localStorage.setItem('participants', JSON.stringify(current));
+
+                    if (parsed.ticketCounter && Number(parsed.ticketCounter) > ticketCounter) {
+                        ticketCounter = Number(parsed.ticketCounter);
+                        localStorage.setItem('ticketCounter', String(ticketCounter));
+                    }
+
+                    event.target.value = '';
+                    updateAdminPanel();
+                    showNotification(`Respaldo importado (${addedCount} reservas nuevas agregadas)`, 'success');
+                } catch (err) {
+                    event.target.value = '';
+                    showNotification('No se pudo leer el archivo JSON', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function updateAdminPanel() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            document.getElementById('participantsList').innerHTML = lista.length
+                ? lista.map(p => `
+                    <div class="participant-item">
+                        <div>
+                            <strong>${escapeHtml(p.name)}</strong> (${escapeHtml(p.age || '-')} años)
+                            <span class="status-pill ${p.depositConfirmed ? 'status-checked' : 'status-pending'}">
+                                ${p.depositConfirmed ? '1. APARTADO OK' : '1. APARTADO PENDIENTE'}
+                            </span>
+                            <span class="status-pill ${p.balanceConfirmed ? 'status-checked' : 'status-pending'}">
+                                ${p.balanceConfirmed ? '2. RESTANTE OK' : '2. RESTANTE PENDIENTE'}
+                            </span><br>
+                            <small><strong>${escapeHtml(p.stageLabel || 'Apartado')}</strong> • Residencia: ${escapeHtml(p.residence || '-')} • Tel: ${escapeHtml(p.phone)}</small><br>
+                            <small>Emergencia: ${escapeHtml(p.emergency || '-')} • Salud/Alergias: ${escapeHtml(p.healthConditions || '-')}</small><br>
+                            <small>DGII (${escapeHtml(p.ecfType || 'E32')}): ${escapeHtml(p.billingName || '-')} • RNC/Cédula: ${escapeHtml(p.rncOrId || '-'} • ${escapeHtml(p.billingEmail || '-')}</small><br>
+                            <small>Recompensa: ${escapeHtml(p.rewardBenefit || '-')} • Términos: ${p.acceptedTerms ? 'Aceptados' : 'No'} • ${escapeHtml(p.paymentMethod)} (Ref: ${escapeHtml(p.transferRef || '-')}) • ${escapeHtml(formatMoney(p.price, p.currency || 'USD'))}</small>
+                            ${p.receiptImage ? `<div style="margin-top:6px;"><img src="${p.receiptImage}" alt="Comprobante ${escapeHtml(p.ticketNumber)}" style="max-height:70px;border-radius:6px;border:1px solid #D1D5DB;"></div>` : ''}
+                        </div>
+                        <span class="ticket-number-small">${escapeHtml(p.ticketNumber)}</span>
+                        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                            <button class="btn-small btn-check" onclick="toggleStepConfirmation('${escapeHtml(p.id)}', 'deposit')">${p.depositConfirmed ? 'Quitar Apartado' : 'Confirmar Apartado'}</button>
+                            <button class="btn-small btn-check" onclick="toggleStepConfirmation('${escapeHtml(p.id)}', 'balance')">${p.balanceConfirmed ? 'Quitar Restante' : 'Confirmar Restante'}</button>
+                            <button class="btn-small btn-export" onclick="exportSingle('${escapeHtml(p.id)}')">CSV</button>
+                            <button class="btn-small btn-delete" onclick="deleteParticipant('${escapeHtml(p.id)}')">X</button>
+                        </div>
+                    </div>
+                `).join('')
+                : '<p>No hay reservas aún.</p>';
+
+            const totalUSD = lista.filter(p => (p.currency || 'USD') === 'USD').reduce((s, p) => s + Number(p.price), 0);
+            const totalDOP = lista.filter(p => p.currency === 'DOP').reduce((s, p) => s + Number(p.price), 0);
+            const depConfirmedCount = lista.filter(p => p.depositConfirmed).length;
+            const balConfirmedCount = lista.filter(p => p.balanceConfirmed).length;
+
+            document.getElementById('salesReports').innerHTML = `
+                <p><strong>Total reservas:</strong> ${lista.length}</p>
+                <p><strong>Confirmaciones de Apartado (Paso 1):</strong> ${depConfirmedCount} / ${lista.length}</p>
+                <p><strong>Confirmaciones de Pago Restante (Paso 2):</strong> ${balConfirmedCount} / ${lista.length}</p>
+                <p><strong>Total registrado en US$:</strong> ${escapeHtml(formatMoney(totalUSD, 'USD'))}</p>
+                <p><strong>Total registrado en RD$:</strong> ${escapeHtml(formatMoney(totalDOP, 'DOP'))}</p>
+                <button class="btn-cta" style="margin-top: 12px;" onclick="exportAll()">Exportar Todo a CSV</button>
+            `;
+
+            renderUsersAndSecurityAdmin();
+            renderEmailDispatchQueue();
+        }
+
+        function deleteParticipant(id) {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]').filter(p => String(p.id) !== String(id));
+            localStorage.setItem('participants', JSON.stringify(lista));
+            updateAdminPanel();
+            showNotification('Reserva eliminada', 'info');
+        }
+
+        function exportSingle(id) {
+            const p = JSON.parse(localStorage.getItem('participants') || '[]').find(item => String(item.id) === String(id));
+            if (p) downloadCSV([['Codigo', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Recompensa', 'Terminos', 'Método', 'Ref', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado'], [p.ticketNumber, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.rewardBenefit || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']], `reserva_${p.ticketNumber}.csv`);
+        }
+
+        function exportAll() {
+            const lista = JSON.parse(localStorage.getItem('participants') || '[]');
+            if (!lista.length) return showNotification('Sin datos para exportar', 'info');
+            const rows = [['Codigo', 'Viaje', 'Modalidad', 'Nombre', 'Edad', 'Residencia', 'Teléfono', 'Emergencia', 'SaludAlergias', 'TipoECF', 'RNC_Cedula', 'NombreFactura', 'CorreoFactura', 'Subtotal', 'ITBIS', 'Recompensa', 'Terminos', 'Método', 'Referencia', 'Moneda', 'Monto', 'ApartadoConfirmado', 'RestanteConfirmado']];
+            lista.forEach(p => rows.push([p.ticketNumber, p.adventure, p.stageLabel || '', p.name, p.age || '', p.residence || '', p.phone, p.emergency || '', p.healthConditions || '', p.ecfType || '', p.rncOrId || '', p.billingName || '', p.billingEmail || '', p.subtotalAmount ?? p.price, p.itbisAmount ?? 0, p.rewardBenefit || '', p.acceptedTerms ? 'SI' : 'NO', p.paymentMethod, p.transferRef || '', p.currency || 'USD', p.price, p.depositConfirmed ? 'SI' : 'NO', p.balanceConfirmed ? 'SI' : 'NO']));
+            downloadCSV(rows, 'reservas_medellin_guatape.csv');
+        }
+
+        function downloadCSV(rows, filename) {
+            const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function saveSettings() {
+            const num1 = document.getElementById('whatsappNumber1').value.replace(/\D/g, '');
+            const num2 = document.getElementById('whatsappNumber2').value.replace(/\D/g, '');
+            const notes = document.getElementById('bankNotesInput').value.trim();
+            if (!num1 || !num2) return showNotification('Ingresa ambos números válidos', 'error');
+
+            localStorage.setItem('whatsappNumber1', num1);
+            localStorage.setItem('whatsappNumber2', num2);
+            localStorage.setItem('bankNotes', notes);
+            applyWhatsAppNumbers(num1, num2);
+            showNotification('Configuración guardada', 'success');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            applyThemeFromStorage();
+            syncCodeVersionStorage();
+            renderBankLogos();
+
+            const savedCounter = localStorage.getItem('ticketCounter');
+            if (savedCounter) ticketCounter = parseInt(savedCounter, 10) || 1;
+
+            const savedWa1 = localStorage.getItem('whatsappNumber1') || DEFAULT_WA_1;
+            const savedWa2 = localStorage.getItem('whatsappNumber2') || DEFAULT_WA_2;
+            document.getElementById('whatsappNumber1').value = savedWa1;
+            document.getElementById('whatsappNumber2').value = savedWa2;
+
+            const savedNotes = localStorage.getItem('bankNotes');
+            if (savedNotes) document.getElementById('bankNotesInput').value = savedNotes;
+
+            renderHeroCarousel();
+            startHeroCarouselRotation();
+            renderTrip();
+            updateAccountNavButton();
+            renderWelcomeBanner();
+            applyWhatsAppNumbers(savedWa1, savedWa2);
+            renderGallery();
+            loadNews();
+            renderPageAccessQr();
+            startSmartGalleryRotation();
+            startSmartNewsRotation();
+        });
+    </script>
+</body>
+</html>
